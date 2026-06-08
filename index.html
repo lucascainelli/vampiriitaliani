@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vampiri Italiani — Prima Associazione Italiana di Assaggiatori di Aglio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blood: #8B0000;
+    --blood-bright: #C0392B;
+    --blood-pale: #E8C5C5;
+    --black: #0A0A0A;
+    --near-black: #111111;
+    --dark: #1A1A1A;
+    --parchment: #F5F0E8;
+    --parchment-dark: #E8E0D0;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --garlic-white: #F8F4EC;
+    --garlic-purple: #6B4E71;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--parchment);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* CUSTOM CURSOR */
+  body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%238B0000' d='M12 2C8 2 6 5 6 8c0 2 1 4 3 5l-1 9h8l-1-9c2-1 3-3 3-5 0-3-2-6-6-6z'/%3E%3C/svg%3E") 12 2, crosshair; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,0,0,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(139,0,0,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 80% 60%, rgba(107,78,113,0.1) 0%, transparent 60%),
+      var(--black);
+  }
+
+  /* DRIP EFFECT */
+  .drips {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    pointer-events: none;
+  }
+
+  .drip {
+    position: absolute;
+    top: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--blood) 0%, var(--blood-bright) 60%, transparent 100%);
+    border-radius: 0 0 50% 50%;
+    animation: drip-fall linear infinite;
+  }
+
+  .drip::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--blood-bright);
+    border-radius: 50%;
+  }
+
+  @keyframes drip-fall {
+    0% { height: 20px; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { height: 90px; opacity: 0; }
+  }
+
+  /* FLOATING PARTICLES */
+  .particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up linear infinite;
+  }
+
+  @keyframes float-up {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-20vh) translateX(var(--drift)); opacity: 0; }
+  }
+
+  /* LOGO AREA */
+  .logo-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    animation: fade-in-up 1.2s ease both;
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .est-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    animation: fade-in-up 1.2s ease 0.2s both;
+  }
+
+  .garlic-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: pulse-glow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.4));
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(201,168,76,0.3)); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 40px rgba(201,168,76,0.6)); transform: scale(1.05); }
+  }
+
+  .main-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--parchment);
+    text-shadow:
+      0 0 60px rgba(139,0,0,0.8),
+      0 0 120px rgba(139,0,0,0.4),
+      2px 2px 0 rgba(0,0,0,0.8);
+    margin-bottom: 0.5rem;
+    animation: fade-in-up 1.2s ease 0.4s both;
+    position: relative;
+  }
+
+  .main-title .italiani {
+    display: block;
+    color: var(--blood-bright);
+    text-shadow:
+      0 0 40px rgba(192,57,43,0.9),
+      0 0 80px rgba(192,57,43,0.5),
+      2px 2px 0 rgba(0,0,0,0.8);
+  }
+
+  .title-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    animation: fade-in-up 1.2s ease 0.6s both;
+  }
+
+  .ornament-line {
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .ornament-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    opacity: 0.9;
+    animation: fade-in-up 1.2s ease 0.8s both;
+  }
+
+  .tagline {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    color: var(--blood-pale);
+    margin-top: 2rem;
+    max-width: 600px;
+    line-height: 1.6;
+    animation: fade-in-up 1.2s ease 1s both;
+  }
+
+  .tagline strong {
+    color: var(--parchment);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fade-in-up 1.2s ease 1.2s both;
+  }
+
+  .btn-primary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: var(--blood);
+    color: var(--parchment);
+    border: 1px solid var(--blood-bright);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--blood-bright);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-primary:hover::before { transform: scaleX(1); }
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .btn-secondary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(201,168,76,0.1);
+    color: var(--gold-light);
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.5;
+    animation: fade-in-up 1s ease 1.8s both;
+  }
+
+  .scroll-indicator span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent);
+  }
+
+  .divider-glyph {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  /* MANIFESTO SECTION */
+  .manifesto {
+    background: var(--near-black);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .manifesto::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--blood), var(--gold), var(--blood), transparent);
+  }
+
+  .manifesto-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.6rem;
+  }
+
+  .manifesto-text {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    line-height: 1.8;
+    color: var(--parchment);
+    font-style: italic;
+  }
+
+  .manifesto-text em {
+    font-style: normal;
+    color: var(--blood-bright);
+    font-weight: 500;
+  }
+
+  .manifesto-text strong {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+
+  /* PILLARS */
+  .pillars {
+    background: var(--black);
+    padding: 6rem 2rem;
+  }
+
+  .pillars-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--parchment);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.6);
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 4rem;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: rgba(201,168,76,0.15);
+  }
+
+  .pillar {
+    background: var(--near-black);
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+  }
+
+  .pillar:hover { background: var(--dark); }
+
+  .pillar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--blood);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .pillar:hover::after { transform: scaleX(1); }
+
+  .pillar-number {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgba(139,0,0,0.2);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .pillar:hover .pillar-number { color: rgba(139,0,0,0.5); }
+
+  .pillar-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .pillar-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+
+  .pillar-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.7);
+  }
+
+  /* VARIETÀ */
+  .varieta {
+    background: var(--near-black);
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .varieta-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .varieta-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .varieta-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    background: rgba(0,0,0,0.3);
+  }
+
+  .varieta-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+    transform: translateY(-4px);
+  }
+
+  .varieta-card::before {
+    content: attr(data-region);
+    position: absolute;
+    top: -0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blood);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    padding: 0.2rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  .varieta-emoji { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+
+  .varieta-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .varieta-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.6;
+  }
+
+  /* MEMBERSHIP */
+  .membership {
+    background: var(--black);
+    padding: 6rem 2rem;
+  }
+
+  .membership-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 600px) {
+    .tiers { grid-template-columns: 1fr; }
+  }
+
+  .tier-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .tier-card.featured {
+    border-color: var(--blood);
+    background: rgba(139,0,0,0.08);
+  }
+
+  .tier-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blood);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    padding: 0.3rem 1.2rem;
+  }
+
+  .tier-level {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    margin-bottom: 0.5rem;
+  }
+
+  .tier-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.5rem;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .tier-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 2rem;
+  }
+
+  .tier-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+    opacity: 0.4;
+  }
+
+  .tier-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .tier-features li {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    color: rgba(245,240,232,0.75);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .tier-features li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--blood-bright);
+    font-size: 0.6rem;
+    top: 0.7rem;
+  }
+
+  /* FONDATORE */
+  .fondatore {
+    background: var(--near-black);
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .fondatore-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .fondatore-inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .fondatore-seal {
+    width: 140px;
+    height: 140px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .fondatore-seal::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+  }
+
+  .seal-emoji { font-size: 2.5rem; }
+  .seal-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .fondatore-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.4rem;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .fondatore-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    margin-bottom: 1.5rem;
+  }
+
+  .fondatore-bio {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.75);
+    font-style: italic;
+  }
+
+  .fondatore-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .credential {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(139,0,0,0.4);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.25);
+    font-style: italic;
+  }
+
+  /* REVEAL ANIMATION */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* BLOOD PULSE nav */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav-brand {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.9rem;
+    color: var(--parchment);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-brand span { color: var(--blood-bright); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    nav { padding: 1rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">Vampiri <span>Italiani</span></a>
+  <ul class="nav-links">
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#varieta">Varietà</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#fondatore">Chi siamo</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Drips -->
+  <div class="drips">
+    <div class="drip" style="left:8%; animation-duration:3.2s; animation-delay:0s; width:3px;"></div>
+    <div class="drip" style="left:18%; animation-duration:4.1s; animation-delay:1.2s; width:5px;"></div>
+    <div class="drip" style="left:31%; animation-duration:3.7s; animation-delay:0.5s; width:3px;"></div>
+    <div class="drip" style="left:45%; animation-duration:5s; animation-delay:2s; width:4px;"></div>
+    <div class="drip" style="left:58%; animation-duration:3.4s; animation-delay:0.8s; width:3px;"></div>
+    <div class="drip" style="left:70%; animation-duration:4.5s; animation-delay:1.8s; width:5px;"></div>
+    <div class="drip" style="left:82%; animation-duration:3.9s; animation-delay:0.3s; width:3px;"></div>
+    <div class="drip" style="left:92%; animation-duration:4.2s; animation-delay:1.5s; width:4px;"></div>
+  </div>
+
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
+  <div class="logo-container">
+    <div class="est-badge">Est. 2026 — Bergamo, Italia</div>
+    <span class="garlic-icon">🧄</span>
+    <h1 class="main-title">
+      Vampiri<br>
+      <span class="italiani">Italiani</span>
+    </h1>
+    <div class="title-ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="subtitle">Prima Associazione Italiana di Assaggiatori di Aglio</div>
+    <p class="tagline">
+      Loro fuggono dall'aglio.<br>
+      <strong>Noi lo assaggiamo.</strong>
+    </p>
+    <div class="hero-cta">
+      <a href="#membership" class="btn-primary"><span>Diventa Vampiro</span></a>
+      <a href="#manifesto" class="btn-secondary">Scopri il progetto</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scorri</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto" id="manifesto">
+  <div class="manifesto-inner">
+    <div class="section-eyebrow reveal">Il Manifesto</div>
+    <p class="manifesto-text reveal">
+      In Italia si parla di vino, di olio, di formaggi.<br>
+      L'aglio — l'ingrediente più antico, più identitario, più <em>temuto</em> della nostra cucina —
+      non ha mai avuto un'associazione di assaggiatori degna del suo nome.<br><br>
+      Fino ad oggi.<br><br>
+      <strong>Vampiri Italiani</strong> nasce per fare quello che nessuno aveva ancora fatto:
+      valutare l'aglio con rigore sensoriale, rispetto per la biodiversità italiana,
+      e una buona dose di ironia verso chi ancora ne ha paura.
+    </p>
+    <div class="title-ornament reveal" style="margin-top:3rem;">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="pillars-inner">
+    <h2 class="section-title reveal">I Tre Pilastri</h2>
+    <p class="section-subtitle reveal">Su cui si fonda la nostra missione</p>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <div class="pillar-number">I</div>
+        <span class="pillar-icon">🔬</span>
+        <div class="pillar-title">Metodologia Sensoriale</div>
+        <p class="pillar-text">
+          Schede di valutazione strutturate su 100 punti, protocolli rigorosi modellati su ONAS e ONAF,
+          panel comparativi tra varietà italiane e internazionali. L'aglio merita lo stesso rispetto del vino.
+        </p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-number">II</div>
+        <span class="pillar-icon">🌿</span>
+        <div class="pillar-title">Biodiversità Italiana</div>
+        <p class="pillar-text">
+          DOP, IGP, Presìdi Slow Food. L'Italia possiede un patrimonio varietale di aglio straordinario
+          e quasi sconosciuto. Lo portiamo al centro della cultura gastronomica nazionale.
+        </p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-number">III</div>
+        <span class="pillar-icon">🦇</span>
+        <div class="pillar-title">Brand Ironico &amp; Memorabile</div>
+        <p class="pillar-text">
+          Il nome non è un caso. I vampiri odiano l'aglio: noi lo amiamo, lo studiamo, lo celebriamo.
+          Un progetto serio dentro un'identità che non si prende troppo sul serio.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIETÀ -->
+<section class="varieta" id="varieta">
+  <div class="varieta-inner">
+    <h2 class="section-title reveal">Le Varietà</h2>
+    <p class="section-subtitle reveal">14 varietà italiane censite — da Nord a Sud, DOP · IGP · Presìdi Slow Food · Ecotipi locali</p>
+    <div class="varieta-scroll">
+
+      <div class="varieta-card reveal" data-region="Veneto · DOP">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio Bianco Polesano</div>
+        <div class="varieta-desc">Colore bianco lucente, aroma non pungente ma persistente. L'oro bianco del Polesine, coltivato su terreni alluvionali da generazioni.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Emilia · DOP">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio di Voghiera</div>
+        <div class="varieta-desc">Aroma dolce e delicato, storia estense: i duchi di Ferrara lo servivano a corte nel Quattrocento. L'aglio di chi non ama l'aglio.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Emilia · IGP">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio Bianco Piacentino</div>
+        <div class="varieta-desc">Tra i più grandi d'Italia. Ottima conservabilità, aroma deciso. Definito il Re dell'aglio, occupa il 10% della superficie nazionale.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Sicilia · Slow Food">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio Rosso di Nubia</div>
+        <div class="varieta-desc">Tuniche esterne bianche, interne rosso vivo. Alto tasso di allicina, sapore intensissimo. Confezionato in trecce da 100 bulbi per tradizione.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Abruzzo · Slow Food">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio Rosso di Sulmona</div>
+        <div class="varieta-desc">Rosso vinaccia, fortemente aromatico, lunga conservabilità. Unica varietà italiana che va in fiore. Antiche leggende lo legano al mito di Ulisse.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Piemonte · Slow Food">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio Storico di Caraglio</div>
+        <div class="varieta-desc">Valle Grana, Cuneo. Bulbi piccoli, spicchi affusolati con striature vinaccia. Delicato e digeribile: l'ideale per la bagna cauda autentica.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Friuli · Slow Food">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio di Resia</div>
+        <div class="varieta-desc">Lo strok della Val Resia. Coltivato seguendo il ciclo lunare, privo di spicchi centrali. Balsamico, erbaceo, custodisce una biodiversità linguistica e botanica unica.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Liguria · Slow Food">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio di Vessalico</div>
+        <div class="varieta-desc">Alta Valle Arroscia, Imperia. Coltivazione manuale e biologica da secoli. Bianco-rosato, profumato e piccante. Protagonista di una fiera il 2 luglio ogni anno.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Campania · Slow Food">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio dell'Ufita</div>
+        <div class="varieta-desc">Irpinia, Valle del fiume Ufita. Tuniche rosso-viola, bulbi affusolati, ricchissimo di allicina. Presidio Slow Food dell'Appennino campano.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Toscana · Ecotipo">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglione della Chiana</div>
+        <div class="varieta-desc">Il gigante: teste fino a 800 grammi. Sapore delicato, quasi dolce, con pochissima allicina. Soprannominato l'aglio degli innamorati per la sua digeribilità.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Lazio · Ecotipo">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio Rosso di Proceno</div>
+        <div class="varieta-desc">Provincia di Viterbo, coltivato dagli Etruschi. Tozzo, a tunica rossa, piccante e saporito. Più digeribile della media, lunga conservazione.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Campania · Ecotipo">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio Bianco Napoletano</div>
+        <div class="varieta-desc">Si raccoglie il 13 giugno, si intreccia il 24 giugno. Emblema dei mercati partenopei, bulbo bianco screziato di rosa, aroma pieno e mediterraneo.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Calabria · Ecotipo">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio Rosa di Nicastro</div>
+        <div class="varieta-desc">Area di Lamezia Terme. Venature rosa su fondo bianco, profumo intenso, sapore poco amaro. Conserva le sue caratteristiche invariate per dodici mesi.</div>
+      </div>
+
+      <div class="varieta-card reveal" data-region="Toscana · Ecotipo">
+        <span class="varieta-emoji">🧄</span>
+        <div class="varieta-name">Aglio Rosso Maremmano</div>
+        <div class="varieta-desc">Maremma toscana. Varietà rustica a tunica rossa, sapore deciso e persistente. Produzione di nicchia legata alla tradizione contadina locale.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="membership" id="membership">
+  <div class="membership-inner">
+    <h2 class="section-title reveal">Diventa Vampiro</h2>
+    <p class="section-subtitle reveal">Due livelli di iniziazione per i degni</p>
+    <div class="tiers">
+      <div class="tier-card reveal">
+        <div class="tier-level">Livello I</div>
+        <div class="tier-title">Aspirante Vampiro</div>
+        <div class="tier-subtitle">Il primo morso</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Panel misto: 3 varietà cotte + 3 crude</li>
+          <li>Introduzione alla scheda sensoriale</li>
+          <li>Protocollo di degustazione guidato</li>
+          <li>Attestato ufficiale di partecipazione</li>
+          <li>Iscrizione all'associazione APS</li>
+        </ul>
+      </div>
+      <div class="tier-card featured reveal">
+        <div class="tier-badge">Il Vero Vampiro</div>
+        <div class="tier-level">Livello II</div>
+        <div class="tier-title">Vampiro</div>
+        <div class="tier-subtitle">Senza paura del crudo</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Panel esclusivamente crudo</li>
+          <li>6 varietà italiane DOP/IGP</li>
+          <li>Valutazione con scheda completa 100 punti</li>
+          <li>Attestato Gran Vampiro se punteggio ≥90</li>
+          <li>Accesso ai panel avanzati futuri</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FONDATORE -->
+<section class="fondatore" id="fondatore">
+  <div class="fondatore-inner">
+    <div class="fondatore-seal reveal">
+      <span class="seal-emoji">🧄</span>
+      <div class="seal-text">Gran Maestro<br>Vampiri Italiani</div>
+    </div>
+    <div>
+      <div class="section-eyebrow reveal" style="justify-content:flex-start;">Il Fondatore</div>
+      <div class="fondatore-name reveal">Luca Scainelli</div>
+      <div class="fondatore-title reveal">Presidente Fondatore · Gran Vampiro</div>
+      <p class="fondatore-bio reveal">
+        Giornalista enogastronomico con 35 anni di esperienza, credenziali ONAS e ONAF,
+        fondatore di Errante del Gusto e Gran Maestro dell'Ordine della Margherita.
+        Ha assaggiato tutto. Mancava solo l'aglio — fatto seriamente.
+      </p>
+      <div class="fondatore-credentials reveal">
+        <span class="credential">ONAS</span>
+        <span class="credential">ONAF</span>
+        <span class="credential">Errante del Gusto</span>
+        <span class="credential">Ordine della Margherita</span>
+        <span class="credential">APS Est. 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Vampiri Italiani</div>
+  <div class="footer-sub">Prima Associazione Italiana di Assaggiatori di Aglio · APS · Est. 2026</div>
+  <div class="footer-links">
+    <a href="#">vampiriitaliani.it</a>
+    <a href="#">info@vampiriitaliani.it</a>
+    <a href="#">errantedelgusto.it</a>
+  </div>
+  <div class="footer-copy">
+    L'aglio non morde. Noi sì.
+  </div>
+</footer>
+
+<script>
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 25; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDuration = (6 + Math.random() * 10) + 's';
+  p.style.animationDelay = (Math.random() * 8) + 's';
+  p.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
+  if (Math.random() > 0.7) {
+    p.style.background = '#8B0000';
+    p.style.width = '2px';
+    p.style.height = '2px';
+  }
+  particlesContainer.appendChild(p);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
