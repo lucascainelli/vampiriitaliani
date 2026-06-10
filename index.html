@@ -579,18 +579,18 @@
   }
 
   .membership-inner {
-    max-width: 900px;
+    max-width: 1140px;
     margin: 0 auto;
   }
 
   .tiers {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 3rem;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 820px) {
     .tiers { grid-template-columns: 1fr; }
   }
 
@@ -675,6 +675,24 @@
     color: var(--blood-bright);
     font-size: 0.6rem;
     top: 0.7rem;
+  }
+
+  .module-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.8;
+  }
+  .module-note strong {
+    color: var(--blood-bright);
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
   }
 
   /* FONDATORE */
@@ -1102,7 +1120,7 @@
 <section class="membership" id="membership">
   <div class="membership-inner">
     <h2 class="section-title reveal">Diventa Vampiro</h2>
-    <p class="section-subtitle reveal">Due livelli di iniziazione per i degni</p>
+    <p class="section-subtitle reveal">Tre livelli di iniziazione per i degni</p>
     <div class="tiers">
       <div class="tier-card reveal">
         <div class="tier-level">Livello I</div>
@@ -1110,28 +1128,42 @@
         <div class="tier-subtitle">Il primo morso</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
-          <li>Panel misto: 3 varietà cotte + 3 crude</li>
-          <li>Introduzione alla scheda sensoriale</li>
-          <li>Protocollo di degustazione guidato</li>
-          <li>Attestato ufficiale di partecipazione</li>
-          <li>Iscrizione all'associazione APS</li>
+          <li>Le quattro forme: crudo, cotto, sottolio, affumicato</li>
+          <li>Esplorazione sensoriale guidata</li>
+          <li>Introduzione alla scheda e al metodo</li>
+          <li>Attestato di Aspirante Vampiro + tessera</li>
+          <li>Aperto a tutti, anche ai non soci</li>
+        </ul>
+      </div>
+      <div class="tier-card reveal">
+        <div class="tier-level">Livello II</div>
+        <div class="tier-title">Vampiro</div>
+        <div class="tier-subtitle">Nel cuore del fermentato</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Panel dei fermentati: nero, salamoia, sperimentali</li>
+          <li>Dolcezza, umami, acidità: l'aglio trasformato</li>
+          <li>Impatto sull'alito nullo</li>
+          <li>Attestato di Vampiro</li>
+          <li>Riservato ai soci</li>
         </ul>
       </div>
       <div class="tier-card featured reveal">
-        <div class="tier-badge">Il Vero Vampiro</div>
-        <div class="tier-level">Livello II</div>
-        <div class="tier-title">Vampiro</div>
+        <div class="tier-badge">Il Grado Supremo</div>
+        <div class="tier-level">Livello III</div>
+        <div class="tier-title">Gran Vampiro</div>
         <div class="tier-subtitle">Senza paura del crudo</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
-          <li>Panel esclusivamente crudo</li>
-          <li>6 varietà italiane DOP/IGP</li>
-          <li>Valutazione con scheda completa 100 punti</li>
-          <li>Attestato Gran Vampiro se punteggio ≥90</li>
-          <li>Accesso ai panel avanzati futuri</li>
+          <li>Panel del crudo varietale</li>
+          <li>6 varietà italiane DOP/IGP/Presìdi</li>
+          <li>Valutazione con scheda a 100 punti</li>
+          <li>Il grado più alto, massima intensità</li>
+          <li>Riservato ai soci</li>
         </ul>
       </div>
     </div>
+    <p class="module-note reveal"><strong>Per gli addetti ai lavori</strong><br>Un modulo dedicato sui fermentati per chef, sommelier e affinatori — fuori dalla scala dei livelli.</p>
   </div>
 </section>
 
