@@ -1225,7 +1225,11 @@
     <div class="section-eyebrow reveal" style="justify-content:center;">Resta aggiornato</div>
     <h2 class="section-title reveal" style="margin-bottom:0.5rem;">Unisciti ai Vampiri</h2>
     <p class="section-subtitle reveal" style="margin-bottom:2.5rem;">Ricevi gli aggiornamenti sul lancio, le prime masterclass e le novità sulle varietà italiane.</p>
-    <form class="reveal" action="https://22635c60.sibforms.com/serve/MUIFANtYofu4SpPlf3EYcNXg7BAHNLt6eZIB8OkfupnoAgMYeXoY5lA4bYU79DJi3Ug9mMrZ019Iyyn4QO7w1tt3rpN-IfuwVR_TqChKy6MsRPVl89AA-FHChlzzrUPT1LeqaGsziQ0JlOUH1RIohF5wwjoDWpcj3FtXc2COf7L6Li2MhynTkI-8KDGXmc-Eyy3pXKdm6s6eFAWo6Q==" method="POST" target="_blank"
+    <!-- iframe nascosto: riceve la risposta di Brevo senza aprire schede né mostrare schermate bianche -->
+    <iframe name="brevo-target" style="display:none;" title="Brevo"></iframe>
+
+    <form id="newsletter-form" class="reveal" target="brevo-target" method="POST"
+      action="https://22635c60.sibforms.com/serve/MUIFANtYofu4SpPlf3EYcNXg7BAHNLt6eZIB8OkfupnoAgMYeXoY5lA4bYU79DJi3Ug9mMrZ019Iyyn4QO7w1tt3rpN-IfuwVR_TqChKy6MsRPVl89AA-FHChlzzrUPT1LeqaGsziQ0JlOUH1RIohF5wwjoDWpcj3FtXc2COf7L6Li2MhynTkI-8KDGXmc-Eyy3pXKdm6s6eFAWo6Q=="
       style="display:flex; gap:0; max-width:480px; margin:0 auto;">
       <input type="email" name="EMAIL" required placeholder="La tua email"
         style="flex:1; padding:0.9rem 1.2rem; background:rgba(255,255,255,0.05);
@@ -1238,10 +1242,36 @@
                letter-spacing:0.15em; cursor:pointer; white-space:nowrap; border-radius:0;">
         ISCRIVITI
       </button>
+      <!-- Campi nascosti richiesti da Brevo (la loro assenza causava lo schermo bianco) -->
+      <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off"
+        style="position:absolute; left:-9999px;" aria-hidden="true">
+      <input type="hidden" name="locale" value="it">
     </form>
-    <p class="reveal" style="color:var(--gold); opacity:0.5; font-style:italic; font-size:0.85rem; margin-top:1.2rem;">Niente spam. Solo aglio.</p>
+
+    <!-- Messaggio di conferma in pagina -->
+    <p id="newsletter-success" class="reveal"
+      style="display:none; color:var(--gold-light); font-family:'Cinzel',serif;
+             letter-spacing:0.1em; font-size:0.95rem; margin-top:1.4rem;">
+      Benvenuto tra i Vampiri. Controlla la tua email per confermare l'iscrizione.
+    </p>
+
+    <p id="newsletter-note" class="reveal" style="color:var(--gold); opacity:0.5; font-style:italic; font-size:0.85rem; margin-top:1.2rem;">Niente spam. Solo aglio.</p>
   </div>
 </section>
+
+<script>
+  (function () {
+    var form = document.getElementById('newsletter-form');
+    if (!form) return;
+    form.addEventListener('submit', function () {
+      setTimeout(function () {
+        document.getElementById('newsletter-success').style.display = 'block';
+        document.getElementById('newsletter-note').style.display = 'none';
+        form.style.display = 'none';
+      }, 600);
+    });
+  })();
+</script>
 <!-- FINE NEWSLETTER -->
 
 <!-- FONDATORE -->
