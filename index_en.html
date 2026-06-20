@@ -928,6 +928,9 @@
     nav { padding: 1rem 1.5rem; }
   }
 </style>
+<link rel="alternate" hreflang="it" href="https://vampiriitaliani.it/" />
+<link rel="alternate" hreflang="en" href="https://vampiriitaliani.it/index_en.html" />
+<link rel="alternate" hreflang="x-default" href="https://vampiriitaliani.it/" />
 </head>
 <body>
 
@@ -936,6 +939,7 @@
   <ul class="nav-links">
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#varieta">Varieties</a></li>
+    <li><a href="#fiere">Fairs</a></li>
     <li><a href="#membership">Membership</a></li>
     <li><a href="#fondatore">About Us</a></li>
   </ul>
@@ -1167,6 +1171,184 @@
 </section>
 
 <!-- MEMBERSHIP -->
+<!-- ITALY'S GARLIC FAIRS -->
+<style>
+  .fiere { background: var(--black); padding: 6rem 2rem; position: relative; }
+  .fiere-inner { max-width: 1100px; margin: 0 auto; }
+  .fiere-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .fiera-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2.4rem 1.5rem 1.6rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    background: rgba(0,0,0,0.3);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .fiera-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+    transform: translateY(-4px);
+  }
+  .fiera-card::before {
+    content: attr(data-region);
+    position: absolute; top: -0.6rem; left: 50%; transform: translateX(-50%);
+    background: var(--blood);
+    font-family: 'Cinzel', serif; font-size: 0.56rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--parchment);
+    padding: 0.2rem 0.8rem; white-space: nowrap;
+  }
+  .fiera-date {
+    width: 74px; min-height: 66px; margin-bottom: 1.1rem;
+    border: 1px solid rgba(201,168,76,0.5);
+    background: rgba(139,0,0,0.25);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 0.4rem 0.2rem;
+  }
+  .fiera-date .d {
+    font-family: 'Cinzel Decorative', serif; font-weight: 700;
+    font-size: 1.15rem; color: var(--gold-light); line-height: 1.05;
+  }
+  .fiera-date .d.range { font-size: 0.82rem; letter-spacing: -0.02em; }
+  .fiera-date .m {
+    font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.22em;
+    color: var(--parchment); opacity: 0.8; margin-top: 0.2rem;
+  }
+  .fiera-name {
+    font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.07em; color: var(--gold-light); text-transform: uppercase;
+    margin-bottom: 0.4rem; line-height: 1.3;
+  }
+  .fiera-place {
+    font-family: 'EB Garamond', serif; font-style: italic; font-size: 0.95rem;
+    color: rgba(245,240,232,0.55); margin-bottom: 1.1rem;
+  }
+  .fiera-status {
+    margin-top: auto; font-family: 'Cinzel', serif; font-size: 0.58rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 0.32rem 0.75rem; border: 1px solid transparent;
+    color: rgba(245,240,232,0.45);
+  }
+  /* states set via JS */
+  .fiera-card.is-past { opacity: 0.42; }
+  .fiera-card.is-past .fiera-date {
+    filter: grayscale(1); border-color: rgba(245,240,232,0.18);
+    background: rgba(255,255,255,0.03);
+  }
+  .fiera-card.is-upcoming .fiera-status { color: var(--gold-light); border-color: rgba(201,168,76,0.3); }
+  .fiera-card.is-tentative .fiera-status { color: var(--blood-bright); border-color: rgba(192,57,43,0.4); }
+  .fiera-card.is-next { border-color: var(--gold); box-shadow: 0 0 32px rgba(201,168,76,0.15); }
+  .fiera-card.is-next .fiera-status { color: var(--black); background: var(--gold); border-color: var(--gold); }
+  .fiere-note {
+    text-align: center; font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 0.9rem; color: rgba(245,240,232,0.4); margin-top: 2.8rem; line-height: 1.6;
+  }
+</style>
+
+<section class="fiere" id="fiere">
+  <div class="fiere-inner">
+    <p class="section-eyebrow reveal">The Calendar</p>
+    <h2 class="section-title reveal">Italy's Garlic Fairs</h2>
+    <p class="section-subtitle reveal">Where Italian garlic tells its story — the 2026 circuit, from North to South</p>
+
+    <div class="fiere-grid">
+
+      <div class="fiera-card reveal" data-region="Emilia-Romagna" data-start="2026-06-26" data-end="2026-06-28">
+        <div class="fiera-date"><span class="d range">26–28</span><span class="m">Jun</span></div>
+        <div class="fiera-name">Garlic Fair</div>
+        <div class="fiera-place">San Giovanni in Persiceto (BO)</div>
+        <div class="fiera-status"></div>
+      </div>
+
+      <div class="fiera-card reveal" data-region="Liguria · Slow Food Presidium" data-start="2026-07-02" data-end="2026-07-02">
+        <div class="fiera-date"><span class="d">02</span><span class="m">Jul</span></div>
+        <div class="fiera-name">Vessalico Garlic Fair</div>
+        <div class="fiera-place">Vessalico (IM) — since 1760</div>
+        <div class="fiera-status"></div>
+      </div>
+
+      <div class="fiera-card reveal" data-region="Lazio · Red Garlic" data-start="2026-07-18" data-end="2026-07-20" data-tentative="true">
+        <div class="fiera-date"><span class="d">Jul</span><span class="m">2026</span></div>
+        <div class="fiera-name">Red Garlic Festival</div>
+        <div class="fiera-place">Proceno (VT)</div>
+        <div class="fiera-status"></div>
+      </div>
+
+      <div class="fiera-card reveal" data-region="Emilia-Romagna · PDO" data-start="2026-08-07" data-end="2026-08-09">
+        <div class="fiera-date"><span class="d range">07–09</span><span class="m">Aug</span></div>
+        <div class="fiera-name">Voghiera PDO Garlic Fair</div>
+        <div class="fiera-place">Voghiera (FE) — Delizia del Belriguardo</div>
+        <div class="fiera-status"></div>
+      </div>
+
+      <div class="fiera-card reveal" data-region="Piemonte · Slow Food Presidium" data-start="2026-11-15" data-end="2026-11-16">
+        <div class="fiera-date"><span class="d range">15–16</span><span class="m">Nov</span></div>
+        <div class="fiera-name">23rd Aj a Caraj</div>
+        <div class="fiera-place">Caraglio (CN)</div>
+        <div class="fiera-status"></div>
+      </div>
+
+    </div>
+
+    <p class="fiere-note">
+      Calendar updated for the 2026 season. Past dates remain as a record of the circuit;
+      future editions are refreshed year by year. Dates subject to confirmation by the organisers.
+    </p>
+  </div>
+</section>
+
+<script>
+  /* Automatic fair status: past / next / upcoming.
+     No upkeep needed during the year — just refresh the dates
+     at the end of the season. */
+  (function () {
+    function init() {
+      var grid = document.querySelector('#fiere .fiere-grid');
+      if (!grid) return;
+      function parse(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.fiera-card'));
+      var upcoming = [];
+
+      cards.forEach(function (c) {
+        var end = parse(c.getAttribute('data-end'));
+        var start = parse(c.getAttribute('data-start') || c.getAttribute('data-end'));
+        var st = c.querySelector('.fiera-status');
+        var tentative = c.getAttribute('data-tentative') === 'true';
+        if (end < today) {
+          c.classList.add('is-past');
+          st.textContent = 'Past edition';
+        } else {
+          c.classList.add('is-upcoming');
+          upcoming.push({ c: c, start: start, st: st, tentative: tentative });
+        }
+      });
+
+      upcoming.sort(function (a, b) { return a.start - b.start; });
+      upcoming.forEach(function (o, i) {
+        if (i === 0) {
+          o.c.classList.remove('is-upcoming');
+          o.c.classList.add('is-next');
+          var days = Math.ceil((o.start - today) / 86400000);
+          o.st.textContent = days > 0 ? ('Next · in ' + days + ' days') : 'Happening now';
+        } else {
+          o.st.textContent = o.tentative ? 'Date to be confirmed' : 'Upcoming';
+        }
+        if (o.tentative) o.c.classList.add('is-tentative');
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else { init(); }
+  })();
+</script>
+<!-- /fiere -->
+
 <section class="membership" id="membership">
   <div class="membership-inner">
     <h2 class="section-title reveal">Become a Vampire</h2>
