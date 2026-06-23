@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apri il tuo Covo — Vampiri Italiani</title>
+<!-- Pagina non collegata dal menu fino al lancio: nessun robots index finché non sei pronto -->
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blood: #8B0000;
+    --blood-bright: #C0392B;
+    --blood-pale: #E8C5C5;
+    --black: #0A0A0A;
+    --near-black: #111111;
+    --dark: #1A1A1A;
+    --parchment: #F5F0E8;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--parchment);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    z-index: 50;
+  }
+  .nav-brand {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--parchment);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .nav-brand span { color: var(--blood-bright); }
+  .nav-back {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  .nav-back:hover { opacity: 1; }
+
+  /* HEADER */
+  .head {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 5rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+  .head::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(139,0,0,0.22) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .eyebrow::before, .eyebrow::after { content: '✦'; color: var(--gold); font-size: 0.6rem; }
+
+  .title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--parchment);
+    text-shadow: 0 0 50px rgba(139,0,0,0.7), 2px 2px 0 rgba(0,0,0,0.8);
+    margin-bottom: 1.5rem;
+  }
+  .title span { color: var(--blood-bright); }
+
+  .lede {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.7;
+    color: var(--blood-pale);
+    font-style: italic;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .lede strong { color: var(--parchment); font-style: normal; font-weight: 500; }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2.5rem 0 1rem;
+  }
+  .divider-line { flex: 1; max-width: 120px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+  .divider-glyph { font-family: 'Cinzel Decorative', serif; color: var(--gold); opacity: 0.6; }
+
+  /* WHAT IT MEANS */
+  .terms {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1rem 2rem 1rem;
+  }
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .term {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 1.6rem 1.4rem;
+    background: var(--near-black);
+  }
+  .term h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.7rem;
+  }
+  .term p { font-size: 1rem; line-height: 1.6; color: rgba(245,240,232,0.72); }
+
+  /* FORM */
+  .form-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 4rem;
+  }
+  .form-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--parchment);
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+  .form-sub {
+    text-align: center;
+    font-style: italic;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 2.5rem;
+  }
+
+  .field { margin-bottom: 1.4rem; }
+  .field label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+  .field .req { color: var(--blood-bright); }
+  .row { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .row .field { flex: 1; min-width: 220px; }
+
+  input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.45);
+    color: var(--parchment);
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    outline: none;
+    border-radius: 0;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.06);
+  }
+  select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+    background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  select option { background: var(--near-black); color: var(--parchment); }
+  textarea { min-height: 110px; resize: vertical; }
+
+  .check {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    margin-bottom: 1.4rem;
+  }
+  .check input[type="checkbox"] {
+    margin-top: 0.25rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--blood);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .check label {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(245,240,232,0.8);
+    cursor: pointer;
+  }
+  .check a { color: var(--gold-light); }
+
+  .btn-primary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1.05rem 2.5rem;
+    background: var(--blood);
+    color: var(--parchment);
+    border: 1px solid var(--blood-bright);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--blood-bright); }
+  .btn-primary:disabled { opacity: 0.5; cursor: wait; }
+
+  .form-note {
+    text-align: center;
+    color: var(--gold);
+    opacity: 0.5;
+    font-style: italic;
+    font-size: 0.85rem;
+    margin-top: 1.2rem;
+  }
+  .form-error {
+    display: none;
+    text-align: center;
+    color: var(--blood-bright);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    margin-top: 1.2rem;
+  }
+
+  /* SUCCESS */
+  .success {
+    display: none;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem 2rem 4rem;
+  }
+  .success-glyph { font-size: 3rem; margin-bottom: 1.2rem; filter: drop-shadow(0 0 20px rgba(201,168,76,0.4)); }
+  .success h2 {
+    font-family: 'Cinzel Decorative', serif;
+    color: var(--gold-light);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .success p { font-size: 1.1rem; line-height: 1.7; color: var(--blood-pale); font-style: italic; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .footer-logo { font-family: 'Cinzel Decorative', serif; color: var(--parchment); font-size: 1rem; margin-bottom: 0.5rem; }
+  .footer-sub { font-size: 0.8rem; color: rgba(245,240,232,0.5); letter-spacing: 0.05em; }
+  .footer-copy { margin-top: 1.2rem; font-style: italic; color: var(--blood-pale); opacity: 0.7; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Vampiri <span>Italiani</span></a>
+  <a href="index.html" class="nav-back">← Torna al sito</a>
+</nav>
+
+<header class="head">
+  <div class="eyebrow">Articolazioni Territoriali</div>
+  <h1 class="title">Apri il tuo <span>Covo</span></h1>
+  <p class="lede">
+    Loro chiudono le porte. Noi ne apriamo di nuove — una per provincia.<br>
+    Cerchiamo <strong>Custodi</strong>: soci che non vogliano solo assaggiare, ma radunare.
+    Tu metti la provincia. Noi mettiamo il metodo.
+  </p>
+</header>
+
+<div class="divider">
+  <span class="divider-line"></span>
+  <span class="divider-glyph">❦</span>
+  <span class="divider-line"></span>
+</div>
+
+<section class="terms">
+  <div class="terms-grid">
+    <div class="term">
+      <h3>Cos'è un Covo</h3>
+      <p>L'articolazione provinciale dei Vampiri Italiani. Il Covo di Bergamo, di Torino, di Verona. Un presidio del gusto sul territorio.</p>
+    </div>
+    <div class="term">
+      <h3>Chi è il Custode</h3>
+      <p>Il referente locale. Raduna i soci, organizza le masterclass della provincia, fa da ponte con i produttori del territorio.</p>
+    </div>
+    <div class="term">
+      <h3>Cosa ti diamo</h3>
+      <p>Schede sensoriali, scala ufficiale, varietà calibrate e la formazione del Custode. Non parti da solo: parti col metodo.</p>
+    </div>
+  </div>
+</section>
+
+<div class="form-wrap" id="form-wrap">
+  <h2 class="form-title">Candidati come Custode</h2>
+  <p class="form-sub">Una candidatura per provincia. La valuta il Consiglio.</p>
+
+  <form id="custode-form" novalidate>
+    <div class="row">
+      <div class="field">
+        <label for="nome">Nome <span class="req">*</span></label>
+        <input type="text" id="nome" name="nome" required autocomplete="given-name">
+      </div>
+      <div class="field">
+        <label for="cognome">Cognome <span class="req">*</span></label>
+        <input type="text" id="cognome" name="cognome" required autocomplete="family-name">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="telefono">Telefono</label>
+        <input type="tel" id="telefono" name="telefono" autocomplete="tel">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="provincia">Provincia del Covo <span class="req">*</span></label>
+        <input type="text" id="provincia" name="provincia" required placeholder="es. Bergamo (BG)">
+      </div>
+      <div class="field">
+        <label for="citta">Città / Comune <span class="req">*</span></label>
+        <input type="text" id="citta" name="citta" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="sede">Hai già un luogo per il Covo? <span style="color:rgba(245,240,232,0.45); text-transform:none; letter-spacing:0;">(facoltativo)</span></label>
+      <input type="text" id="sede" name="sede" placeholder="Indirizzo o nome del locale, se ne hai già uno in mente">
+    </div>
+
+    <div class="field">
+      <label for="socio">Sei già socio dei Vampiri Italiani?</label>
+      <select id="socio" name="socio">
+        <option value="Non ancora">Non ancora — voglio iscrivermi</option>
+        <option value="Socio Ordinario">Sì — Socio Ordinario</option>
+        <option value="Socio Sostenitore">Sì — Socio Sostenitore</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="esperienza">La tua esperienza con l'aglio o con l'assaggio <span class="req">*</span></label>
+      <textarea id="esperienza" name="esperienza" required placeholder="Raccontaci chi sei e perché vuoi aprire un Covo. Esperienze di degustazione, eventi, contatti con produttori del territorio — tutto utile."></textarea>
+    </div>
+
+    <div class="field">
+      <label for="disponibilita">Disponibilità organizzativa</label>
+      <select id="disponibilita" name="disponibilita">
+        <option value="Subito">Sono pronto subito</option>
+        <option value="Prossimi mesi">Nei prossimi mesi</option>
+        <option value="Da valutare">Da valutare insieme</option>
+      </select>
+    </div>
+
+    <div class="check">
+      <input type="checkbox" id="impegno" name="impegno" value="Sì" required>
+      <label for="impegno">Mi impegno a organizzare la <strong>prima masterclass</strong> della mia provincia, con il supporto e il metodo dell'associazione. <span class="req">*</span></label>
+    </div>
+
+    <div class="check">
+      <input type="checkbox" id="privacy" name="privacy" value="Sì" required>
+      <label for="privacy">Ho letto e accetto il trattamento dei miei dati ai fini della candidatura, ai sensi del Reg. UE 2016/679 (GDPR). <span class="req">*</span></label>
+    </div>
+
+    <button type="submit" class="btn-primary" id="submit-btn">Invia la candidatura</button>
+    <p class="form-note">Loro fuggono dall'aglio. Tu, nel tuo Covo, lo aspetti al varco.</p>
+    <p class="form-error" id="form-error">Qualcosa è andato storto. Riprova o scrivici a info@vampiriitaliani.it</p>
+  </form>
+</div>
+
+<div class="success" id="success">
+  <div class="success-glyph">🦇</div>
+  <h2>Candidatura ricevuta</h2>
+  <p>Il Consiglio la esaminerà. Se il tuo Covo prende forma, ti contatteremo all'indirizzo che ci hai lasciato.<br>Benvenuto tra chi non scappa.</p>
+</div>
+
+<footer>
+  <div class="footer-logo">Vampiri Italiani</div>
+  <div class="footer-sub">Prima Associazione Italiana di Assaggiatori di Aglio · APS · Est. 2026</div>
+  <div class="footer-copy">L'aglio non morde. Noi sì.</div>
+</footer>
+
+<script>
+  // ============================================================
+  // CONFIGURAZIONE — inserisci qui l'endpoint del form.
+  // Crea un form gratuito su https://formspree.io (destinatario:
+  // info@vampiriitaliani.it) e incolla qui l'ID che ti danno,
+  // nel formato: https://formspree.io/f/xxxxxxxx
+  // ============================================================
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/XXXXXXXX";
+
+  (function () {
+    const form = document.getElementById('custode-form');
+    const wrap = document.getElementById('form-wrap');
+    const success = document.getElementById('success');
+    const errorMsg = document.getElementById('form-error');
+    const btn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      errorMsg.style.display = 'none';
+
+      // Validazione base HTML5
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Invio in corso…';
+
+      const data = new FormData(form);
+      data.append('_subject', 'Nuova candidatura Custode — ' + (data.get('provincia') || ''));
+
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          wrap.style.display = 'none';
+          success.style.display = 'block';
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('Bad response');
+        }
+      } catch (err) {
+        errorMsg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Invia la candidatura';
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
