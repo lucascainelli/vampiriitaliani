@@ -45,7 +45,7 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 8rem;
   }
 
   .hero-bg {
@@ -321,6 +321,10 @@
   @keyframes scroll-pulse {
     0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
     50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @media (max-height: 700px) {
+    .scroll-indicator { display: none; }
   }
 
   /* DIVIDER */
@@ -975,7 +979,7 @@
       Vampiri<br>
       <span class="italiani">Italiani</span>
     </h1>
-    <div style="font-family:Arial,sans-serif;font-size:0.85rem;color:#C9A84C;letter-spacing:0.5em;text-align:center;margin-bottom:0.5rem;opacity:1;">&#8482; MARCHIO DEPOSITATO</div><div class="title-ornament">
+    <div style="font-family:Arial,sans-serif;font-size:0.85rem;color:#C9A84C;letter-spacing:0.5em;text-align:center;margin-bottom:0.5rem;opacity:1;">&#8482; TRADEMARK PENDING</div><div class="title-ornament">
       <div class="ornament-line"></div>
       <div class="ornament-diamond"></div>
       <div class="ornament-line"></div>
@@ -987,12 +991,12 @@
     </p>
     <div class="hero-cta">
       <a href="#membership" class="btn-primary"><span>Become a Vampire</span></a>
-      <a href="#manifesto" class="btn-secondary">Scopri il progetto</a>
+      <a href="#manifesto" class="btn-secondary">Discover the project</a>
     </div>
   </div>
 
   <div class="scroll-indicator">
-    <span>Scorri</span>
+    <span>Scroll</span>
     <div class="scroll-line"></div>
   </div>
 </section>
