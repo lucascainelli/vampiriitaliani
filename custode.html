@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apri il tuo Covo — Vampiri Italiani</title>
-<!-- Pagina non collegata dal menu fino al lancio: nessun robots index finché non sei pronto -->
-<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://vampiriitaliani.it/custode.html">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -342,7 +341,21 @@
   </div>
 </section>
 
-<div class="form-wrap" id="form-wrap">
+<!-- ============================================================
+     BLOCCO PRE-APERTURA — rimuovere il 15 settembre 2026.
+     Al lancio: 1) cancellare questo <div class="pre-apertura">
+                2) togliere style="display:none" dal form-wrap qui sotto
+                3) inserire l'endpoint Formspree reale nello script in fondo
+     ============================================================ -->
+<div class="pre-apertura" style="max-width:640px;margin:0 auto 4rem;padding:2.6rem 2rem;background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.28);text-align:center;">
+  <div style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--blood-bright);margin-bottom:1.4rem;">Candidature dal 15 settembre 2026</div>
+  <h2 style="font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.3;margin-bottom:1.2rem;">I primi Covi aprono in autunno</h2>
+  <p style="font-family:'EB Garamond',serif;font-size:1.1rem;line-height:1.75;color:rgba(245,240,232,0.72);margin-bottom:1.8rem;">Un Covo per provincia, un Custode per Covo. Il modulo di candidatura apre il 15 settembre.<br>Se vuoi il tuo territorio, scrivilo adesso: le manifestazioni d'interesse arrivate prima dell'apertura vengono valutate per prime.</p>
+  <a href="mailto:info@vampiriitaliani.it?subject=Manifestazione%20d%27interesse%20Custode%20del%20Covo" style="display:inline-block;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--gold);padding:0.95rem 2.2rem;transition:all 0.3s;">Scrivi a info@vampiriitaliani.it</a>
+  <p style="font-family:'EB Garamond',serif;font-style:italic;color:rgba(245,240,232,0.5);margin-top:1.8rem;font-size:0.98rem;">Loro fuggono dall'aglio. Tu, nel tuo Covo, lo aspetti al varco.</p>
+</div>
+
+<div class="form-wrap" id="form-wrap" style="display:none;">
   <h2 class="form-title">Candidati come Custode</h2>
   <p class="form-sub">Una candidatura per provincia. La valuta il Consiglio.</p>
 

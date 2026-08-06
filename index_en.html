@@ -943,6 +943,7 @@
   <ul class="nav-links">
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#varieta">Varieties</a></li>
+    <li><a href="en/journal.html">Journal</a></li>
     <li><a href="#fiere">Fairs</a></li>
     <li><a href="#membership">Membership</a></li>
     <li><a href="#fondatore">About Us</a></li>
@@ -1353,6 +1354,80 @@
 </script>
 <!-- /fiere -->
 
+<!-- JOURNAL -->
+<style>
+  .journal-section { background: var(--near-black); padding: 6rem 2rem; position: relative; }
+  .journal-section::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--blood), var(--gold), var(--blood), transparent);
+  }
+  .journal-inner { max-width: 1000px; margin: 0 auto; }
+  .journal-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .journal-card {
+    display: block; text-decoration: none; color: inherit;
+    background: rgba(245,240,232,0.03);
+    border: 1px solid rgba(201,168,76,0.18);
+    padding: 2rem 1.6rem; transition: all 0.3s;
+  }
+  .journal-card:hover {
+    border-color: var(--gold); background: rgba(245,240,232,0.06); transform: translateY(-4px);
+  }
+  .journal-card-kicker {
+    font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--blood-bright); margin-bottom: 1rem;
+  }
+  .journal-card-title {
+    font-family: 'Cinzel Decorative', serif; font-weight: 700;
+    font-size: 1.05rem; line-height: 1.35; color: var(--parchment); margin-bottom: 0.9rem;
+  }
+  .journal-card:hover .journal-card-title { color: var(--gold); }
+  .journal-card-desc {
+    font-family: 'EB Garamond', serif; font-size: 0.95rem; line-height: 1.6;
+    color: rgba(245,240,232,0.6);
+  }
+  .journal-all {
+    display: inline-block; margin-top: 3rem;
+    font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold); text-decoration: none;
+    border: 1px solid var(--gold); padding: 0.9rem 2.2rem; transition: all 0.3s;
+  }
+  .journal-all:hover { background: var(--gold); color: var(--black); }
+</style>
+<section class="journal-section" id="journal">
+  <div class="journal-inner" style="text-align:center;">
+    <div class="section-eyebrow reveal">Il Morso</div>
+    <h2 class="section-title reveal">The Journal</h2>
+    <p class="section-subtitle reveal">Protocols, measurements and corrections</p>
+    <div class="journal-grid">
+      <a class="journal-card reveal" href="en/black-garlic-is-not-fermented.html">
+        <div class="journal-card-kicker">Correction</div>
+        <div class="journal-card-title">They Call It Fermented. It Isn't.</div>
+        <div class="journal-card-desc">Every label says fermented. No microorganism is involved. What six weeks at 60&nbsp;°C really does to a bulb.</div>
+      </a>
+      <a class="journal-card reveal" href="en/how-long-garlic-lasts.html">
+        <div class="journal-card-kicker">Method · Dose-Response</div>
+        <div class="journal-card-title">How Long Does Garlic Really Last?</div>
+        <div class="journal-card-desc">Thirty hours of persistence at every dose we tested — and a half-life that runs backwards.</div>
+      </a>
+      <a class="journal-card reveal" href="en/two-heads-of-garlic.html">
+        <div class="journal-card-kicker">Field Notes</div>
+        <div class="journal-card-title">Two Heads of Garlic and a Night in Separate Rooms</div>
+        <div class="journal-card-desc">Sixty hours of measured persistence, and the discovery that the subject is the worst possible instrument.</div>
+      </a>
+      <a class="journal-card reveal" href="en/method.html">
+        <div class="journal-card-kicker">The Association</div>
+        <div class="journal-card-title">The Method</div>
+        <div class="journal-card-desc">The hundred-point scale, the reference sample that opens every panel, and the rule that voids a session.</div>
+      </a>
+    </div>
+    <a href="en/journal.html" class="journal-all reveal">All Articles</a>
+  </div>
+</section>
+<!-- /journal -->
+
 <section class="membership" id="membership">
   <div class="membership-inner">
     <h2 class="section-title reveal">Become a Vampire</h2>
@@ -1374,10 +1449,10 @@
       <div class="tier-card reveal">
         <div class="tier-level">Level II</div>
         <div class="tier-title">Vampiro</div>
-        <div class="tier-subtitle">Into the Heart of Fermented</div>
+        <div class="tier-subtitle">Into the Heart of Transformation</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
-          <li>Fermented garlic panel: black, brine, experimental</li>
+          <li>Transformed garlic panel: black, brine, experimental</li>
           <li>Sweetness, umami, acidity: transformed garlic</li>
           <li>Zero breath impact</li>
           <li>Vampiro certificate</li>
@@ -1399,7 +1474,7 @@
         </ul>
       </div>
     </div>
-    <p class="module-note reveal"><strong>For professionals</strong><br>A dedicated module on fermented garlic for chefs, sommeliers and affineurs — outside the standard certification levels.</p>
+    <p class="module-note reveal"><strong>For professionals</strong><br>A dedicated module on black and fermented garlic for chefs, sommeliers and affineurs — outside the standard certification levels.</p>
   </div>
 </section>
 
