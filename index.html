@@ -45,7 +45,7 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 8rem;
   }
 
   .hero-bg {
@@ -309,6 +309,10 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--gold);
+  }
+
+  @media (max-height: 700px) {
+    .scroll-indicator { display: none; }
   }
 
   .scroll-line {
@@ -923,7 +927,13 @@
   }
 
 
-  @media (max-width: 600px) {
+  @media (max-width: 1000px) {
+    .nav-links { gap: 1.15rem; }
+    .nav-links a { font-size: 0.6rem; letter-spacing: 0.16em; }
+    nav { padding: 1.1rem 1.5rem; }
+  }
+
+  @media (max-width: 780px) {
     .nav-links { display: none; }
     nav { padding: 1rem 1.5rem; }
   }
