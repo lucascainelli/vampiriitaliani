@@ -589,9 +589,13 @@
 
   .tiers {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     margin-top: 3rem;
+  }
+
+  @media (max-width: 1080px) {
+    .tiers { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
   }
 
   @media (max-width: 820px) {
@@ -600,9 +604,13 @@
 
   .tier-card {
     border: 1px solid rgba(201,168,76,0.2);
-    padding: 3rem 2rem;
+    padding: 2.6rem 1.6rem;
     text-align: center;
     position: relative;
+  }
+
+  @media (max-width: 1080px) {
+    .tier-card { padding: 3rem 2rem; }
   }
 
   .tier-card.featured {
@@ -635,7 +643,7 @@
 
   .tier-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--parchment);
     margin-bottom: 0.5rem;
   }
@@ -664,7 +672,7 @@
 
   .tier-features li {
     font-family: 'EB Garamond', serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: rgba(245,240,232,0.75);
     padding: 0.5rem 0;
     border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -1040,8 +1048,8 @@
         <span class="pillar-icon">🔬</span>
         <div class="pillar-title">Metodologia Sensoriale</div>
         <p class="pillar-text">
-          Schede di valutazione strutturate su 100 punti, protocolli rigorosi modellati su ONAS e ONAF,
-          panel comparativi tra varietà italiane e internazionali. L'aglio merita lo stesso rispetto del vino.
+          Schede di valutazione strutturate su 100 punti, protocolli modellati sulle metodologie
+          dell'assaggio professionale italiano, panel comparativi tra varietà italiane e internazionali. L'aglio merita lo stesso rispetto del vino.
         </p>
       </div>
       <div class="pillar reveal">
@@ -1418,15 +1426,28 @@
 <section class="membership" id="membership">
   <div class="membership-inner">
     <h2 class="section-title reveal">Diventa Vampiro</h2>
-    <p class="section-subtitle reveal">Tre livelli di iniziazione per i degni</p>
+    <p class="section-subtitle reveal">Quattro livelli di iniziazione per i degni</p>
     <div class="tiers">
       <div class="tier-card reveal">
         <div class="tier-level">Livello I</div>
-        <div class="tier-title">Aspirante Vampiro</div>
-        <div class="tier-subtitle">Il primo morso</div>
+        <div class="tier-title">Iniziato</div>
+        <div class="tier-subtitle">Il Morso Gentile</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
-          <li>Le quattro forme: crudo, cotto, sottolio, affumicato</li>
+          <li>Aglio nero: tre varietà italiane a confronto</li>
+          <li>Maillard, non fermentazione: la correzione</li>
+          <li>Introduzione al mondo dell'aglio italiano</li>
+          <li>Abbinamento finale con birra e vino</li>
+          <li>Aperto a tutti, nessun prerequisito</li>
+        </ul>
+      </div>
+      <div class="tier-card reveal">
+        <div class="tier-level">Livello II</div>
+        <div class="tier-title">Aspirante Vampiro</div>
+        <div class="tier-subtitle">Le Quattro Forme</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Le quattro forme: crudo, cotto, affumicato, disidratato</li>
           <li>Esplorazione sensoriale guidata</li>
           <li>Introduzione alla scheda e al metodo</li>
           <li>Attestato di Aspirante Vampiro + tessera</li>
@@ -1434,23 +1455,23 @@
         </ul>
       </div>
       <div class="tier-card reveal">
-        <div class="tier-level">Livello II</div>
+        <div class="tier-level">Livello III</div>
         <div class="tier-title">Vampiro</div>
-        <div class="tier-subtitle">Nel cuore della trasformazione</div>
+        <div class="tier-subtitle">Nel Cuore della Trasformazione</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
           <li>Panel dei trasformati: nero, salamoia, sperimentali</li>
           <li>Dolcezza, umami, acidità: l'aglio trasformato</li>
-          <li>Impatto sull'alito nullo</li>
+          <li>Impatto sull'alito trascurabile</li>
           <li>Attestato di Vampiro</li>
           <li>Riservato ai soci</li>
         </ul>
       </div>
       <div class="tier-card featured reveal">
         <div class="tier-badge">Il Grado Supremo</div>
-        <div class="tier-level">Livello III</div>
+        <div class="tier-level">Livello IV</div>
         <div class="tier-title">Gran Vampiro</div>
-        <div class="tier-subtitle">Senza paura del crudo</div>
+        <div class="tier-subtitle">Senza Paura del Crudo</div>
         <div class="tier-divider"></div>
         <ul class="tier-features">
           <li>Panel del crudo varietale</li>
@@ -1461,7 +1482,7 @@
         </ul>
       </div>
     </div>
-    <p class="module-note reveal"><strong>Per gli addetti ai lavori</strong><br>Un modulo dedicato al nero e ai fermentati per chef, sommelier e affinatori — fuori dalla scala dei livelli.</p>
+    <p class="module-note reveal"><strong>Per gli addetti ai lavori</strong><br>Un modulo dedicato all'aglio nero e ai trasformati per chef, sommelier e affinatori — fuori dalla scala dei livelli.</p>
   </div>
 </section>
 
@@ -1533,13 +1554,13 @@
       <div class="fondatore-name reveal">Luca Scainelli</div>
       <div class="fondatore-title reveal">Presidente Fondatore · Gran Vampiro</div>
       <p class="fondatore-bio reveal">
-        Giornalista enogastronomico con 35 anni di esperienza, credenziali ONAS e ONAF,
-        fondatore di Errante del Gusto e Gran Maestro dell'Ordine della Margherita.
+        Giornalista enogastronomico con 35 anni di esperienza, iscritto all'Ordine dei Giornalisti
+        (tessera n. 175535). Formazione sensoriale su salumi e formaggi, trent'anni di degustazioni
+        e masterclass. Fondatore di Errante del Gusto e Gran Maestro dell'Ordine della Margherita.
         Ha assaggiato tutto. Mancava solo l'aglio — fatto seriamente.
       </p>
       <div class="fondatore-credentials reveal">
-        <span class="credential">ONAS</span>
-        <span class="credential">ONAF</span>
+        <span class="credential">Ordine dei Giornalisti</span>
         <span class="credential">Errante del Gusto</span>
         <span class="credential">Ordine della Margherita</span>
         <span class="credential">APS Est. 2026</span>
