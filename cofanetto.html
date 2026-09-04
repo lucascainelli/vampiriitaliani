@@ -935,7 +935,6 @@
     color: var(--black);
   }
 
-
   @media (max-width: 1000px) {
     .nav-links { gap: 1.15rem; }
     .nav-links a { font-size: 0.6rem; letter-spacing: 0.16em; }
@@ -1054,13 +1053,6 @@
   .cof-data li:last-child { border-bottom: none; }
   .cof-data b { font-weight: 500; opacity: 1; }
 
-  /* segnaposto da riempire — NON deve restare in produzione */
-  .todo {
-    color: #7BD1C0;
-    border-bottom: 1px dashed currentColor;
-    font-style: italic;
-  }
-
   /* lista d'attesa */
   .cof-lista {
     background: var(--near-black);
@@ -1086,20 +1078,6 @@
     max-width: 44rem;
     font-style: italic;
   }
-
-  /* nota di cantiere — togliere prima di pubblicare */
-  .cantiere {
-    border: 1px dashed #7BD1C0;
-    color: #7BD1C0;
-    padding: 1.5rem;
-    margin: 4rem auto 0;
-    max-width: 1000px;
-    font-size: 0.92rem;
-    line-height: 1.6;
-  }
-  .cantiere h4 { font-family: 'Cinzel', serif; letter-spacing: 0.14em; font-size: 0.85rem; margin-bottom: 0.7rem; }
-  .cantiere ul { margin-left: 1.1rem; }
-  .cantiere li { margin: 0.35rem 0; }
 
   @media (max-width: 780px) {
     .cof-card { grid-template-columns: 1fr; gap: 1rem; }
@@ -1163,8 +1141,6 @@
       <div>
         <p class="cof-card-desc">Il nero della casa: nasce dallo stesso aglio che usiamo come termine di paragone in ogni panel. È il punto da cui si parte per capire quanto gli altri due si allontanano.</p>
         <ul class="cof-data">
-          <li><b>Varietà di partenza</b> — <span class="todo">confermare col produttore</span></li>
-          <li><b>Durata di lavorazione</b> — <span class="todo">confermare col produttore</span></li>
           <li><b>Formato</b> — spicchi in confezione rigida</li>
           <li><b>Pungenza</b> — assente</li>
         </ul>
@@ -1175,15 +1151,12 @@
       <div>
         <span class="cof-card-code">VI-NER-02</span>
         <div class="cof-card-name">Nero Fermento</div>
-        <div class="cof-card-origin"><span class="todo">sede da inserire</span></div>
       </div>
       <div>
         <p class="cof-card-desc">L'unico dei tre che parte da una DOP dichiarata in etichetta: Aglio di Voghiera. È anche quello che porta in casa il malinteso più diffuso, scritto sulla confezione stessa — il nome commerciale dice fermentazione, la chimica dice Maillard.</p>
         <ul class="cof-data">
           <li><b>Varietà di partenza</b> — Aglio di Voghiera DOP</li>
-          <li><b>Durata di lavorazione</b> — <span class="todo">confermare col produttore</span></li>
           <li><b>Formato</b> — bulbo intero in busta, 30 g</li>
-          <li><b>Pungenza</b> — <span class="todo">dato non ancora pubblicabile</span></li>
         </ul>
       </div>
     </article>
@@ -1198,7 +1171,6 @@
         <p class="cof-card-desc">Parte da un aglio a identità territoriale forte, coltivato a mano in alta Valle Arroscia. Serve a rispondere alla domanda che rende interessante l'intero cofanetto: quanto della varietà di partenza sopravvive a settimane di lavorazione?</p>
         <ul class="cof-data">
           <li><b>Varietà di partenza</b> — Aglio di Vessalico</li>
-          <li><b>Durata di lavorazione</b> — <span class="todo">confermare col produttore</span></li>
           <li><b>Formato</b> — vasetto in vetro</li>
           <li><b>Pungenza</b> — assente</li>
         </ul>
@@ -1241,15 +1213,7 @@
       </p>
     </div>
 
-    <aside class="cantiere">
-      <h4>Nota di cantiere — togliere prima di pubblicare</h4>
-      <ul>
-        <li>Tutto ciò che è in verde tratteggiato è un buco da riempire, non testo definitivo.</li>
-        <li>Servono i tre consensi scritti all'uso di nome e marchio: Delfanti, Nero Fermento, Maffone.</li>
-        <li>Manca la versione EN (cofanetto_en.html): il selettore lingua punta ancora alla home inglese.</li>
-        <li>Nessun claim salutistico in nessun punto della pagina. Vincolo Reg. UE 1924/2006.</li>
-      </ul>
-    </aside>
+    
 
   </div>
 </section>
