@@ -689,22 +689,52 @@
     top: 0.7rem;
   }
 
-  .module-note {
-    text-align: center;
-    margin-top: 2.5rem;
-    font-family: 'EB Garamond', serif;
-    font-style: italic;
-    font-size: 0.95rem;
-    color: rgba(245,240,232,0.5);
-    line-height: 1.8;
+  .pro-module {
+    max-width: 1040px;
+    margin: 3rem auto 0;
+    border: 1px solid rgba(201,168,76,0.35);
+    background: rgba(201,168,76,0.05);
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 48px;
+    align-items: center;
   }
-  .module-note strong {
-    color: var(--blood-bright);
-    font-style: normal;
-    font-family: 'Cinzel', serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
+  .pro-module-copy { display: flex; flex-direction: column; gap: 18px; text-align: left; }
+  .pro-module-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.4em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .pro-module-diamond { font-size: 0.85rem; }
+  .pro-module-title {
+    font-family: 'Cinzel Decorative', serif; font-size: 2.15rem; font-weight: 700;
+    color: var(--parchment); margin: 0; line-height: 1.15;
+  }
+  .pro-module-text {
+    font-family: 'EB Garamond', serif; font-size: 1.15rem; font-style: italic;
+    color: rgba(245,240,232,0.78); line-height: 1.6; margin: 0; max-width: 460px;
+  }
+  .pro-module-roles { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .pro-module-roles span {
+    font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 7px 16px; border: 1px solid rgba(201,168,76,0.35); color: var(--parchment);
+  }
+  .pro-module-cta {
+    align-self: flex-start; margin-top: 10px; padding: 15px 34px;
+    border: 1px solid var(--gold); color: var(--gold); text-decoration: none;
+    font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+  }
+  .pro-module-cta:hover { opacity: 0.75; }
+  .pro-module-seal { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .pro-module-seal-label {
+    font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: rgba(245,240,232,0.45); text-align: center;
+  }
+  @media (max-width: 820px) {
+    .pro-module { grid-template-columns: 1fr; text-align: center; padding: 36px 28px; }
+    .pro-module-copy { align-items: center; text-align: center; }
+    .pro-module-cta { align-self: center; }
   }
 
   /* FONDATORE */
@@ -1482,7 +1512,34 @@
         </ul>
       </div>
     </div>
-    <p class="module-note reveal"><strong>Per gli addetti ai lavori</strong><br>Un modulo dedicato all'aglio nero e ai trasformati per chef, sommelier e affinatori — fuori dalla scala dei livelli.</p>
+    <div class="pro-module reveal">
+      <div class="pro-module-copy">
+        <div class="pro-module-eyebrow">
+          <span class="pro-module-diamond">&#9670;</span>
+          Fuori dalla scala dei livelli
+        </div>
+        <h3 class="pro-module-title">Per gli Addetti ai Lavori</h3>
+        <p class="pro-module-text">Un modulo dedicato all'aglio nero e ai trasformati per chef, sommelier e affinatori.</p>
+        <div class="pro-module-roles">
+          <span>Chef</span><span>Sommelier</span><span>Affinatori</span>
+        </div>
+        <a class="pro-module-cta" href="mailto:info@vampiriitaliani.it?subject=Programma%20per%20gli%20addetti%20ai%20lavori">Richiedi il Programma</a>
+      </div>
+      <div class="pro-module-seal">
+        <svg viewBox="0 0 140 140" width="150" height="150" fill="none">
+          <circle cx="70" cy="70" r="63" stroke="var(--gold)" stroke-width="1"/>
+          <circle cx="70" cy="70" r="55" stroke="var(--gold)" stroke-width="1" opacity="0.4"/>
+          <path d="M70 40 C 70 40 63 46 62 53" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M63 46 C 68 43 72 43 77 46" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round"/>
+          <ellipse cx="70" cy="79" rx="21" ry="27" stroke="var(--gold)" stroke-width="1.2"/>
+          <path d="M70 53 C 61 62 59 97 70 105" stroke="var(--gold)" stroke-width="0.9"/>
+          <path d="M70 53 C 79 62 81 97 70 105" stroke="var(--gold)" stroke-width="0.9"/>
+          <path d="M70 53 L70 105" stroke="var(--gold)" stroke-width="0.9"/>
+          <path d="M62 100 L57 109 M70 105 L70 114 M78 100 L83 109" stroke="var(--gold)" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <span class="pro-module-seal-label">Programma Professionale</span>
+      </div>
+    </div>
   </div>
 </section>
 
