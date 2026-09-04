@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Black Garlic Box — Vampiri Italiani</title>
+<meta name="description" content="Three Italian black garlics, side by side. The first tasting box from Italy's first association of garlic tasters.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blood: #8B0000;
+    --blood-bright: #C0392B;
+    --blood-pale: #E8C5C5;
+    --black: #0A0A0A;
+    --near-black: #111111;
+    --dark: #1A1A1A;
+    --parchment: #F5F0E8;
+    --parchment-dark: #E8E0D0;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --garlic-white: #F8F4EC;
+    --garlic-purple: #6B4E71;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--parchment);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* CUSTOM CURSOR */
+  body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%238B0000' d='M12 2C8 2 6 5 6 8c0 2 1 4 3 5l-1 9h8l-1-9c2-1 3-3 3-5 0-3-2-6-6-6z'/%3E%3C/svg%3E") 12 2, crosshair; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem 8rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,0,0,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(139,0,0,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 80% 60%, rgba(107,78,113,0.1) 0%, transparent 60%),
+      var(--black);
+  }
+
+  /* DRIP EFFECT */
+  .drips {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    pointer-events: none;
+  }
+
+  .drip {
+    position: absolute;
+    top: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--blood) 0%, var(--blood-bright) 60%, transparent 100%);
+    border-radius: 0 0 50% 50%;
+    animation: drip-fall linear infinite;
+  }
+
+  .drip::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--blood-bright);
+    border-radius: 50%;
+  }
+
+  @keyframes drip-fall {
+    0% { height: 20px; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { height: 90px; opacity: 0; }
+  }
+
+  /* FLOATING PARTICLES */
+  .particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up linear infinite;
+  }
+
+  @keyframes float-up {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-20vh) translateX(var(--drift)); opacity: 0; }
+  }
+
+  /* LOGO AREA */
+  .logo-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    animation: fade-in-up 1.2s ease both;
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .est-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    animation: fade-in-up 1.2s ease 0.2s both;
+  }
+
+  .garlic-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: pulse-glow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.4));
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(201,168,76,0.3)); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 40px rgba(201,168,76,0.6)); transform: scale(1.05); }
+  }
+
+  .main-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--parchment);
+    text-shadow:
+      0 0 60px rgba(139,0,0,0.8),
+      0 0 120px rgba(139,0,0,0.4),
+      2px 2px 0 rgba(0,0,0,0.8);
+    margin-bottom: 0.5rem;
+    animation: fade-in-up 1.2s ease 0.4s both;
+    position: relative;
+  }
+
+  .main-title .italiani {
+    display: block;
+    color: var(--blood-bright);
+    text-shadow:
+      0 0 40px rgba(192,57,43,0.9),
+      0 0 80px rgba(192,57,43,0.5),
+      2px 2px 0 rgba(0,0,0,0.8);
+  }
+
+  .title-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    animation: fade-in-up 1.2s ease 0.6s both;
+  }
+
+  .ornament-line {
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .ornament-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    opacity: 0.9;
+    animation: fade-in-up 1.2s ease 0.8s both;
+  }
+
+  .tagline {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    color: var(--blood-pale);
+    margin-top: 2rem;
+    max-width: 600px;
+    line-height: 1.6;
+    animation: fade-in-up 1.2s ease 1s both;
+  }
+
+  .tagline strong {
+    color: var(--parchment);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fade-in-up 1.2s ease 1.2s both;
+  }
+
+  .btn-primary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: var(--blood);
+    color: var(--parchment);
+    border: 1px solid var(--blood-bright);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--blood-bright);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-primary:hover::before { transform: scaleX(1); }
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .btn-secondary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(201,168,76,0.1);
+    color: var(--gold-light);
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.5;
+    animation: fade-in-up 1s ease 1.8s both;
+  }
+
+  .scroll-indicator span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  @media (max-height: 700px) {
+    .scroll-indicator { display: none; }
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent);
+  }
+
+  .divider-glyph {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  /* MANIFESTO SECTION */
+  .manifesto {
+    background: var(--near-black);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .manifesto::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--blood), var(--gold), var(--blood), transparent);
+  }
+
+  .manifesto-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.6rem;
+  }
+
+  .manifesto-text {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    line-height: 1.8;
+    color: var(--parchment);
+    font-style: italic;
+  }
+
+  .manifesto-text em {
+    font-style: normal;
+    color: var(--blood-bright);
+    font-weight: 500;
+  }
+
+  .manifesto-text strong {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+
+  /* PILLARS */
+  .pillars {
+    background: var(--black);
+    padding: 6rem 2rem;
+  }
+
+  .pillars-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--parchment);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.6);
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 4rem;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: rgba(201,168,76,0.15);
+  }
+
+  .pillar {
+    background: var(--near-black);
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+  }
+
+  .pillar:hover { background: var(--dark); }
+
+  .pillar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--blood);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .pillar:hover::after { transform: scaleX(1); }
+
+  .pillar-number {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgba(139,0,0,0.2);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .pillar:hover .pillar-number { color: rgba(139,0,0,0.5); }
+
+  .pillar-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .pillar-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+
+  .pillar-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.7);
+  }
+
+  /* VARIETÀ */
+  .varieta {
+    background: var(--near-black);
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .varieta-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .varieta-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .varieta-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    background: rgba(0,0,0,0.3);
+  }
+
+  .varieta-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+    transform: translateY(-4px);
+  }
+
+  .varieta-card::before {
+    content: attr(data-region);
+    position: absolute;
+    top: -0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blood);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    padding: 0.2rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  .varieta-emoji { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+
+  .varieta-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .varieta-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.6;
+  }
+
+  /* MEMBERSHIP */
+  .membership {
+    background: var(--black);
+    padding: 6rem 2rem;
+  }
+
+  .membership-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .tiers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 1080px) {
+    .tiers { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  }
+
+  @media (max-width: 820px) {
+    .tiers { grid-template-columns: 1fr; }
+  }
+
+  .tier-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2.6rem 1.6rem;
+    text-align: center;
+    position: relative;
+  }
+
+  @media (max-width: 1080px) {
+    .tier-card { padding: 3rem 2rem; }
+  }
+
+  .tier-card.featured {
+    border-color: var(--blood);
+    background: rgba(139,0,0,0.08);
+  }
+
+  .tier-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blood);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    padding: 0.3rem 1.2rem;
+  }
+
+  .tier-level {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    margin-bottom: 0.5rem;
+  }
+
+  .tier-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .tier-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 2rem;
+  }
+
+  .tier-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+    opacity: 0.4;
+  }
+
+  .tier-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .tier-features li {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.75);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .tier-features li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--blood-bright);
+    font-size: 0.6rem;
+    top: 0.7rem;
+  }
+
+  .module-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.8;
+  }
+  .module-note strong {
+    color: var(--blood-bright);
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+
+  /* FONDATORE */
+  .fondatore {
+    background: var(--near-black);
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .fondatore-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .fondatore-inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .fondatore-seal {
+    width: 140px;
+    height: 140px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .fondatore-seal::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+  }
+
+  .seal-emoji { font-size: 2.5rem; }
+  .seal-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .fondatore-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.4rem;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .fondatore-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    margin-bottom: 1.5rem;
+  }
+
+  .fondatore-bio {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.75);
+    font-style: italic;
+  }
+
+  .fondatore-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .credential {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(139,0,0,0.4);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.25);
+    font-style: italic;
+  }
+
+  /* REVEAL ANIMATION */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* BLOOD PULSE nav */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav-brand {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.9rem;
+    color: var(--parchment);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-brand span { color: var(--blood-bright); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 1.5rem;
+  }
+  .lang-switcher a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    padding: 3px 8px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .lang-switcher a.active {
+    background: var(--gold);
+    color: var(--black);
+  }
+  .lang-switcher a:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  @media (max-width: 1000px) {
+    .nav-links { gap: 1.15rem; }
+    .nav-links a { font-size: 0.6rem; letter-spacing: 0.16em; }
+    nav { padding: 1.1rem 1.5rem; }
+  }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    nav { padding: 1rem 1.5rem; }
+  }
+
+  /* ===== COFANETTO NERO — stili aggiuntivi ===== */
+  .cof-hero {
+    padding: 9rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(139,0,0,0.20) 0%, transparent 70%),
+      var(--black);
+  }
+  .cof-hero .cof-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--parchment);
+    text-shadow: 0 0 60px rgba(139,0,0,0.6);
+    margin-bottom: 1rem;
+  }
+  .cof-hero .cof-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--parchment);
+    opacity: 0.75;
+    font-style: italic;
+    max-width: 40rem;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .cof-section { padding: 4rem 2rem; }
+  .cof-inner { max-width: 1000px; margin: 0 auto; }
+
+  /* campionario fotografico */
+  .cof-shots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .cof-shot {
+    aspect-ratio: 4/5;
+    border: 1px solid var(--gold);
+    background: var(--near-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    opacity: 0.55;
+  }
+  .cof-shot img { width: 100%; height: 100%; object-fit: cover; }
+  .cof-codes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-align: center;
+  }
+
+  /* schede */
+  .cof-card {
+    border-top: 1px solid rgba(201,168,76,0.3);
+    padding: 2.2rem 0;
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+    gap: 2.5rem;
+  }
+  .cof-card:last-of-type { border-bottom: 1px solid rgba(201,168,76,0.3); }
+  .cof-card-code {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .cof-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--parchment);
+    line-height: 1.2;
+  }
+  .cof-card-origin {
+    font-size: 0.95rem;
+    color: var(--parchment);
+    opacity: 0.55;
+    margin-top: 0.4rem;
+  }
+  .cof-card-desc { line-height: 1.7; max-width: 40rem; }
+  .cof-data { list-style: none; margin-top: 1.2rem; font-size: 0.95rem; }
+  .cof-data li {
+    padding: 0.35rem 0;
+    border-bottom: 1px dotted rgba(245,240,232,0.15);
+    color: var(--parchment);
+    opacity: 0.7;
+  }
+  .cof-data li:last-child { border-bottom: none; }
+  .cof-data b { font-weight: 500; opacity: 1; }
+
+  /* lista d'attesa */
+  .cof-lista {
+    background: var(--near-black);
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+    text-align: center;
+  }
+  .cof-lista h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    margin-bottom: 0.8rem;
+    color: var(--parchment);
+  }
+  .cof-lista p { max-width: 34rem; margin: 0 auto 1rem; line-height: 1.65; opacity: 0.8; }
+  .cof-lista .fine-print { font-size: 0.88rem; opacity: 0.55; font-style: italic; }
+
+  .cof-nota {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    opacity: 0.6;
+    max-width: 44rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 780px) {
+    .cof-card { grid-template-columns: 1fr; gap: 1rem; }
+    .cof-shots, .cof-codes { grid-template-columns: 1fr; }
+    .cof-codes { margin-bottom: 2rem; }
+    .cof-hero { padding: 7rem 1.5rem 2rem; }
+  }
+</style>
+<link rel="alternate" hreflang="it" href="https://vampiriitaliani.it/cofanetto.html" />
+<link rel="alternate" hreflang="en" href="https://vampiriitaliani.it/cofanetto_en.html" />
+<link rel="alternate" hreflang="x-default" href="https://vampiriitaliani.it/cofanetto.html" />
+</head>
+<body>
+
+<nav>
+  <a href="index_en.html" class="nav-brand">Vampiri <span>Italiani</span></a>
+  <ul class="nav-links">
+    <li><a href="index_en.html#manifesto">Manifesto</a></li>
+    <li><a href="index_en.html#varieta">Varieties</a></li>
+    <li><a href="custode.html">Dens</a></li>
+    <li><a href="index_en.html#fiere">Fairs</a></li>
+    <li><a href="index_en.html#membership">Membership</a></li>
+    <li><a href="cofanetto_en.html" class="active">The Box</a></li>
+    <li><a href="index_en.html#fondatore">About</a></li>
+  </ul>
+  <div class="lang-switcher">
+    <a href="cofanetto.html">IT</a>
+    <a href="cofanetto_en.html" class="active">EN</a>
+  </div>
+</nav>
+
+<header class="cof-hero">
+  <div class="section-eyebrow reveal" style="justify-content:center;">Coming soon</div>
+  <h1 class="cof-title reveal">The Black Garlic Box</h1>
+  <p class="cof-sub reveal">Three Italian black garlics, three different processes, three different colours. The first comparison set built to be tasted at home.</p>
+</header>
+
+<section class="cof-section">
+  <div class="cof-inner">
+
+    <div class="cof-shots reveal">
+      <div class="cof-shot"><img src="ner-01-delfanti.jpg" alt="Delfanti black garlic, tray and cloves" loading="lazy"></div>
+      <div class="cof-shot"><img src="ner-02-nerofermento.jpg" alt="Nero Fermento black garlic, made from Voghiera DOP garlic, pouch and bulb" loading="lazy"></div>
+      <div class="cof-shot"><img src="ner-03-maffone.jpg" alt="Maffone black garlic, made from Vessalico garlic, jar and bulb" loading="lazy"></div>
+    </div>
+    <div class="cof-codes reveal">
+      <span>VI-NER-01</span>
+      <span>VI-NER-02</span>
+      <span>VI-NER-03</span>
+    </div>
+
+    <p class="section-subtitle reveal" style="text-align:left; max-width:44rem; margin-bottom:2.5rem;">
+      Garlic doesn't turn black by fermenting. It turns black through a long Maillard reaction at low temperature — weeks at 60-70°C — which switches off pungency entirely and leaves behind sweetness, umami and balsamic notes. This is where the first level of our method begins, and it's the gentlest way to start measuring garlic instead of just cooking with it.
+    </p>
+
+    <article class="cof-card reveal">
+      <div>
+        <span class="cof-card-code">VI-NER-01</span>
+        <div class="cof-card-name">Delfanti</div>
+        <div class="cof-card-origin">Monticelli d'Ongina, Piacenza</div>
+      </div>
+      <div>
+        <p class="cof-card-desc">The house black: made from the same garlic we use as the benchmark in every panel. It's the point of reference for measuring how far the other two drift from it.</p>
+        <ul class="cof-data">
+          <li><b>Format</b> — cloves in rigid tray</li>
+          <li><b>Pungency</b> — none</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="cof-card reveal">
+      <div>
+        <span class="cof-card-code">VI-NER-02</span>
+        <div class="cof-card-name">Nero Fermento</div>
+      </div>
+      <div>
+        <p class="cof-card-desc">The only one of the three with a DOP variety declared on the label: Voghiera garlic. It's also the one that carries the most common misunderstanding, printed right on the pack — the commercial name says fermentation, the chemistry says Maillard.</p>
+        <ul class="cof-data">
+          <li><b>Starting variety</b> — Voghiera DOP garlic</li>
+          <li><b>Format</b> — whole bulb in pouch, 30 g</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="cof-card reveal">
+      <div>
+        <span class="cof-card-code">VI-NER-03</span>
+        <div class="cof-card-name">Maffone</div>
+        <div class="cof-card-origin">Pieve di Teco, Imperia</div>
+      </div>
+      <div>
+        <p class="cof-card-desc">Starts from a garlic with a strong sense of place, hand-grown in the upper Arroscia valley. It answers the question that makes the whole box worth tasting: how much of the starting variety survives weeks of processing?</p>
+        <ul class="cof-data">
+          <li><b>Starting variety</b> — Vessalico garlic</li>
+          <li><b>Format</b> — glass jar</li>
+          <li><b>Pungency</b> — none</li>
+        </ul>
+      </div>
+    </article>
+
+    <p class="cof-nota reveal">
+      All three samples arrive in the packaging chosen by their producer and are never reopened. Sizes and net weights therefore differ between them: the unit of comparison is the clove, not the gram.
+    </p>
+
+    <div class="cof-lista reveal">
+      <h2>Be the first to know</h2>
+      <p>The box is a limited run. Leave your email and you'll be among the first to hear when we open orders, with price, weights and shipping date.</p>
+      <p class="fine-print">No payment now and no obligation to buy. Signing up is not an order.</p>
+
+      <iframe name="brevo-cofanetto" style="display:none;" title="Brevo"></iframe>
+
+      <form id="cofanetto-form" target="brevo-cofanetto" method="POST"
+        action="https://22635c60.sibforms.com/serve/MUIFANyg1KVbhAmSDqmnZO4lq67KYiVoE-pBBHbchnkzAZ3w3osekZZNYOiHE_IZgnLuGoSFvwUekSPhThQj8-k3TzT9Lray5lFZ9YrLwYPGHO7xH2QgN0bKSceQ4-CahLNnpwsTHzI2vzNrUS8B45FMZ1s3uYU1HfPdrvAajcM_NZxZUr3kxOtJboXL6HfzPsz-FEyas6P4bkRJHA=="
+        style="display:flex; gap:0; max-width:480px; margin:2rem auto 0;">
+        <input type="email" name="EMAIL" required placeholder="Your email"
+          style="flex:1; padding:0.9rem 1.2rem; background:rgba(255,255,255,0.05);
+                 border:1px solid var(--gold); border-right:none; color:var(--parchment);
+                 font-family:'EB Garamond',serif; font-size:1rem; outline:none; border-radius:0;">
+        <button type="submit"
+          style="padding:0.9rem 1.6rem; background:var(--blood); color:var(--parchment);
+                 border:1px solid var(--gold); font-family:'Cinzel',serif; font-size:0.8rem;
+                 letter-spacing:0.15em; cursor:pointer; white-space:nowrap; border-radius:0;">
+          NOTIFY ME
+        </button>
+        <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off"
+          style="position:absolute; left:-9999px;" aria-hidden="true">
+        <input type="hidden" name="locale" value="en">
+      </form>
+
+      <p id="cofanetto-success"
+        style="display:none; color:var(--gold-light); font-family:'Cinzel',serif;
+               letter-spacing:0.1em; font-size:0.95rem; margin-top:1.4rem;">
+        You're on the list. We'll write when orders open.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Vampiri Italiani</div>
+  <div class="footer-sub">Italy's First Association of Garlic Tasters · Est. 2026</div>
+  <div class="footer-links">
+    <a href="index_en.html">vampiriitaliani.it</a>
+    <a href="mailto:info@vampiriitaliani.it">info@vampiriitaliani.it</a>
+    <a href="https://errantedelgusto.it">errantedelgusto.it</a>
+  </div>
+  <div class="footer-copy">
+    Garlic doesn't bite. We do.
+  </div>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function () { entry.target.classList.add('visible'); }, i * 80);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+
+  (function () {
+    var form = document.getElementById('cofanetto-form');
+    if (!form) return;
+    form.addEventListener('submit', function () {
+      setTimeout(function () {
+        document.getElementById('cofanetto-success').style.display = 'block';
+        form.style.display = 'none';
+      }, 600);
+    });
+  })();
+</script>
+</body>
+</html>
