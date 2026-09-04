@@ -703,6 +703,36 @@
     text-transform: uppercase;
   }
 
+  .pro-note {
+    margin: 2.8rem auto 0;
+    max-width: 46rem;
+    text-align: center;
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2.6rem 1.6rem;
+  }
+  .pro-note-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    margin-bottom: 0.7rem;
+  }
+  .pro-note-text {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.75);
+  }
+
+  @media (max-width: 1080px) {
+    .pro-note { padding: 3rem 2rem; }
+  }
+
+
   /* FONDATORE */
   .fondatore {
     background: var(--near-black);
@@ -1499,7 +1529,7 @@
         </ul>
       </div>
     </div>
-    <p class="module-note reveal"><strong>For professionals</strong><br>A dedicated module on black and transformed garlic for chefs, sommeliers and affineurs — outside the standard certification levels.</p>
+    <div class="pro-note reveal"><span class="pro-note-label">For professionals</span><span class="pro-note-text">A dedicated module on black and transformed garlic for chefs, sommeliers and affineurs — outside the standard certification levels.</span></div>
   </div>
 </section>
 
