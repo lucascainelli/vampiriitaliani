@@ -958,6 +958,7 @@
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#varieta">Varietà</a></li>
     <li><a href="custode.html">Covi</a></li>
+    <li><a href="#masterclass">Masterclass</a></li>
     <li><a href="#fiere">Fiere</a></li>
     <li><a href="tesseramento.html">Membership</a></li>
     <li><a href="cofanetto.html">Cofanetto</a></li>
@@ -1192,6 +1193,149 @@
 </section>
 
 <!-- MEMBERSHIP -->
+<!-- LA PRIMA MASTERCLASS -->
+<style>
+  .masterclass-section { background: var(--near-black); padding: 6rem 2rem; position: relative; }
+  .masterclass-section::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), var(--blood), var(--gold), transparent);
+  }
+  .masterclass-inner { max-width: 760px; margin: 0 auto; }
+  .masterclass-card {
+    margin-top: 3rem;
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 40px rgba(201,168,76,0.15);
+    background: rgba(0,0,0,0.35);
+    padding: 2.6rem 2.2rem;
+    position: relative;
+  }
+  .masterclass-card::before {
+    content: 'Prima Masterclass';
+    position: absolute; top: -0.65rem; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--black);
+    font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 700;
+    padding: 0.25rem 1rem; white-space: nowrap;
+  }
+  .masterclass-top {
+    display: flex; align-items: center; gap: 1.6rem;
+    padding-bottom: 1.8rem; margin-bottom: 1.8rem;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+  .masterclass-date {
+    flex-shrink: 0; width: 84px; min-height: 76px;
+    border: 1px solid rgba(201,168,76,0.5);
+    background: rgba(139,0,0,0.25);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .masterclass-date .d {
+    font-family: 'Cinzel Decorative', serif; font-weight: 700;
+    font-size: 1.6rem; color: var(--gold-light); line-height: 1;
+  }
+  .masterclass-date .m {
+    font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.18em;
+    color: var(--parchment); opacity: 0.85; margin-top: 0.3rem; text-transform: uppercase;
+  }
+  .masterclass-headline .name {
+    font-family: 'Cinzel Decorative', serif; font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    color: var(--parchment); line-height: 1.25; margin-bottom: 0.4rem;
+  }
+  .masterclass-headline .where {
+    font-family: 'EB Garamond', serif; font-style: italic; font-size: 1rem;
+    color: rgba(245,240,232,0.6);
+  }
+  .masterclass-rows { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
+  .masterclass-row { display: flex; gap: 1.2rem; }
+  .masterclass-label {
+    flex-shrink: 0; width: 108px;
+    font-family: 'Cinzel', serif; font-size: 0.66rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .masterclass-value {
+    font-family: 'EB Garamond', serif; font-size: 0.98rem; line-height: 1.55;
+    color: rgba(245,240,232,0.85);
+  }
+  .masterclass-price-box {
+    background: var(--blood); border: 1px solid var(--blood-bright);
+    padding: 1.4rem 1.6rem; margin-bottom: 1.6rem;
+  }
+  .masterclass-price-box .price-lead {
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.03em;
+    color: var(--parchment); margin-bottom: 0.5rem;
+  }
+  .masterclass-price-box .price-detail {
+    font-family: 'EB Garamond', serif; font-size: 0.88rem; line-height: 1.6;
+    color: rgba(245,240,232,0.8);
+  }
+  .masterclass-cta-wrap { text-align: center; }
+  .masterclass-cta-wrap .btn-primary { display: inline-block; }
+  .masterclass-note {
+    text-align: center; font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 0.85rem; color: rgba(245,240,232,0.4); margin-top: 1.4rem; line-height: 1.6;
+  }
+  @media (max-width: 560px) {
+    .masterclass-card { padding: 2.2rem 1.4rem; }
+    .masterclass-top { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .masterclass-row { flex-direction: column; gap: 0.25rem; }
+    .masterclass-label { width: auto; }
+  }
+</style>
+<section class="masterclass-section" id="masterclass">
+  <div class="masterclass-inner">
+    <p class="section-eyebrow reveal">In Programma</p>
+    <h2 class="section-title reveal">La Prima Masterclass</h2>
+    <p class="section-subtitle reveal">Il primo assaggio pubblico e guidato di Vampiri Italiani</p>
+
+    <div class="masterclass-card reveal">
+      <div class="masterclass-top">
+        <div class="masterclass-date"><span class="d">03</span><span class="m">Ott</span></div>
+        <div class="masterclass-headline">
+          <div class="name">Masterclass Aglio Sott'olio</div>
+          <div class="where">Il Covo, Songavazzo (BG)</div>
+        </div>
+      </div>
+
+      <div class="masterclass-rows">
+        <div class="masterclass-row">
+          <span class="masterclass-label">Quando</span>
+          <span class="masterclass-value">Sabato 3 ottobre 2026, ore 10:00–12:00</span>
+        </div>
+        <div class="masterclass-row">
+          <span class="masterclass-label">Cosa</span>
+          <span class="masterclass-value">Assaggio comparativo guidato di tre marchi di aglio sott'olio in commercio — spicchio e olio di governo, con scheda di valutazione personale</span>
+        </div>
+        <div class="masterclass-row">
+          <span class="masterclass-label">Guida</span>
+          <span class="masterclass-value">Luca Scainelli, giornalista enogastronomico — trent'anni di degustazioni e masterclass</span>
+        </div>
+        <div class="masterclass-row">
+          <span class="masterclass-label">Posti</span>
+          <span class="masterclass-value">Limitati, massimo 15–16</span>
+        </div>
+        <div class="masterclass-row">
+          <span class="masterclass-label">Riservato</span>
+          <span class="masterclass-value">Tesserati Vampiri Italiani — il tesseramento è possibile anche in fase di prenotazione</span>
+        </div>
+      </div>
+
+      <div class="masterclass-price-box">
+        <div class="price-lead">18€ soci · 33/63€ non soci</div>
+        <div class="price-detail">
+          Già tesserati: 18€ (solo masterclass).<br>
+          Non tesserati: bonifico unico tessera + masterclass — 33€ (tessera ridotta) o 63€ (tessera ordinaria).
+        </div>
+      </div>
+
+      <div class="masterclass-cta-wrap">
+        <a href="mailto:info@vampiriitaliani.it?subject=Prenotazione%20Masterclass%20Aglio%20Sott'olio%20-%203%20ottobre" class="btn-primary"><span>Prenota il tuo posto</span></a>
+      </div>
+    </div>
+
+    <p class="masterclass-note reveal">Iscrizioni entro il 30 settembre. In caso di adesioni insufficienti l'evento viene rinviato a nuova data — chi ha già versato resta iscritto, salvo disdetta.</p>
+  </div>
+</section>
+<!-- /masterclass -->
+
 <!-- LE FIERE DELL'AGLIO -->
 <style>
   .fiere { background: var(--black); padding: 6rem 2rem; position: relative; }
