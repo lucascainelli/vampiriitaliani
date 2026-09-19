@@ -957,6 +957,7 @@
   <ul class="nav-links">
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#varieta">Varietà</a></li>
+    <li><a href="#cronache">Cronache</a></li>
     <li><a href="custode.html">Covi</a></li>
     <li><a href="#masterclass">Masterclass</a></li>
     <li><a href="#prima-notte">31 Ottobre</a></li>
@@ -1190,6 +1191,94 @@
     <p class="reveal" style="text-align: center; color: var(--gold); opacity: 0.6; font-style: italic; font-size: 0.9rem; margin-top: 1rem;">
       La mappa si aggiorna man mano che crescono le partnership con i produttori.
     </p>
+  </div>
+</section>
+
+<!-- CRONACHE DELL'AGLIO -->
+<style>
+  .cronache-section { background: var(--black); padding: 6rem 2rem; position: relative; }
+  .cronache-inner { max-width: 1100px; margin: 0 auto; }
+  .cronache-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .cronache-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(0,0,0,0.3);
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .cronache-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s ease; }
+  .cronache-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .cronache-card-img {
+    width: 100%;
+    padding-bottom: 56%;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(201,168,76,0.08);
+    filter: grayscale(0.25) contrast(1.05);
+  }
+  .cronache-card-body { padding: 1.5rem; }
+  .cronache-card-date {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    margin-bottom: 0.7rem;
+  }
+  .cronache-card-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.05rem;
+    color: var(--parchment);
+    line-height: 1.35;
+    margin-bottom: 0.7rem;
+  }
+  .cronache-card-excerpt {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(245,240,232,0.6);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: calc(1.6em * 3);
+  }
+  .cronache-cta { text-align: center; margin-top: 3rem; }
+  .cronache-cta .btn-secondary { display: inline-block; }
+  .cronache-fallback {
+    display: none;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.5);
+    margin-top: 2rem;
+  }
+  .cronache-fallback a { color: var(--gold-light); }
+</style>
+<section class="cronache-section" id="cronache">
+  <div class="cronache-inner">
+    <div class="section-eyebrow reveal" style="justify-content:center;">Dal Blog</div>
+    <h2 class="section-title reveal">Cronache dell'Aglio</h2>
+    <p class="section-subtitle reveal">Le ultime indagini sensoriali su Errante del Gusto</p>
+    <div class="cronache-grid" id="cronache-grid"></div>
+    <p class="cronache-fallback" id="cronache-fallback">
+      Le ultime Cronache dell'Aglio si leggono su
+      <a href="https://www.errantedelgusto.it/categoria/cronache-dell-aglio/" target="_blank" rel="noopener">errantedelgusto.it</a>.
+    </p>
+    <div class="cronache-cta reveal">
+      <a href="https://www.errantedelgusto.it/categoria/cronache-dell-aglio/" class="btn-secondary" target="_blank" rel="noopener">Tutte le Cronache</a>
+    </div>
   </div>
 </section>
 
@@ -1930,6 +2019,66 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+<script>
+(function () {
+  var CRONACHE_API = 'https://www.errantedelgusto.it/wp-json/wp/v2/posts?categories=2321&per_page=3&_embed=wp:featuredmedia';
+  var grid = document.getElementById('cronache-grid');
+  var fallback = document.getElementById('cronache-fallback');
+  if (!grid) return;
+
+  function stripAndTrim(html, maxLen) {
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    var text = (div.textContent || div.innerText || '').replace(/\s+/g, ' ').trim();
+    if (text.length > maxLen) text = text.slice(0, maxLen).trim() + '…';
+    return text;
+  }
+
+  function decodeEntities(html) {
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
+  }
+
+  function cardHTML(post) {
+    var title = decodeEntities(post.title && post.title.rendered ? post.title.rendered : '');
+    var excerpt = stripAndTrim(post.excerpt && post.excerpt.rendered ? post.excerpt.rendered : '', 220);
+    var date = '';
+    try {
+      date = new Date(post.date).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+    } catch (e) {}
+    var media = post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0];
+    var img = media && media.source_url ? media.source_url : '';
+    var imgHTML = img ? '<div class="cronache-card-img" style="background-image:url(\'' + img.replace(/'/g, "%27") + '\')"></div>' : '';
+    return '' +
+      '<a class="cronache-card" href="' + post.link + '" target="_blank" rel="noopener">' +
+        imgHTML +
+        '<div class="cronache-card-body">' +
+          '<div class="cronache-card-date">' + date + '</div>' +
+          '<div class="cronache-card-title">' + title + '</div>' +
+          '<p class="cronache-card-excerpt">' + excerpt + '</p>' +
+        '</div>' +
+      '</a>';
+  }
+
+  fetch(CRONACHE_API)
+    .then(function (r) { if (!r.ok) throw new Error('bad response'); return r.json(); })
+    .then(function (posts) {
+      if (!Array.isArray(posts) || posts.length === 0) throw new Error('empty');
+      grid.innerHTML = posts.map(cardHTML).join('');
+      requestAnimationFrame(function () {
+        var cards = grid.querySelectorAll('.cronache-card');
+        cards.forEach(function (card, i) {
+          setTimeout(function () { card.classList.add('visible'); }, i * 120);
+        });
+      });
+    })
+    .catch(function () {
+      grid.style.display = 'none';
+      if (fallback) fallback.style.display = 'block';
+    });
+})();
 </script>
 </body>
 </html>
