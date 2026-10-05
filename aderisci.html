@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aderisci — Vampiri Italiani APS</title>
+<meta name="description" content="Tre strade per entrare nel Covo: socio, produttore d'aglio, pizzeria o ristorante. Vampiri Italiani APS, prima associazione italiana di assaggiatori di aglio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nero:#0b0809;
+  --nero2:#140d0f;
+  --sangue:#8a1218;
+  --sangue-vivo:#b3161e;
+  --oro:#c9a24b;
+  --oro-chiaro:#e3c477;
+  --testo:#e9e1d3;
+  --testo-soft:#b9ae9c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--nero);
+  color:var(--testo);
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1.2rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--oro-chiaro)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* barra superiore */
+.top{padding:18px 0;border-bottom:1px solid rgba(201,162,75,.25)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top a{font-family:'Cinzel',serif;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;text-decoration:none;color:var(--oro)}
+.top a:hover{color:var(--oro-chiaro)}
+.brand{font-family:'Cinzel Decorative',serif;font-size:1.05rem;letter-spacing:.06em;color:var(--oro-chiaro)!important;text-transform:none!important}
+
+/* intestazione */
+header.hero{text-align:center;padding:64px 0 40px;background:radial-gradient(ellipse at top,rgba(138,18,24,.28),transparent 65%)}
+.kicker{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;color:var(--oro)}
+h1{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(2.2rem,7vw,3.6rem);color:var(--oro-chiaro);margin:14px 0 10px;line-height:1.1}
+.lead{font-style:italic;color:var(--testo-soft);font-size:1.3rem}
+.divider{width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--oro),transparent);margin:28px auto 0}
+
+/* schede */
+.cards{display:grid;gap:26px;padding:20px 0 56px}
+@media(min-width:900px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{
+  display:flex;flex-direction:column;
+  background:linear-gradient(180deg,var(--nero2),var(--nero));
+  border:1px solid rgba(201,162,75,.35);
+  border-top:3px solid var(--sangue-vivo);
+  padding:30px 26px 28px;
+}
+.num{font-family:'Cinzel',serif;color:var(--sangue-vivo);letter-spacing:.25em;font-size:.8rem;text-transform:uppercase}
+.card h2{font-family:'Cinzel',serif;font-weight:600;color:var(--oro-chiaro);font-size:1.45rem;line-height:1.25;margin:8px 0 4px}
+.card .sub{font-style:italic;color:var(--testo-soft);margin-bottom:16px}
+.card p{margin-bottom:14px}
+.card ul{list-style:none;margin:2px 0 16px}
+.card li{padding:6px 0 6px 22px;position:relative;border-bottom:1px solid rgba(233,225,211,.08)}
+.card li::before{content:"✦";position:absolute;left:0;color:var(--oro);font-size:.8rem;top:10px}
+.prezzo{font-family:'Cinzel',serif;color:var(--oro);letter-spacing:.04em}
+.nota{font-size:1rem;color:var(--testo-soft);font-style:italic}
+.spacer{flex:1}
+.btn{
+  display:inline-block;text-align:center;
+  font-family:'Cinzel',serif;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;
+  background:var(--sangue);color:#fff;text-decoration:none;
+  padding:14px 20px;border:1px solid var(--oro);
+  transition:background .2s,color .2s;margin-top:8px;
+}
+.btn:hover{background:var(--oro);color:var(--nero)}
+.mail{margin-top:10px;font-size:.95rem;color:var(--testo-soft);text-align:center}
+
+/* tessere */
+.tessere{padding:10px 0 56px;text-align:center}
+.st{font-family:'Cinzel',serif;font-weight:600;color:var(--oro-chiaro);font-size:1.7rem;margin:8px 0 28px}
+.tgrid{display:grid;gap:22px;text-align:left}
+@media(min-width:900px){.tgrid{grid-template-columns:repeat(3,1fr)}}
+.tess{border:1px solid rgba(201,162,75,.35);background:var(--nero2);padding:24px 24px 14px}
+.tn{font-family:'Cinzel',serif;color:var(--oro-chiaro);font-size:1.2rem}
+.tp{font-family:'Cinzel',serif;color:var(--oro);font-size:1.8rem;margin:4px 0 12px}
+.tp span{font-size:.85rem;color:var(--testo-soft);letter-spacing:.05em}
+.tess ul{list-style:none}
+.tess li{padding:6px 0 6px 22px;position:relative;border-bottom:1px solid rgba(233,225,211,.08)}
+.tess li::before{content:"✦";position:absolute;left:0;color:var(--oro);font-size:.8rem;top:10px}
+.centro{text-align:center}
+.nota.centro{margin-top:18px}
+.passi{display:grid;gap:12px;max-width:760px;margin:30px auto 24px;text-align:left}
+.passi div{padding-left:44px;position:relative}
+.passi span{position:absolute;left:0;top:0;font-family:'Cinzel',serif;color:var(--sangue-vivo);font-size:1.1rem}
+.passi strong{color:var(--oro-chiaro);font-weight:500}
+
+/* rassicurazione */
+.garanzia{border-top:1px solid rgba(201,162,75,.25);border-bottom:1px solid rgba(201,162,75,.25);padding:30px 0;text-align:center}
+.garanzia p{max-width:720px;margin:0 auto;color:var(--testo-soft);font-style:italic}
+.garanzia strong{color:var(--oro-chiaro);font-style:normal;font-weight:500}
+
+/* piè di pagina */
+footer{text-align:center;padding:40px 0 50px;color:var(--testo-soft);font-size:1rem}
+footer .fl{font-family:'Cinzel',serif;color:var(--oro);letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">Vampiri Italiani</a>
+    <a href="index.html">← Torna alla Home</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Vampiri Italiani APS</div>
+    <h1>Aderisci</h1>
+    <p class="lead">Tre strade per entrare nel Covo.</p>
+    <div class="divider"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="cards">
+
+    <!-- 1. SOCIO -->
+    <section class="card" id="socio">
+      <div class="num">I</div>
+      <h2>Sei un appassionato</h2>
+      <p class="sub">Diventa socio</p>
+      <p>Assaggi con scheda, scala e metodo. Masterclass a tariffa riservata, voto in assemblea, accesso ai panel.</p>
+      <ul>
+        <li><span class="prezzo">Ordinario 15€</span> all'anno</li>
+        <li><span class="prezzo">Sostenitore 45€</span> con <em>Il Morso</em> e panel in anteprima</li>
+      </ul>
+      <p class="nota">Chi si iscrive ora è coperto fino al 31 dicembre 2027.</p>
+      <div class="spacer"></div>
+      <a class="btn" href="#tessere">Scegli la tessera</a>
+    </section>
+
+    <!-- 2. PRODUTTORE -->
+    <section class="card" id="produttore">
+      <div class="num">II</div>
+      <h2>Sei un produttore d'aglio</h2>
+      <p class="sub">Entra nella rete</p>
+      <p>Il tuo aglio assaggiato con metodo e raccontato con il suo nome: varietà, territorio, provenienza.</p>
+      <ul>
+        <li><span class="prezzo">Sostenitore 45€</span> per entrare nella rete</li>
+        <li><span class="prezzo">Conte 500–1000€</span> all'anno: inserimento nella mappa dei produttori e un articolo dedicato su Errante del Gusto</li>
+      </ul>
+      <p class="nota">L'adesione non influisce sui giudizi: i panel sono alla cieca e le valutazioni restano indipendenti.</p>
+      <div class="spacer"></div>
+      <a class="btn" href="mailto:info@vampiriitaliani.it?subject=Adesione%20produttore%20-%20Vampiri%20Italiani">Scrivici</a>
+      <div class="mail">info@vampiriitaliani.it</div>
+    </section>
+
+    <!-- 3. LOCALE -->
+    <section class="card" id="locale">
+      <div class="num">III</div>
+      <h2>Hai una pizzeria o un ristorante</h2>
+      <p class="sub">Porta l'aglio in menù</p>
+      <ul>
+        <li><strong>Vampiri al Forno</strong> per le pizzerie: la Marinara Vampiri Italiani, con varietà e posa dell'aglio scelte insieme dopo un test in cucina</li>
+        <li><strong>Il Vampiro di Casa</strong> per i ristoranti: un piatto fisso studiato con il cuoco</li>
+      </ul>
+      <p>Il locale diventa <strong>Avamposto</strong>: targhetta, presenza in mappa, articolo su Errante del Gusto.</p>
+      <p class="nota">L'associazione porta visibilità e racconto, non clientela. Stiamo selezionando i primi locali.</p>
+      <div class="spacer"></div>
+      <a class="btn" href="mailto:info@vampiriitaliani.it?subject=Candidatura%20locale%20-%20Vampiri%20Italiani">Scrivici</a>
+      <div class="mail">info@vampiriitaliani.it</div>
+    </section>
+
+  </div>
+
+  <section class="tessere" id="tessere">
+    <div class="kicker">Le tre tessere</div>
+    <h2 class="st">Scegli come entrare nel Covo</h2>
+    <div class="tgrid">
+      <div class="tess">
+        <div class="tn">Socio Ordinario</div>
+        <div class="tp">€15 <span>all'anno</span></div>
+        <ul>
+          <li>Tessera associativa annuale</li>
+          <li>Diritto di voto in assemblea</li>
+          <li>Tariffa riservata sulle masterclass</li>
+          <li>Accesso alle attività dell'associazione</li>
+        </ul>
+      </div>
+      <div class="tess">
+        <div class="tn">Socio Sostenitore</div>
+        <div class="tp">€45 <span>all'anno</span></div>
+        <ul>
+          <li>Tutto ciò che include l'Ordinario</li>
+          <li><em>Il Morso</em>, il periodico riservato ai soci</li>
+          <li>Accesso anticipato ai panel d'assaggio</li>
+        </ul>
+      </div>
+      <div class="tess">
+        <div class="tn">Conte</div>
+        <div class="tp">€500–1000 <span>a scelta, all'anno</span></div>
+        <ul>
+          <li>Tutto ciò che include il Sostenitore</li>
+          <li>Inserimento nella mappa dei produttori sul sito</li>
+          <li>Un articolo dedicato su Errante del Gusto</li>
+          <li>Importo libero: €500 · €750 · €1000</li>
+        </ul>
+      </div>
+    </div>
+    <p class="nota centro">Prima stagione: chi si iscrive ora è coperto <strong>fino al 31 dicembre 2027</strong>.</p>
+
+    <div class="passi">
+      <div><span>I</span> <strong>Compila la domanda.</strong> Lasci i tuoi dati e scegli la tessera.</div>
+      <div><span>II</span> <strong>Versa la quota.</strong> Ricevi via email le istruzioni per il bonifico, con causale «Quota associativa 2026 — Nome Cognome».</div>
+      <div><span>III</span> <strong>Entri nel libro soci.</strong> Il Consiglio Direttivo ratifica l'adesione.</div>
+    </div>
+    <div class="centro">
+      <a class="btn" href="https://22635c60.sibforms.com/serve/MUIFACrauya1W55fXHoEzd-1_Ghdte5YlVGu4GvH-nifIos2QAqUPrcVfwHKBDU_Xr63PA0iyBeEHdBUo1vu6EY8dPEJ9_Mq_sm5S0UFutzlK9sE8rcMvrA9ill_xXu2duO37ltoE4IqookANHCcPsZ8mrTix1LvJ2mtu3Us5EcJ3fgChjBhg4thZGgkqioQuw1N4ipIFUKig2vCWQ==">Compila la domanda di adesione</a>
+      <p class="nota">L'adesione si perfeziona con la ratifica del Consiglio Direttivo e il versamento della quota.</p>
+    </div>
+  </section>
+
+  <div class="garanzia">
+    <p>Un progetto serio dentro un'identità che non si prende troppo sul serio. <strong>Valutiamo l'aglio con rigore sensoriale</strong>, e lo facciamo alla luce del sole.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fl">Vampiri Italiani APS</div>
+    <div>Associazione di Promozione Sociale · Via Roma 9, 24020 Songavazzo (BG)</div>
+    <div><a href="mailto:info@vampiriitaliani.it">info@vampiriitaliani.it</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
