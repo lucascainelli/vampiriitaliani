@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join — Vampiri Italiani APS</title>
+<meta name="description" content="Three ways into the Lair: member, garlic producer, pizzeria or restaurant. Vampiri Italiani APS, Italy's first garlic-tasting association.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nero:#0b0809;
+  --nero2:#140d0f;
+  --sangue:#8a1218;
+  --sangue-vivo:#b3161e;
+  --oro:#c9a24b;
+  --oro-chiaro:#e3c477;
+  --testo:#e9e1d3;
+  --testo-soft:#b9ae9c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--nero);
+  color:var(--testo);
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1.2rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--oro-chiaro)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* barra superiore */
+.top{padding:18px 0;border-bottom:1px solid rgba(201,162,75,.25)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top a{font-family:'Cinzel',serif;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;text-decoration:none;color:var(--oro)}
+.top a:hover{color:var(--oro-chiaro)}
+.brand{font-family:'Cinzel Decorative',serif;font-size:1.05rem;letter-spacing:.06em;color:var(--oro-chiaro)!important;text-transform:none!important}
+
+/* intestazione */
+header.hero{text-align:center;padding:64px 0 40px;background:radial-gradient(ellipse at top,rgba(138,18,24,.28),transparent 65%)}
+.kicker{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;color:var(--oro)}
+h1{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(2.2rem,7vw,3.6rem);color:var(--oro-chiaro);margin:14px 0 10px;line-height:1.1}
+.lead{font-style:italic;color:var(--testo-soft);font-size:1.3rem}
+.divider{width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--oro),transparent);margin:28px auto 0}
+
+/* schede */
+.cards{display:grid;gap:26px;padding:20px 0 56px}
+@media(min-width:900px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{
+  display:flex;flex-direction:column;
+  background:linear-gradient(180deg,var(--nero2),var(--nero));
+  border:1px solid rgba(201,162,75,.35);
+  border-top:3px solid var(--sangue-vivo);
+  padding:30px 26px 28px;
+}
+.num{font-family:'Cinzel',serif;color:var(--sangue-vivo);letter-spacing:.25em;font-size:.8rem;text-transform:uppercase}
+.card h2{font-family:'Cinzel',serif;font-weight:600;color:var(--oro-chiaro);font-size:1.45rem;line-height:1.25;margin:8px 0 4px}
+.card .sub{font-style:italic;color:var(--testo-soft);margin-bottom:16px}
+.card p{margin-bottom:14px}
+.card ul{list-style:none;margin:2px 0 16px}
+.card li{padding:6px 0 6px 22px;position:relative;border-bottom:1px solid rgba(233,225,211,.08)}
+.card li::before{content:"✦";position:absolute;left:0;color:var(--oro);font-size:.8rem;top:10px}
+.prezzo{font-family:'Cinzel',serif;color:var(--oro);letter-spacing:.04em}
+.nota{font-size:1rem;color:var(--testo-soft);font-style:italic}
+.spacer{flex:1}
+.btn{
+  display:inline-block;text-align:center;
+  font-family:'Cinzel',serif;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;
+  background:var(--sangue);color:#fff;text-decoration:none;
+  padding:14px 20px;border:1px solid var(--oro);
+  transition:background .2s,color .2s;margin-top:8px;
+}
+.btn:hover{background:var(--oro);color:var(--nero)}
+.mail{margin-top:10px;font-size:.95rem;color:var(--testo-soft);text-align:center}
+
+/* tessere */
+.tessere{padding:10px 0 56px;text-align:center}
+.st{font-family:'Cinzel',serif;font-weight:600;color:var(--oro-chiaro);font-size:1.7rem;margin:8px 0 28px}
+.tgrid{display:grid;gap:22px;text-align:left}
+@media(min-width:900px){.tgrid{grid-template-columns:repeat(3,1fr)}}
+.tess{border:1px solid rgba(201,162,75,.35);background:var(--nero2);padding:24px 24px 14px}
+.tn{font-family:'Cinzel',serif;color:var(--oro-chiaro);font-size:1.2rem}
+.tp{font-family:'Cinzel',serif;color:var(--oro);font-size:1.8rem;margin:4px 0 12px}
+.tp span{font-size:.85rem;color:var(--testo-soft);letter-spacing:.05em}
+.tess ul{list-style:none}
+.tess li{padding:6px 0 6px 22px;position:relative;border-bottom:1px solid rgba(233,225,211,.08)}
+.tess li::before{content:"✦";position:absolute;left:0;color:var(--oro);font-size:.8rem;top:10px}
+.centro{text-align:center}
+.nota.centro{margin-top:18px}
+.passi{display:grid;gap:12px;max-width:760px;margin:30px auto 24px;text-align:left}
+.passi div{padding-left:44px;position:relative}
+.passi span{position:absolute;left:0;top:0;font-family:'Cinzel',serif;color:var(--sangue-vivo);font-size:1.1rem}
+.passi strong{color:var(--oro-chiaro);font-weight:500}
+
+/* rassicurazione */
+.garanzia{border-top:1px solid rgba(201,162,75,.25);border-bottom:1px solid rgba(201,162,75,.25);padding:30px 0;text-align:center}
+.garanzia p{max-width:720px;margin:0 auto;color:var(--testo-soft);font-style:italic}
+.garanzia strong{color:var(--oro-chiaro);font-style:normal;font-weight:500}
+
+/* piè di pagina */
+footer{text-align:center;padding:40px 0 50px;color:var(--testo-soft);font-size:1rem}
+footer .fl{font-family:'Cinzel',serif;color:var(--oro);letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <a class="brand" href="index_en.html">Vampiri Italiani</a>
+    <a href="index_en.html">← Back Home</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Vampiri Italiani APS</div>
+    <h1>Join</h1>
+    <p class="lead">Three ways into the Lair.</p>
+    <div class="divider"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="cards">
+
+    <!-- 1. SOCIO -->
+    <section class="card" id="socio">
+      <div class="num">I</div>
+      <h2>You are an enthusiast</h2>
+      <p class="sub">Become a member</p>
+      <p>Tastings with scoresheet, scale and method. Discounted masterclasses, a vote at the general assembly, access to the panels.</p>
+      <ul>
+        <li><span class="prezzo">Ordinary €15</span> per year</li>
+        <li><span class="prezzo">Sustaining €45</span> with <em>Il Morso</em> and early panel access</li>
+      </ul>
+      <p class="nota">Members who join now are covered through December 31, 2027.</p>
+      <div class="spacer"></div>
+      <a class="btn" href="#tessere">Choose your tier</a>
+    </section>
+
+    <!-- 2. PRODUTTORE -->
+    <section class="card" id="produttore">
+      <div class="num">II</div>
+      <h2>You are a garlic producer</h2>
+      <p class="sub">Join the network</p>
+      <p>Your garlic tasted with method and told under its own name: variety, territory, origin.</p>
+      <ul>
+        <li><span class="prezzo">Sustaining €45</span> to join the network</li>
+        <li><span class="prezzo">Count €500–1000</span> per year: listing on the producers' map and a dedicated feature on Errante del Gusto</li>
+      </ul>
+      <p class="nota">Membership does not influence the scores: panels are blind and evaluations stay independent.</p>
+      <div class="spacer"></div>
+      <a class="btn" href="mailto:info@vampiriitaliani.it?subject=Producer%20membership%20-%20Vampiri%20Italiani">Write to us</a>
+      <div class="mail">info@vampiriitaliani.it</div>
+    </section>
+
+    <!-- 3. LOCALE -->
+    <section class="card" id="locale">
+      <div class="num">III</div>
+      <h2>You run a pizzeria or restaurant</h2>
+      <p class="sub">Put garlic on your menu</p>
+      <ul>
+        <li><strong>Vampiri al Forno</strong> for pizzerias: the Marinara Vampiri Italiani, with garlic variety and placement chosen together after a kitchen test</li>
+        <li><strong>Il Vampiro di Casa</strong> for restaurants: a permanent dish developed with the chef</li>
+      </ul>
+      <p>Your venue becomes an <strong>Outpost</strong> (Avamposto): plaque, listing on the map, a feature on Errante del Gusto.</p>
+      <p class="nota">The association brings visibility and storytelling, not customers. We are selecting the first venues.</p>
+      <div class="spacer"></div>
+      <a class="btn" href="mailto:info@vampiriitaliani.it?subject=Venue%20application%20-%20Vampiri%20Italiani">Write to us</a>
+      <div class="mail">info@vampiriitaliani.it</div>
+    </section>
+
+  </div>
+
+  <section class="tessere" id="tessere">
+    <div class="kicker">The Three Tiers</div>
+    <h2 class="st">Choose how to enter the Lair</h2>
+    <div class="tgrid">
+      <div class="tess">
+        <div class="tn">Ordinary Member</div>
+        <div class="tp">€15 <span>per year</span></div>
+        <ul>
+          <li>Annual membership card</li>
+          <li>Voting rights at the general assembly</li>
+          <li>Discounted rate on masterclasses</li>
+          <li>Access to association activities</li>
+        </ul>
+      </div>
+      <div class="tess">
+        <div class="tn">Sustaining Member</div>
+        <div class="tp">€45 <span>per year</span></div>
+        <ul>
+          <li>Everything included in Ordinary</li>
+          <li><em>Il Morso</em>, our members-only bulletin</li>
+          <li>Early access to tasting panels</li>
+        </ul>
+      </div>
+      <div class="tess">
+        <div class="tn">Count</div>
+        <div class="tp">€500–1000 <span>your choice, per year</span></div>
+        <ul>
+          <li>Everything included in Sustaining</li>
+          <li>Listing on the producers' map on our website</li>
+          <li>A dedicated feature on Errante del Gusto</li>
+          <li>Free amount: €500 · €750 · €1000</li>
+        </ul>
+      </div>
+    </div>
+    <p class="nota centro">First season: members who join now are covered <strong>through December 31, 2027</strong>.</p>
+
+    <div class="passi">
+      <div><span>I</span> <strong>Fill out the application.</strong> Leave your details and choose your tier.</div>
+      <div><span>II</span> <strong>Pay the fee.</strong> You'll receive bank transfer instructions by email, with reference «Membership fee 2026 — First name Last name».</div>
+      <div><span>III</span> <strong>You enter the register.</strong> The Board ratifies your membership.</div>
+    </div>
+    <div class="centro">
+      <a class="btn" href="https://22635c60.sibforms.com/serve/MUIFACrauya1W55fXHoEzd-1_Ghdte5YlVGu4GvH-nifIos2QAqUPrcVfwHKBDU_Xr63PA0iyBeEHdBUo1vu6EY8dPEJ9_Mq_sm5S0UFutzlK9sE8rcMvrA9ill_xXu2duO37ltoE4IqookANHCcPsZ8mrTix1LvJ2mtu3Us5EcJ3fgChjBhg4thZGgkqioQuw1N4ipIFUKig2vCWQ==">Fill out the membership application</a>
+      <p class="nota">Membership is finalized upon Board ratification and payment of the fee.</p>
+    </div>
+  </section>
+
+  <div class="garanzia">
+    <p>A serious project inside an identity that doesn't take itself too seriously. <strong>We assess garlic with sensory rigour</strong>, and we do it in the open.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fl">Vampiri Italiani APS</div>
+    <div>Associazione di Promozione Sociale · Via Roma 9, 24020 Songavazzo (BG), Italy</div>
+    <div><a href="mailto:info@vampiriitaliani.it">info@vampiriitaliani.it</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
