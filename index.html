@@ -2113,5 +2113,35 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
 })();
 </script>
+<!-- Fix pulsanti mail: copia l'indirizzo e mostra un avviso, anche se non c'è un programma di posta -->
+<script>
+(function () {
+  var timer, box;
+  function say(msg) {
+    try {
+      if (!box) {
+        box = document.createElement('div');
+        box.setAttribute('role', 'status');
+        box.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;' +
+          'max-width:90vw;padding:12px 20px;border:1px solid var(--gold,#c9a24a);border-radius:2px;' +
+          'background:var(--near-black,#120b0c);color:var(--gold,#c9a24a);font-family:inherit;font-size:15px;' +
+          'text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.5);transition:opacity .25s;opacity:0';
+        document.body.appendChild(box);
+      }
+      box.textContent = msg; box.style.opacity = '1';
+      clearTimeout(timer); timer = setTimeout(function () { box.style.opacity = '0'; }, 4500);
+    } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="mailto:"]') : null;
+    if (!a) return;
+    var addr = a.getAttribute('href').replace(/^mailto:/i, '').split('?')[0];
+    var ok = function () { say('Indirizzo copiato: ' + addr); };
+    var ko = function () { say('Scrivi a ' + addr); };
+    try { navigator.clipboard.writeText(addr).then(ok, ko); } catch (err) { ko(); }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
