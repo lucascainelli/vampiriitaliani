@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Diventa Vampiro — Vampiri Italiani APS</title>
-<meta name="description" content="Tre strade per entrare nel Covo: socio, produttore d'aglio, pizzeria o ristorante. Vampiri Italiani APS, prima associazione italiana di assaggiatori di aglio.">
+<meta name="description" content="Tre strade per entrare nel Covo: socio, alleato (aziende, produttori, locali) o Custode di un Covo provinciale. Vampiri Italiani APS, prima associazione italiana di assaggiatori di aglio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -80,7 +80,7 @@ h1{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(2.2rem,
 .tessere{padding:10px 0 56px;text-align:center}
 .st{font-family:'Cinzel',serif;font-weight:600;color:var(--oro-chiaro);font-size:1.7rem;margin:8px 0 28px}
 .tgrid{display:grid;gap:22px;text-align:left}
-@media(min-width:900px){.tgrid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.tgrid{grid-template-columns:repeat(2,1fr);max-width:760px;margin:0 auto}}
 .tess{border:1px solid rgba(201,162,75,.35);background:var(--nero2);padding:24px 24px 14px}
 .tn{font-family:'Cinzel',serif;color:var(--oro-chiaro);font-size:1.2rem}
 .tp{font-family:'Cinzel',serif;color:var(--oro);font-size:1.8rem;margin:4px 0 12px}
@@ -141,36 +141,32 @@ footer .fl{font-family:'Cinzel',serif;color:var(--oro);letter-spacing:.14em;text
       <a class="btn" href="#tessere">Scegli la tessera</a>
     </section>
 
-    <!-- 2. PRODUTTORE -->
-    <section class="card" id="produttore">
+    <!-- 2. ALLEATO -->
+    <section class="card" id="alleato">
       <div class="num">II</div>
-      <h2>Sei un produttore d'aglio</h2>
-      <p class="sub">Entra nella rete</p>
-      <p>Il tuo aglio assaggiato con metodo e raccontato con il suo nome: varietà, territorio, provenienza.</p>
+      <h2>Hai un'attività nel mondo del cibo</h2>
+      <p class="sub">Diventa Alleato</p>
+      <p>Produttori, aziende, pizzerie, ristoranti: l'aglio che già usi o quello che vorresti portare nei tuoi prodotti e nel tuo menù, valutato con metodo e raccontato con il suo nome.</p>
       <ul>
-        <li><span class="prezzo">Sostenitore 45€</span> per entrare nella rete</li>
-        <li><span class="prezzo">Conte 500–1000€</span> all'anno: inserimento nella mappa dei produttori e un articolo dedicato su Errante del Gusto</li>
+        <li><span class="prezzo">Da 500€</span> all'anno</li>
+        <li>Tessera Socio Sostenitore, presenza in mappa, articolo su Errante del Gusto</li>
+        <li>Bollino Vampiri Italiani sui prodotti a base di aglio</li>
       </ul>
-      <p class="nota">L'adesione non influisce sui giudizi: i panel sono alla cieca e le valutazioni restano indipendenti.</p>
+      <p class="nota">L'adesione non influisce sui giudizi: i panel sono alla cieca e le valutazioni restano indipendenti. Il resto si definisce insieme.</p>
       <div class="spacer"></div>
-      <a class="btn" href="mailto:info@vampiriitaliani.it?subject=Adesione%20produttore%20-%20Vampiri%20Italiani">Scrivici</a>
+      <a class="btn" href="mailto:info@vampiriitaliani.it?subject=Alleato%20-%20Vampiri%20Italiani">Scrivici</a>
       <div class="mail">info@vampiriitaliani.it</div>
     </section>
 
-    <!-- 3. LOCALE -->
-    <section class="card" id="locale">
+    <!-- 3. COVO -->
+    <section class="card" id="covo">
       <div class="num">III</div>
-      <h2>Hai una pizzeria o un ristorante</h2>
-      <p class="sub">Porta l'aglio in menù</p>
-      <ul>
-        <li><strong>Vampiri al Forno</strong> per le pizzerie: la Marinara Vampiri Italiani, con varietà e posa dell'aglio scelte insieme dopo un test in cucina</li>
-        <li><strong>Il Vampiro di Casa</strong> per i ristoranti: un piatto fisso studiato con il cuoco</li>
-      </ul>
-      <p>Il locale diventa <strong>Avamposto</strong>: targhetta, presenza in mappa, articolo su Errante del Gusto.</p>
-      <p class="nota">L'associazione porta visibilità e racconto, non clientela. Stiamo selezionando i primi locali.</p>
+      <h2>Vuoi radunare i soci della tua provincia</h2>
+      <p class="sub">Apri un Covo</p>
+      <p>Il Custode del Covo raduna i soci, organizza le masterclass e fa da ponte con i produttori del territorio. È un incarico associativo, senza costi.</p>
+      <p class="nota">Le candidature sono valutate dal Consiglio Direttivo.</p>
       <div class="spacer"></div>
-      <a class="btn" href="mailto:info@vampiriitaliani.it?subject=Candidatura%20locale%20-%20Vampiri%20Italiani">Scrivici</a>
-      <div class="mail">info@vampiriitaliani.it</div>
+      <a class="btn" href="custode.html">Candidati come Custode</a>
     </section>
 
   </div>
@@ -183,7 +179,7 @@ footer .fl{font-family:'Cinzel',serif;color:var(--oro);letter-spacing:.14em;text
   </section>
 
   <section class="tessere" id="tessere">
-    <div class="kicker">Le tre tessere</div>
+    <div class="kicker">Le due tessere</div>
     <h2 class="st">Scegli come entrare nel Covo</h2>
     <div class="tgrid">
       <div class="tess">
@@ -203,16 +199,6 @@ footer .fl{font-family:'Cinzel',serif;color:var(--oro);letter-spacing:.14em;text
           <li>Tutto ciò che include l'Ordinario</li>
           <li><em>Il Morso</em>, il periodico riservato ai soci</li>
           <li>Accesso anticipato ai panel d'assaggio</li>
-        </ul>
-      </div>
-      <div class="tess">
-        <div class="tn">Conte</div>
-        <div class="tp">€500–1000 <span>a scelta, all'anno</span></div>
-        <ul>
-          <li>Tutto ciò che include il Sostenitore</li>
-          <li>Inserimento nella mappa dei produttori sul sito</li>
-          <li>Un articolo dedicato su Errante del Gusto</li>
-          <li>Importo libero: €500 · €750 · €1000</li>
         </ul>
       </div>
     </div>
