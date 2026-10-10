@@ -342,15 +342,15 @@
 </section>
 
 <!-- ============================================================
-     BLOCCO PRE-APERTURA — rimuovere il 15 settembre 2026.
+     BLOCCO CANDIDATURA VIA MAIL — il modulo qui sotto resta nascosto finché non c'è un endpoint attivo.
      Al lancio: 1) cancellare questo <div class="pre-apertura">
                 2) togliere style="display:none" dal form-wrap qui sotto
                 3) inserire l'endpoint Formspree reale nello script in fondo
      ============================================================ -->
 <div class="pre-apertura" style="max-width:640px;margin:0 auto 4rem;padding:2.6rem 2rem;background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.28);text-align:center;">
-  <div style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--blood-bright);margin-bottom:1.4rem;">Candidature dal 15 settembre 2026</div>
-  <h2 style="font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.3;margin-bottom:1.2rem;">I primi Covi aprono in autunno</h2>
-  <p style="font-family:'EB Garamond',serif;font-size:1.1rem;line-height:1.75;color:rgba(245,240,232,0.72);margin-bottom:1.8rem;">Un Covo per provincia, un Custode per Covo. Il modulo di candidatura apre il 15 settembre.<br>Se vuoi il tuo territorio, scrivilo adesso: le manifestazioni d'interesse arrivate prima dell'apertura vengono valutate per prime.</p>
+  <div style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--blood-bright);margin-bottom:1.4rem;">Candidature aperte</div>
+  <h2 style="font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.3;margin-bottom:1.2rem;">Apri il Covo della tua provincia</h2>
+  <p style="font-family:'EB Garamond',serif;font-size:1.1rem;line-height:1.75;color:rgba(245,240,232,0.72);margin-bottom:1.8rem;">Un Covo per provincia, un Custode per Covo. Per candidarti devi essere socio: scrivici raccontando chi sei, che esperienza hai con l'assaggio e cosa ti vedi a fare nella tua provincia. La candidatura la valuta il Consiglio Direttivo.</p>
   <a href="mailto:info@vampiriitaliani.it?subject=Manifestazione%20d%27interesse%20Custode%20del%20Covo" style="display:inline-block;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--gold);padding:0.95rem 2.2rem;transition:all 0.3s;">Scrivi a info@vampiriitaliani.it</a>
   <p style="font-family:'EB Garamond',serif;font-style:italic;color:rgba(245,240,232,0.5);margin-top:1.8rem;font-size:0.98rem;">Loro fuggono dall'aglio. Tu, nel tuo Covo, lo aspetti al varco.</p>
 </div>
@@ -501,6 +501,36 @@
       }
     });
   })();
+</script>
+
+<!-- Fix pulsanti mail: copia l'indirizzo e mostra un avviso, anche se non c'è un programma di posta -->
+<script>
+(function () {
+  var timer, box;
+  function say(msg) {
+    try {
+      if (!box) {
+        box = document.createElement('div');
+        box.setAttribute('role', 'status');
+        box.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;' +
+          'max-width:90vw;padding:12px 20px;border:1px solid var(--gold,#C9A84C);border-radius:2px;' +
+          'background:var(--near-black,#111);color:var(--gold,#C9A84C);font-family:inherit;font-size:15px;' +
+          'text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.5);transition:opacity .25s;opacity:0';
+        document.body.appendChild(box);
+      }
+      box.textContent = msg; box.style.opacity = '1';
+      clearTimeout(timer); timer = setTimeout(function () { box.style.opacity = '0'; }, 4500);
+    } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="mailto:"]') : null;
+    if (!a) return;
+    var addr = a.getAttribute('href').replace(/^mailto:/i, '').split('?')[0];
+    var ok = function () { say('Indirizzo copiato: ' + addr); };
+    var ko = function () { say('Scrivi a ' + addr); };
+    try { navigator.clipboard.writeText(addr).then(ok, ko); } catch (err) { ko(); }
+  }, true);
+})();
 </script>
 
 </body>
