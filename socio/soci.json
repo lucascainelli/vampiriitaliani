@@ -24,5 +24,6 @@
   "VI-2026-023": { "tier": "Socio Ordinario", "stato": "Pagato", "valido_fino_a": "2027-12-31" },
   "VI-2026-024": { "tier": "Socio Ordinario", "stato": "Pagato", "valido_fino_a": "2027-12-31" },
   "VI-2026-025": { "tier": "Socio Sostenitore", "stato": "Pagato", "valido_fino_a": "2027-12-31" },
-  "VI-2026-026": { "tier": "Socio Ordinario", "stato": "Pagato", "valido_fino_a": "2027-12-31" }
+  "VI-2026-026": { "tier": "Socio Ordinario", "stato": "Pagato", "valido_fino_a": "2027-12-31" },
+  "VI-2026-027": { "tier": "Socio Sostenitore", "stato": "Pagato", "valido_fino_a": "2027-12-31" }
 }
