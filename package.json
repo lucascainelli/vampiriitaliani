@@ -1,0 +1,21 @@
+{
+  "name": "vampiri-articoli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build-articoli.mjs",
+    "anteprima": "node build-articoli.mjs --con-esempi --out anteprima"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^18.1.2",
+    "sharp": "^0.35.5"
+  },
+  "type": "module",
+  "private": "true"
+}
