@@ -63,7 +63,7 @@ function pictureHTML(nome, alt, { eager = false, sizes = '(max-width: 780px) 100
   if (!i) return `<img src="${esc(nome)}" alt="${esc(alt)}" loading="lazy">`;
   const srcset = i.larghe.map((l) => `/articoli/img/${i.base}-${l}.webp ${Math.min(l, i.w)}w`).join(', ');
   return `<picture><source type="image/webp" srcset="${srcset}" sizes="${sizes}">` +
-    `<img src="/articoli/img/${i.base}.jpg" alt="${esc(alt)}" width="${i.w}" height="${i.h}" ` +
+    `<img src="/articoli/img/${i.base}.jpg" alt="${esc(alt)}" width="${i.w}" height="${i.h}"${i.h > i.w * 1.1 ? ' class="ver"' : ''} ` +
     `${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
 }
 
@@ -115,8 +115,8 @@ function leggiArticoli() {
     articoli.push({
       slug, titolo: String(data.titolo), data: d, categorie, tag, html,
       sommario: data.sommario ? String(data.sommario) : '',
-      estratto: taglia(data.sommario ? String(data.sommario) : testoPuro, 190),
-      copertina: data.copertina || '', altCopertina: data.alt_copertina || data.titolo,
+      estratto: taglia(data.sommario ? String(data.sommario) : noTag(html.replace(/<h[1-6][\s\S]*?<\/h[1-6]>/g, '').replace(/<figure[\s\S]*?<\/figure>/g, '')), 190),
+      copertina: data.copertina || '', didascaliaCopertina: data.didascalia_copertina ? String(data.didascalia_copertina) : '', altCopertina: data.alt_copertina || data.titolo,
       video: data.video || '', edgUrl: data.edg_url || '', minuti: Math.max(1, Math.round(testoPuro.split(' ').length / 200)),
       url: `/articoli/${slug}/`,
     });
@@ -230,7 +230,7 @@ function paginaArticolo(a, tutti) {
     publisher: { '@type': 'Organization', name: 'Vampiri Italiani APS', url: SITO },
     mainEntityOfPage: `${SITO}${a.url}`,
   };
-  const cop = a.copertina ? `<figure class="copertina">${pictureHTML(a.copertina, a.altCopertina, { eager: true })}</figure>` : '';
+  const cop = a.copertina ? `<figure class="copertina">${pictureHTML(a.copertina, a.altCopertina, { eager: true })}${a.didascaliaCopertina ? `<figcaption>${esc(a.didascaliaCopertina)}</figcaption>` : ''}</figure>` : '';
   const corpo = `<main class="pagina"><article class="articolo${chiaro ? ' chiaro' : ''}">
   <div class="briciole"><a href="/">Home</a> · <a href="/articoli/">Articoli</a>${a.categorie[0] ? ` · <a href="/articoli/categoria/${a.categorie[0].slug}/">${esc(a.categorie[0].nome)}</a>` : ''}</div>
   <h1>${esc(a.titolo)}</h1>
@@ -332,6 +332,8 @@ async function main() {
   })), null, 1));
   const redirect = articoli.filter((a) => a.edgUrl).map((a) => `${a.edgUrl}\t${SITO}${a.url}`);
   scrivi(path.join(out, 'redirect-edg.txt'), redirect.join('\n') + (redirect.length ? '\n' : ''));
+  const htaccess = articoli.filter((a) => a.edgUrl).map((a) => `Redirect 301 ${new URL(a.edgUrl).pathname} ${SITO}${a.url}`);
+  scrivi(path.join(out, 'redirect-edg.htaccess'), htaccess.join('\n') + (htaccess.length ? '\n' : ''));
 
   console.log(`✓ ${articoli.length} articoli, ${categorie.length} categorie, ${tag.length} tag → ${path.resolve(out)}`);
   if (redirect.length) console.log(`✓ ${redirect.length} redirect per EDG in redirect-edg.txt`);
