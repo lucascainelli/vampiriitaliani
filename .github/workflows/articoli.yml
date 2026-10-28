@@ -1,0 +1,27 @@
+name: Genera articoli
+on:
+  push:
+    branches: [main]
+    paths: ['contenuti/**', 'build-articoli.mjs', 'assets/**']
+permissions:
+  contents: write
+  pages: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npm run build
+      - name: Salva le pagine generate
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then git commit -m "Genera articoli" && git push; fi
+      - name: Chiedi a GitHub Pages di ripubblicare
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true

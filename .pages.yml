@@ -1,0 +1,28 @@
+# Editor nel browser per gli articoli (Pages CMS, pagescms.org): si accede con l'account GitHub.
+media:
+  input: contenuti/articoli/img
+  output: /contenuti/articoli/img
+content:
+  - name: articoli
+    label: Articoli
+    type: collection
+    path: contenuti/articoli
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [titolo, data]
+      primary: titolo
+      sort: [data]
+      default:
+        sort: data
+        order: desc
+    fields:
+      - { name: titolo, label: Titolo, type: string, required: true }
+      - { name: data, label: Data, type: date, required: true }
+      - { name: categorie, label: Categorie, type: string, list: true }
+      - { name: tag, label: Tag, type: string, list: true }
+      - { name: sommario, label: Sommario (due righe), type: text }
+      - { name: copertina, label: Foto di copertina, type: image }
+      - { name: alt_copertina, label: Descrizione della foto, type: string }
+      - { name: edg_url, label: Vecchio indirizzo su Errante del Gusto, type: string }
+      - { name: bozza, label: Bozza (non pubblicare), type: boolean }
+      - { name: body, label: Testo, type: rich-text }

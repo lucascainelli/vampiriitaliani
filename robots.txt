@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://vampiriitaliani.it/sitemap.xml
+Sitemap: https://vampiriitaliani.it/sitemap-articoli.xml
