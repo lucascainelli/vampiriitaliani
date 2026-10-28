@@ -32,7 +32,7 @@ const dataIT = (d) => d.toLocaleDateString('it-IT', { day: 'numeric', month: 'lo
 const dataISO = (d) => d.toISOString().slice(0, 10);
 const scrivi = (file, testo) => { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, testo); };
 const noTag = (html) => html.replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/gi, ' ').replace(/\s+/g, ' ').trim();
-const taglia = (s, n) => (s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + '…' : s);
+const taglia = (s, n) => (s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '').replace(/[\s.,;:!?\-–—]+$/, '') + '…' : s);
 
 // ---------- immagini ----------
 const IMG_SRC = path.join(SRC, 'img');
