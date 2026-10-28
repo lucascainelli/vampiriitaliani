@@ -1,7 +1,7 @@
 ---
 titolo: "Nel salame il vino ha un vitigno. L’aglio ha una dose"
 data: 2026-10-13
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Etichette e mercato"]
 tag: ["vessalico", "voghiera"]
 copertina: salame-aglio-tagliere-salumi-scaled.jpg
 alt_copertina: "Tagliere di salumi visto dall'alto: fette di salame a grana grossa, pancetta arrotolata, lonza stagionata e due tranci di formaggio su un piatto bianco"

@@ -1,7 +1,7 @@
 ---
 titolo: "L’oro bianco di Voghiera"
 data: 2026-08-06
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Varietà e territori"]
 tag: ["aglio di Voghiera", "aglio DOP", "degustazione aglio", "fiera dell'aglio"]
 copertina: aglio-di-voghiera-dop.png
 alt_copertina: "Treccia di aglio di Voghiera DOP e bulbi su legno antico, davanti all'arco affrescato di una delizia estense"

@@ -1,7 +1,7 @@
 ---
 titolo: "A San Giovanni, l’aglio cambia mestiere"
 data: 2026-06-21
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Varietà e territori"]
 tag: ["allicina"]
 copertina: aglio-di-san-giovanni-fira-di-ai.png.jpg
 alt_copertina: "Aglio di San Giovanni accanto a iperico e rosmarino, a lume di candela"

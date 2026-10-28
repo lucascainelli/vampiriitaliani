@@ -1,7 +1,7 @@
 ---
 titolo: "Il latte, la mela e la menta"
 data: 2026-08-25
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Scienza"]
 tag: ["allil metil solfuro", "degustazione aglio"]
 copertina: come-eliminare-alito-aglio-latte-mela-menta-1200.jpg
 alt_copertina: "Latte, mela con la buccia e menta fresca su bilancia da cucina, i tre rimedi contro l'alito d'aglio testati nell'articolo"

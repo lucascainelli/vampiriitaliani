@@ -1,7 +1,7 @@
 ---
 titolo: "Alla cieca, per sempre"
 data: 2026-09-07
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Metodo"]
 tag: ["aglio DOP", "analisi sensoriale", "panel sensoriale", "polesano", "vessalico", "voghiera"]
 copertina: assaggiare-aglio-degustazione-alla-cieca.jpg
 alt_copertina: "Tre teste d'aglio con cartellino vuoto appeso, senza varietà né provenienza: l'aglio si assaggia sempre alla cieca"

@@ -1,7 +1,7 @@
 ---
 titolo: "Aglio sott’olio: il più limpido è quello che sa meno d’aglio"
 data: 2026-10-06
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Associazione"]
 tag: ["assaggio alla cieca", "panel sensoriale"]
 copertina: aglio-sott-olio-masterclass-barattoli-abc-scaled.jpg
 alt_copertina: "Aglio sott'olio in tre barattoli avvolti nella stagnola, con le lettere A, B e C, per l'assaggio alla cieca"

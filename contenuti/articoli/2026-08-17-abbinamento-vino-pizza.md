@@ -1,7 +1,7 @@
 ---
 titolo: "Con quale aglio la vuole?"
 data: 2026-08-17
-categorie: ["Cronache dell'Aglio"]
+categorie: ["In tavola"]
 tag: ["analisi sensoriale", "marinara", "pizza"]
 copertina: pizza-marinara-aglio-lamelle.jpg
 alt_copertina: "Pizza marinara con aglio a lamelle su tavolo di pizzeria: l'abbinamento vino pizza parte dagli ingredienti dichiarati"

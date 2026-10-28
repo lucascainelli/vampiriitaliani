@@ -1,7 +1,7 @@
 ---
 titolo: "Perché una valle intera festeggia l’aglio il 2 luglio"
 data: 2026-07-01
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Varietà e territori"]
 tag: ["fiera dell'aglio"]
 copertina: aglio-di-vessalico-resta.jpg
 alt_copertina: "Reste di aglio di Vessalico intrecciate a mano, Valle Arroscia"

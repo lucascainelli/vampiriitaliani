@@ -1,7 +1,7 @@
 ---
 titolo: "Due teste d’aglio e una notte in stanze separate"
 data: 2026-06-18
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Scienza"]
 tag: ["alito all'aglio", "analisi sensoriale", "emivita", "persistenza"]
 copertina: aglio-al-forno-due-teste.jpg
 alt_copertina: "Due teste d'aglio al forno dorate su tagliere di legno con timo e rosmarino"

@@ -1,7 +1,7 @@
 ---
 titolo: "L’aglio non si racconta in una giornata"
 data: 2026-10-27
-categorie: ["Cronache dell'Aglio"]
+categorie: ["In tavola"]
 tag: ["marinara"]
 copertina: aglio-non-si-racconta-in-una-giornata.jpg
 alt_copertina: "Pizzaiolo di Donna Sofia a Napoli pesa un panetto su una bilancia, accanto alla mozzarella e ai panetti pronti"

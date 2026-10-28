@@ -1,7 +1,7 @@
 ---
 titolo: "La prima Marinara Vampiri Italiani nasce a Napoli"
 data: 2026-10-20
-categorie: ["Cronache dell'Aglio"]
+categorie: ["In tavola"]
 tag: ["marinara", "pizza", "polesano", "vessalico", "voghiera"]
 copertina: 2026-10-20_CRONACHE_marinara-vampiri-italiani_02_pizza-dall-alto_LAV.jpeg
 alt_copertina: "Marinara vista dall’alto con pomodorini San Marzano e gialli del Piennolo, foglie di basilico e aglio, cornicione dorato"

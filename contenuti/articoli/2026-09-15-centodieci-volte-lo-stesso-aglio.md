@@ -1,7 +1,7 @@
 ---
 titolo: "Centodieci volte lo stesso aglio"
 data: 2026-09-15
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Metodo"]
 tag: ["aglio di Voghiera", "aglio nero", "aglio rosso di sulmona", "vessalico"]
 copertina: centodieci-volte-lo-stesso-aglio-v2-scaled.jpg
 alt_copertina: "Quattro confezioni di aglio nero allineate in ordine di prezzo crescente: Nero Fermento, Aglio Nero Gourmet, Nero di Sulmona, vasetto artigianale di Vessalico"

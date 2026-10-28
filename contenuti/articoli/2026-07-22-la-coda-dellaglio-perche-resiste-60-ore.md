@@ -1,7 +1,7 @@
 ---
 titolo: "La coda dell’aglio: perché resiste 60 ore"
 data: 2026-07-22
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Scienza"]
 tag: ["alito all'aglio", "allil metil solfuro", "analisi sensoriale", "emivita", "persistenza"]
 copertina: alito-aglio-persistenza-coda-cronometro.png
 alt_copertina: "Testa d'aglio arrosto avvolta in alluminio con vapore visibile e cronometro antico, simbolo della persistenza dell'alito all'aglio"
