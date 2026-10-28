@@ -162,6 +162,8 @@ function pagina({ titolo, descrizione, url, corpo, og = `${SITO}/og-vampiri.jpg`
 <html lang="it">
 <head>
 <meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1MCWKGRL88"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1MCWKGRL88");</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(titolo)}</title>
 <meta name="description" content="${esc(descrizione)}">
