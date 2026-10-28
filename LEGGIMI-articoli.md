@@ -37,3 +37,6 @@ Attenzione: `articoli/` nella radice viene riscritta a ogni build, niente file a
 ## Video
 In testata: `video: https://www.youtube.com/watch?v=...` nel blocco in alto. Nel testo: una riga `{{video: https://youtube.com/shorts/...}}`.
 Accetta YouTube (anche Shorts, in formato verticale) e Vimeo. Usa la categoria `Video` per raccoglierli.
+
+## Programmare l'uscita
+Metti nella `data:` il giorno di uscita (anche futuro). L'articolo resta invisibile fino a quel giorno e compare da solo, in genere entro le 6 del mattino (ora italiana). `bozza: true` invece lo tiene nascosto finché lo togli.

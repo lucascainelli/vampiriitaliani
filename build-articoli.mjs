@@ -97,12 +97,14 @@ const marked = new Marked({
 });
 
 // ---------- lettura articoli ----------
+const OGGI = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date());
 function leggiArticoli() {
   const file = fs.readdirSync(SRC).filter((f) => f.endsWith('.md'));
   const articoli = [];
   for (const f of file) {
     const { data, content } = matter(fs.readFileSync(path.join(SRC, f), 'utf8'));
     if (data.bozza) continue;
+    if (!conEsempi && String(data.data instanceof Date ? data.data.toISOString() : data.data).slice(0, 10) > OGGI) continue; // programmato: esce nel giorno indicato
     if (data.esempio && !conEsempi) continue;
     if (!data.titolo || !data.data) { console.warn(`! ${f}: mancano titolo o data, saltato`); continue; }
     const d = new Date(data.data);

@@ -1,5 +1,8 @@
 name: Genera articoli
 on:
+  schedule:
+    - cron: '15 4 * * *'   # ogni giorno circa alle 6 (ora italiana): pubblica gli articoli programmati
+  workflow_dispatch:
   push:
     branches: [main]
     paths: ['contenuti/**', 'build-articoli.mjs', 'assets/**']
