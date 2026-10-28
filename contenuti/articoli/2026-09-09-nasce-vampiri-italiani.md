@@ -1,7 +1,7 @@
 ---
 titolo: "Nasce Vampiri Italiani"
 data: 2026-09-09
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Associazione"]
 tag: ["aglio DOP"]
 copertina: nasce-vampiri-italiani-hero.jpg
 alt_copertina: "Luca Scainelli, fondatore di Vampiri Italiani, seduto su un trono nero con trecce d'aglio e un bastone sormontato da bulbi d'aglio"

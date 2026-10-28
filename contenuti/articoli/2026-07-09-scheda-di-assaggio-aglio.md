@@ -1,7 +1,7 @@
 ---
 titolo: "L’aglio merita una scheda di assaggio. Come il vino."
 data: 2026-07-09
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Metodo"]
 tag: ["analisi sensoriale", "degustazione aglio"]
 copertina: scheda-di-assaggio-aglio.jpg
 alt_copertina: "Testa d'aglio e spicchi su legno antico accanto a una scheda di assaggio dell'aglio, con penna, bilancino, acqua e cracker"

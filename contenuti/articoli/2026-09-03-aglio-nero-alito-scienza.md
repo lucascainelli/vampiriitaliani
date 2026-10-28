@@ -1,7 +1,7 @@
 ---
 titolo: "L’aglio che non fa l’aglio"
 data: 2026-09-03
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Scienza"]
 tag: ["aglio nero"]
 copertina: aglio-nero-spicchio-tagliato-maillard.png
 alt_copertina: "Spicchio di aglio nero tagliato a metà, texture lucida e gelatinosa, con testa d'aglio bianco sullo sfondo"

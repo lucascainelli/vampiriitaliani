@@ -1,7 +1,7 @@
 ---
 titolo: "Tre agli in uno"
 data: 2026-08-18
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Metodo"]
 tag: ["aglio nero", "allicina", "degustazione aglio"]
 copertina: tre-agli-in-uno.png
 alt_copertina: "Aglio fresco tritato, aglio arrosto e aglio nero a confronto su tagliere in legno"

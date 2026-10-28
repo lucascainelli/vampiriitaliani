@@ -1,7 +1,7 @@
 ---
 titolo: "Venti titoli in due settimane"
 data: 2026-09-27
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Associazione"]
 copertina: venti-titoli-due-settimane-e1790493625955.png
 alt_copertina: "Risultati di ricerca Google con articoli di Gambero Rosso, Dissapore e Italia a Tavola su Vampiri Italiani"
 didascalia_copertina: "Gambero Rosso, Dissapore, Italia a Tavola — solo una parte dei venti titoli usciti in due settimane su Vampiri Italiani"

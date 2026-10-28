@@ -1,7 +1,7 @@
 ---
 titolo: "L’unico ortaggio che nessuno chiama per nome"
 data: 2026-09-01
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Varietà e territori"]
 copertina: aglio-rosso-copertina.jpg
 alt_copertina: "Due sacchetti di carta con bulbi d'aglio in una cassetta di legno su un banco di frutta e verdura"
 edg_url: https://www.errantedelgusto.it/post/aglio-rosso-ortaggio-che-nessuno-chiama-per-nome/

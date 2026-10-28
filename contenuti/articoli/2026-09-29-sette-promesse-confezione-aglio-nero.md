@@ -1,7 +1,7 @@
 ---
 titolo: "Sette promesse in una confezione da cinquanta grammi"
 data: 2026-09-29
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Etichette e mercato"]
 tag: ["aglio nero", "aglio rosso di sulmona"]
 copertina: sette-promesse-confezione-aglio-nero-scaled.jpg
 alt_copertina: "Confezione di aglio nero Nerodisulmona con l'elenco dei claim salutistici dichiarati dal produttore"

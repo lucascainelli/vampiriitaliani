@@ -1,7 +1,7 @@
 ---
 titolo: "Sta per nascere qualcosa"
 data: 2026-08-28
-categorie: ["Cronache dell'Aglio"]
+categorie: ["Associazione"]
 tag: ["assaggio alla cieca"]
 copertina: sta-per-nascere-qualcosa.jpg
 alt_copertina: "Barattolo di vetro con chicchi di caffè tostati interi su piano di ardesia nera"
