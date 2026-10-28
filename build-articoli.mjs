@@ -106,6 +106,8 @@ function leggiArticoli() {
     if (data.esempio && !conEsempi) continue;
     if (!data.titolo || !data.data) { console.warn(`! ${f}: mancano titolo o data, saltato`); continue; }
     const d = new Date(data.data);
+    // programmato: con data futura l'articolo esce solo quando arriva il giorno (la rigenerazione giornaliera lo pubblica)
+    if (!conEsempi && d > new Date()) { console.log(`· ${f}: programmato per ${data.data}, non ancora pubblicato`); continue; }
     const slug = data.slug ? slugify(data.slug) : slugify(path.parse(f).name.replace(/^\d{4}-\d{2}-\d{2}-?/, ''));
     const conVideo = content.replace(/^\{\{\s*video:\s*(\S+?)\s*\}\}\s*$/gm, (_, u) => `\n${videoHTML(u, data.titolo)}\n`);
     const html = marked.parse(conVideo).replace(/<p>(<figure>[\s\S]*?<\/figure>)<\/p>/g, '$1');

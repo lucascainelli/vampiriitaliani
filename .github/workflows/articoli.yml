@@ -3,6 +3,10 @@ on:
   push:
     branches: [main]
     paths: ['contenuti/**', 'build-articoli.mjs', 'assets/**']
+  schedule:
+    # ogni giorno alle 05:00 UTC (06:00 in Italia d'inverno, 07:00 d'estate): pubblica gli articoli programmati con data di oggi
+    - cron: '0 5 * * *'
+  workflow_dispatch:
 permissions:
   contents: write
   pages: write
