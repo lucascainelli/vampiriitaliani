@@ -4,8 +4,8 @@
   if (!el || typeof L === 'undefined') return;
   var en = document.documentElement.lang === 'en';
   var t = en
-    ? { vuota: 'The map is just starting: the first producers are coming.', assaggiato: 'Tasted by Vampiri Italiani' }
-    : { vuota: 'La mappa è appena partita: i primi produttori stanno arrivando.', assaggiato: 'Assaggiato da Vampiri Italiani' };
+    ? { vuota: 'The map is just starting: the first producers are coming.', privato: 'Private grower', assaggiato: 'Tasted by Vampiri Italiani' }
+    : { vuota: 'La mappa è appena partita: i primi produttori stanno arrivando.', privato: 'Coltivatore privato', assaggiato: 'Assaggiato da Vampiri Italiani' };
 
   var mappa = L.map(el, { scrollWheelZoom: false }).setView([42.0, 12.5], 6);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,7 +38,7 @@
       }
       var gruppo = [];
       punti.forEach(function (p) {
-        var html = '<strong>' + esc(p.nome) + '</strong><br>' +
+        var html = '<strong>' + (p.privato ? t.privato : esc(p.nome)) + '</strong><br>' +
           (p.ecotipo ? esc(p.ecotipo) + '<br>' : '') +
           esc(p.comune) + (p.provincia ? ' (' + esc(p.provincia) + ')' : '') +
           (p.assaggiato ? '<br><em>' + t.assaggiato + '</em>' : '');

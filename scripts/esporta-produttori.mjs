@@ -24,7 +24,9 @@ const punti = righe
   .map((r) => r.fields)
   .filter((f) => Number.isFinite(f.Latitudine) && Number.isFinite(f.Longitudine))
   .map((f) => ({
-    nome: f.Nome || '',
+    // I privati non compaiono col nome: sulla mappa solo varietà e comune.
+    privato: f.Tipo === 'Privato',
+    nome: f.Tipo === 'Privato' ? '' : (f.Nome || ''),
     ecotipo: f.Ecotipo || '',
     comune: f.Comune || '',
     provincia: f.Provincia || '',
@@ -33,7 +35,7 @@ const punti = righe
     assaggiato: !!f.Assaggiato,
     livello: f.Livello || 'Gratuito',
   }))
-  .sort((a, b) => a.nome.localeCompare(b.nome, 'it'));
+  .sort((a, b) => (a.comune + a.nome).localeCompare(b.comune + b.nome, 'it'));
 
 await writeFile('assets/produttori.json', JSON.stringify(punti, null, 1) + '\n');
 console.log(`Esportati ${punti.length} produttori (su ${righe.length} approvati).`);
