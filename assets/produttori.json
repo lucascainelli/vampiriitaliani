@@ -1,1 +1,22 @@
-[]
+[
+ {
+  "nome": "Consorzio Aglio di Voghiera DOP",
+  "ecotipo": "Aglio di Voghiera DOP",
+  "comune": "Voghiera",
+  "provincia": "FE",
+  "lat": 44.77,
+  "lng": 11.97,
+  "assaggiato": false,
+  "livello": "Gratuito"
+ },
+ {
+  "nome": "Consorzio Aglio Polesano DOP",
+  "ecotipo": "Aglio Bianco Polesano DOP",
+  "comune": "Rovigo",
+  "provincia": "RO",
+  "lat": 45.07,
+  "lng": 11.79,
+  "assaggiato": false,
+  "livello": "Gratuito"
+ }
+]
