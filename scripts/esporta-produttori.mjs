@@ -58,14 +58,31 @@ while (url) {
   url = j.offset ? `https://api.airtable.com/v0/${BASE}/${TABELLA}?filterByFormula=${filtro}&pageSize=100&offset=${j.offset}` : null;
 }
 
+// Scrive le coordinate trovate anche in Airtable (comodo da vedere). Non è obbligatorio:
+// se il token è di sola lettura la scrittura fallisce, si segnala e la mappa funziona lo stesso.
+let scritturaAirtableOk = true;
+async function scriviCoordinateInAirtable(idRecord, lat, lng) {
+  if (!scritturaAirtableOk) return;
+  const r = await fetch(`https://api.airtable.com/v0/${BASE}/${TABELLA}/${idRecord}`, {
+    method: 'PATCH',
+    headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ fields: { Latitudine: Math.round(lat * 1e6) / 1e6, Longitudine: Math.round(lng * 1e6) / 1e6 } }),
+  });
+  if (!r.ok) {
+    scritturaAirtableOk = false;
+    console.warn(`Coordinate non scritte in Airtable (${r.status}): al token serve il permesso data.records:write. La mappa funziona lo stesso.`);
+  }
+}
+
 const tondo = (n) => Math.round(n * 100) / 100;
 const punti = [];
-for (const { fields: f } of righe) {
+for (const { id, fields: f } of righe) {
   let lat = f.Latitudine, lng = f.Longitudine;
   if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
     const c = f.Comune ? await coordinateDelComune(f.Comune, f.Provincia) : null;
     if (!c) { console.warn(`ATTENZIONE: nessuna coordinata per "${f.Comune}" (${f.Provincia}): non compare sulla mappa.`); continue; }
     lat = c.lat; lng = c.lng;
+    await scriviCoordinateInAirtable(id, lat, lng);
   }
   punti.push({
     // I privati non compaiono col nome: sulla mappa solo varietà e comune.
