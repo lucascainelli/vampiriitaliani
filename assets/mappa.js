@@ -7,7 +7,7 @@
     ? { vuota: 'The map is just starting: the first producers are coming.', assaggiato: 'Tasted by Vampiri Italiani' }
     : { vuota: 'La mappa è appena partita: i primi produttori stanno arrivando.', assaggiato: 'Assaggiato da Vampiri Italiani' };
 
-  var mappa = L.map(el, { scrollWheelZoom: false }).setView([42.5, 12.5], 5);
+  var mappa = L.map(el, { scrollWheelZoom: false }).setView([42.0, 12.5], 6);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 12,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
