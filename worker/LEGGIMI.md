@@ -10,7 +10,9 @@ Il token Airtable resta qui, nel Worker, e non arriva mai al browser.
 2. **Cloudflare** → Workers & Pages → Create → Create Worker → nome `vampiri-iscrizione` → Deploy.
 3. **Edit code**: cancella tutto, incolla il contenuto di `worker/iscrizione.js` → Deploy.
 4. **Settings → Variables and Secrets** → Add → tipo **Secret**, nome `AIRTABLE_TOKEN`, valore: il token del punto 1.
-5. **Settings → Domains & Routes** → Add → Route: `vampiriitaliani.it/api/iscrizione`, zona `vampiriitaliani.it`.
+5. Il Worker risponde all'indirizzo `https://vampiri-iscrizione.luca-scainelli.workers.dev`, già scritto in `iscriviti-mappa.html`
+   (costante `URL_INVIO`). Se un giorno `vampiriitaliani.it` passa da Cloudflare, si può usare invece la route
+   `vampiriitaliani.it/api/iscrizione` e mettere `/api/iscrizione` in `URL_INVIO`.
 6. Prova: compila il modulo sul sito. La riga compare in Airtable con Stato "In attesa".
 
 ## Anti-spam
