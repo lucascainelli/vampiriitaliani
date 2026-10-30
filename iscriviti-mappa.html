@@ -72,6 +72,8 @@ form.iscrizione{border:1px solid rgba(201,162,75,.35);border-top:3px solid var(-
 .iscrizione button{font-family:'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;font-size:.9rem;padding:16px 34px;background:var(--sangue);color:var(--testo);border:1px solid var(--sangue-vivo);cursor:pointer}
 .iscrizione button:hover:not(:disabled){background:var(--sangue-vivo)}
 .iscrizione button:disabled{opacity:.55;cursor:wait}
+.iscrizione .obbligatori{color:var(--testo-soft);font-size:1rem;margin:0 0 22px;font-style:italic}
+.iscrizione .ast{color:var(--sangue-vivo);font-weight:600;font-style:normal}
 .iscrizione .trappola{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .grazie{display:none;border:1px solid rgba(201,162,75,.5);border-top:3px solid var(--oro);padding:34px 26px;margin:26px 0;text-align:center;background:linear-gradient(180deg,var(--nero2),var(--nero))}
 .grazie h2{font-family:'Cinzel Decorative',serif;color:var(--oro-chiaro);font-size:1.7rem;letter-spacing:.04em;text-transform:none;margin:0 0 12px}
@@ -102,9 +104,10 @@ form.iscrizione{border:1px solid rgba(201,162,75,.35);border-top:3px solid var(-
 
     <form class="iscrizione" id="form-iscrizione" novalidate>
       <div class="esito-errore" id="esito-errore" role="alert"></div>
+      <p class="obbligatori">Tutti i campi sono obbligatori <span class="ast" aria-hidden="true">*</span></p>
 
       <fieldset class="riga">
-        <legend>Sei un'azienda o un privato?</legend>
+        <legend>Sei un'azienda o un privato? <span class="ast" aria-hidden="true">*</span></legend>
         <div class="scelte">
           <label><input type="radio" name="tipo" value="Azienda" required> Azienda</label>
           <label><input type="radio" name="tipo" value="Privato"> Privato</label>
@@ -113,40 +116,40 @@ form.iscrizione{border:1px solid rgba(201,162,75,.35);border-top:3px solid var(-
       </fieldset>
 
       <div class="riga">
-        <label for="f-nome">Nome e cognome (o nome dell'azienda)</label>
+        <label for="f-nome">Nome e cognome (o nome dell'azienda) <span class="ast" aria-hidden="true">*</span></label>
         <input type="text" id="f-nome" name="nome" maxlength="120" autocomplete="name" required>
         <span class="aiuto">Se sei un privato, il tuo nome non comparirà sulla mappa.</span>
         <div class="errore" data-per="nome"></div>
       </div>
 
       <div class="riga">
-        <label for="f-ecotipo">Varietà o ecotipo di aglio</label>
+        <label for="f-ecotipo">Varietà o ecotipo di aglio <span class="ast" aria-hidden="true">*</span></label>
         <input type="text" id="f-ecotipo" name="ecotipo" maxlength="120" required>
         <div class="errore" data-per="ecotipo"></div>
       </div>
 
       <div class="riga doppia">
         <div>
-          <label for="f-comune">Comune</label>
+          <label for="f-comune">Comune <span class="ast" aria-hidden="true">*</span></label>
           <input type="text" id="f-comune" name="comune" maxlength="80" autocomplete="address-level2" required>
           <div class="errore" data-per="comune"></div>
         </div>
         <div>
-          <label for="f-provincia">Provincia</label>
+          <label for="f-provincia">Provincia <span class="ast" aria-hidden="true">*</span></label>
           <input type="text" id="f-provincia" name="provincia" maxlength="2" placeholder="BG" autocomplete="off" style="text-transform:uppercase" required>
           <div class="errore" data-per="provincia"></div>
         </div>
       </div>
 
       <div class="riga">
-        <label for="f-email">Email</label>
+        <label for="f-email">Email <span class="ast" aria-hidden="true">*</span></label>
         <input type="email" id="f-email" name="email" maxlength="160" autocomplete="email" required>
         <span class="aiuto">Mail e telefono restano riservati: servono solo a contattarti.</span>
         <div class="errore" data-per="email"></div>
       </div>
 
       <div class="riga">
-        <label for="f-telefono">Telefono</label>
+        <label for="f-telefono">Telefono <span class="ast" aria-hidden="true">*</span></label>
         <input type="tel" id="f-telefono" name="telefono" maxlength="30" autocomplete="tel" required>
         <div class="errore" data-per="telefono"></div>
       </div>
@@ -158,7 +161,7 @@ form.iscrizione{border:1px solid rgba(201,162,75,.35);border-top:3px solid var(-
 
       <div class="consenso">
         <input type="checkbox" id="f-consenso" name="consenso" required>
-        <label for="f-consenso">Acconsento alla pubblicazione sulla mappa di Vampiri Italiani della varietà e del comune e, se sono un'azienda, del nome. Mail e telefono restano riservati.</label>
+        <label for="f-consenso">Acconsento alla pubblicazione sulla mappa di Vampiri Italiani della varietà e del comune e, se sono un'azienda, del nome. Mail e telefono restano riservati. <span class="ast" aria-hidden="true">*</span></label>
       </div>
       <div class="errore" data-per="consenso" style="margin:-14px 0 18px"></div>
 
