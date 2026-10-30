@@ -1,0 +1,9 @@
+# Per chi vuole pubblicare il Worker da terminale (facoltativo: si può anche incollare il codice
+# nella dashboard di Cloudflare). Comando: npx wrangler deploy
+name = "vampiri-iscrizione"
+main = "iscrizione.js"
+compatibility_date = "2026-10-01"
+
+[[routes]]
+pattern = "vampiriitaliani.it/api/iscrizione"
+zone_name = "vampiriitaliani.it"
