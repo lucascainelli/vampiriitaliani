@@ -23,7 +23,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"
-          git add assets/produttori.json
+          git add assets/produttori.json assets/coordinate-comuni.json
           if ! git diff --cached --quiet; then
             git commit -m "Aggiorna mappa produttori" && git push
             echo "cambiato=1" >> "$GITHUB_OUTPUT"
