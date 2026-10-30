@@ -52,8 +52,29 @@ h1{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(2.2rem,
 .box{max-width:720px;margin:0 auto;padding:10px 0 40px}
 .box h2{font-family:'Cinzel',serif;color:var(--oro);letter-spacing:.1em;text-transform:uppercase;font-size:1rem;margin:34px 0 10px}
 .box p{margin-bottom:12px}
-.form{border:1px solid rgba(201,162,75,.35);border-top:3px solid var(--sangue-vivo);background:#fff;margin:26px 0}
-.form iframe{display:block;width:100%;height:640px;border:0;background:transparent}
+form.iscrizione{border:1px solid rgba(201,162,75,.35);border-top:3px solid var(--sangue-vivo);background:linear-gradient(180deg,var(--nero2),var(--nero));padding:30px 26px 26px;margin:26px 0}
+.iscrizione .riga{margin-bottom:20px}
+.iscrizione .doppia{display:grid;gap:20px}
+@media(min-width:640px){.iscrizione .doppia{grid-template-columns:1fr 110px}}
+.iscrizione label,.iscrizione legend{display:block;font-family:'Cinzel',serif;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;color:var(--oro);margin-bottom:6px}
+.iscrizione .aiuto{display:block;font-size:.95rem;color:var(--testo-soft);margin-top:4px}
+.iscrizione input[type=text],.iscrizione input[type=email],.iscrizione input[type=tel]{width:100%;background:var(--nero);color:var(--testo);border:1px solid rgba(201,162,75,.45);padding:12px 14px;font:inherit;font-size:1.1rem;border-radius:2px}
+.iscrizione input:focus{outline:2px solid var(--oro);outline-offset:1px}
+.iscrizione fieldset{border:0;padding:0;margin:0 0 20px}
+.iscrizione .scelte{display:flex;gap:12px;flex-wrap:wrap}
+.iscrizione .scelte label{display:flex;align-items:center;gap:10px;margin:0;padding:12px 18px;border:1px solid rgba(201,162,75,.45);cursor:pointer;font-family:'EB Garamond',serif;letter-spacing:0;text-transform:none;font-size:1.1rem;color:var(--testo)}
+.iscrizione .scelte input{accent-color:var(--sangue-vivo)}
+.iscrizione .consenso{display:flex;gap:12px;align-items:flex-start;margin:6px 0 22px}
+.iscrizione .consenso input{margin-top:6px;accent-color:var(--sangue-vivo);width:18px;height:18px;flex:none}
+.iscrizione .consenso label{margin:0;text-transform:none;letter-spacing:0;font-family:'EB Garamond',serif;font-size:1.05rem;color:var(--testo)}
+.iscrizione .errore{color:#ff8a8a;font-size:1rem;margin-top:5px;min-height:0}
+.iscrizione .esito-errore{border:1px solid #b3161e;background:rgba(138,18,24,.25);padding:12px 14px;margin-bottom:18px;display:none}
+.iscrizione button{font-family:'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;font-size:.9rem;padding:16px 34px;background:var(--sangue);color:var(--testo);border:1px solid var(--sangue-vivo);cursor:pointer}
+.iscrizione button:hover:not(:disabled){background:var(--sangue-vivo)}
+.iscrizione button:disabled{opacity:.55;cursor:wait}
+.iscrizione .trappola{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.grazie{display:none;border:1px solid rgba(201,162,75,.5);border-top:3px solid var(--oro);padding:34px 26px;margin:26px 0;text-align:center;background:linear-gradient(180deg,var(--nero2),var(--nero))}
+.grazie h2{font-family:'Cinzel Decorative',serif;color:var(--oro-chiaro);font-size:1.7rem;letter-spacing:.04em;text-transform:none;margin:0 0 12px}
 .nota{color:var(--testo-soft);font-size:1.02rem}
 </style>
 </head>
@@ -79,8 +100,77 @@ h1{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(2.2rem,
   <div class="box">
     <p>Aziende, agricoltori e appassionati che coltivano aglio anche solo per sé. Servono poche righe: nome, varietà, comune e provincia. È gratis. Sulla mappa compare solo il comune, mai l'indirizzo. Ogni iscrizione viene controllata prima di essere pubblicata.</p>
 
-    <div class="form">
-      <iframe class="airtable-embed" src="https://airtable.com/embed/appVraSQpDVbq7AJu/pagU1hytXnOdvYsDy/form" loading="lazy" title="Iscrizione alla mappa dei produttori"></iframe>
+    <form class="iscrizione" id="form-iscrizione" novalidate>
+      <div class="esito-errore" id="esito-errore" role="alert"></div>
+
+      <fieldset class="riga">
+        <legend>Sei un'azienda o un privato?</legend>
+        <div class="scelte">
+          <label><input type="radio" name="tipo" value="Azienda" required> Azienda</label>
+          <label><input type="radio" name="tipo" value="Privato"> Privato</label>
+        </div>
+        <div class="errore" data-per="tipo"></div>
+      </fieldset>
+
+      <div class="riga">
+        <label for="f-nome">Nome e cognome (o nome dell'azienda)</label>
+        <input type="text" id="f-nome" name="nome" maxlength="120" autocomplete="name" required>
+        <span class="aiuto">Se sei un privato, il tuo nome non comparirà sulla mappa.</span>
+        <div class="errore" data-per="nome"></div>
+      </div>
+
+      <div class="riga">
+        <label for="f-ecotipo">Varietà o ecotipo di aglio</label>
+        <input type="text" id="f-ecotipo" name="ecotipo" maxlength="120" required>
+        <div class="errore" data-per="ecotipo"></div>
+      </div>
+
+      <div class="riga doppia">
+        <div>
+          <label for="f-comune">Comune</label>
+          <input type="text" id="f-comune" name="comune" maxlength="80" autocomplete="address-level2" required>
+          <div class="errore" data-per="comune"></div>
+        </div>
+        <div>
+          <label for="f-provincia">Provincia</label>
+          <input type="text" id="f-provincia" name="provincia" maxlength="2" placeholder="BG" autocomplete="off" style="text-transform:uppercase" required>
+          <div class="errore" data-per="provincia"></div>
+        </div>
+      </div>
+
+      <div class="riga">
+        <label for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" maxlength="160" autocomplete="email" required>
+        <span class="aiuto">Mail e telefono restano riservati: servono solo a contattarti.</span>
+        <div class="errore" data-per="email"></div>
+      </div>
+
+      <div class="riga">
+        <label for="f-telefono">Telefono</label>
+        <input type="tel" id="f-telefono" name="telefono" maxlength="30" autocomplete="tel" required>
+        <div class="errore" data-per="telefono"></div>
+      </div>
+
+      <div class="trappola" aria-hidden="true">
+        <label for="f-sito">Non compilare questo campo</label>
+        <input type="text" id="f-sito" name="sito" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="consenso">
+        <input type="checkbox" id="f-consenso" name="consenso" required>
+        <label for="f-consenso">Acconsento alla pubblicazione sulla mappa di Vampiri Italiani della varietà e del comune e, se sono un'azienda, del nome. Mail e telefono restano riservati.</label>
+      </div>
+      <div class="errore" data-per="consenso" style="margin:-14px 0 18px"></div>
+
+      <div id="turnstile-box"></div>
+      <button type="submit" id="invia">Invia l'iscrizione</button>
+    </form>
+
+    <div class="grazie" id="grazie" role="status" tabindex="-1">
+      <h2>Grazie!</h2>
+      <p>Abbiamo ricevuto la tua iscrizione. La controlliamo e, se è tutto a posto, la tua varietà compare sulla mappa entro un giorno o due.</p>
+      <p class="nota">Per qualsiasi domanda scrivi a <a href="mailto:info@vampiriitaliani.it">info@vampiriitaliani.it</a>.</p>
+      <p style="margin-top:18px"><a href="index.html#produttori">← Torna alla mappa</a></p>
     </div>
 
     <h2>Cosa pubblichiamo</h2>
@@ -99,5 +189,94 @@ h1{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(2.2rem,
   </div>
 </footer>
 
+<script>
+(function () {
+  var URL_INVIO = '/api/iscrizione';
+  var TURNSTILE_SITEKEY = ''; // se attivi Turnstile in Cloudflare, incolla qui la "site key" (pubblica)
+  var form = document.getElementById('form-iscrizione');
+  if (!form) return;
+  var avvio = Date.now();
+  var btn = document.getElementById('invia');
+  var esito = document.getElementById('esito-errore');
+  var grazie = document.getElementById('grazie');
+  var turnstileToken = '';
+
+  if (TURNSTILE_SITEKEY) {
+    window.__ts = function (t) { turnstileToken = t; };
+    var sc = document.createElement('script');
+    sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'; sc.async = true; sc.defer = true;
+    document.head.appendChild(sc);
+    var box = document.getElementById('turnstile-box');
+    box.className = 'cf-turnstile'; box.setAttribute('data-sitekey', TURNSTILE_SITEKEY);
+    box.setAttribute('data-callback', '__ts'); box.style.marginBottom = '18px';
+  }
+
+  function errore(campo, msg) {
+    var el = form.querySelector('.errore[data-per="' + campo + '"]');
+    if (el) el.textContent = msg || '';
+  }
+  function pulisciErrori() {
+    form.querySelectorAll('.errore').forEach(function (e) { e.textContent = ''; });
+    esito.style.display = 'none'; esito.textContent = '';
+  }
+  function valore(n) { var e = form.elements[n]; return e ? String(e.value || '').trim() : ''; }
+
+  function controllo() {
+    var e = {};
+    var tipo = form.querySelector('input[name="tipo"]:checked');
+    if (!tipo) e.tipo = 'Scegli azienda o privato.';
+    if (valore('nome').length < 2) e.nome = 'Scrivi il nome.';
+    if (valore('ecotipo').length < 2) e.ecotipo = 'Scrivi la varietà o l\'ecotipo.';
+    if (valore('comune').length < 2) e.comune = 'Scrivi il comune.';
+    if (!/^[A-Za-z]{2}$/.test(valore('provincia'))) e.provincia = 'Due lettere, per esempio BG.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valore('email'))) e.email = 'Controlla l\'indirizzo email.';
+    if (!/^[+0-9][0-9 ()./-]{5,}$/.test(valore('telefono'))) e.telefono = 'Controlla il numero di telefono.';
+    if (!form.elements.consenso.checked) e.consenso = 'Serve il consenso per pubblicare.';
+    return e;
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    pulisciErrori();
+    var e = controllo();
+    var chiavi = Object.keys(e);
+    if (chiavi.length) {
+      chiavi.forEach(function (k) { errore(k, e[k]); });
+      var primo = form.querySelector('.errore[data-per="' + chiavi[0] + '"]');
+      if (primo && primo.scrollIntoView) primo.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return;
+    }
+    if (TURNSTILE_SITEKEY && !turnstileToken) { esito.textContent = 'Attendi il controllo anti-bot e riprova.'; esito.style.display = 'block'; return; }
+
+    var tipo = form.querySelector('input[name="tipo"]:checked').value;
+    var corpo = {
+      tipo: tipo, nome: valore('nome'), ecotipo: valore('ecotipo'), comune: valore('comune'),
+      provincia: valore('provincia').toUpperCase(), email: valore('email'), telefono: valore('telefono'),
+      consenso: true, sito: valore('sito'), secondi: Math.round((Date.now() - avvio) / 1000), turnstile: turnstileToken
+    };
+    btn.disabled = true; btn.textContent = 'Invio in corso…';
+
+    fetch(URL_INVIO, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { r: r, j: j }; }); })
+      .then(function (x) {
+        if (x.r.ok && x.j.ok) {
+          form.style.display = 'none'; grazie.style.display = 'block';
+          grazie.scrollIntoView({ block: 'center', behavior: 'smooth' }); grazie.focus();
+          return;
+        }
+        if (x.j.errori) { Object.keys(x.j.errori).forEach(function (k) { errore(k, x.j.errori[k]); }); }
+        esito.textContent = x.j.errore || 'Controlla i campi evidenziati e riprova.';
+        esito.style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Invia l\'iscrizione';
+        if (x.r.status === 429) avvio = Date.now() - 5000;
+      })
+      .catch(function () {
+        esito.textContent = 'Non riusciamo a inviare l\'iscrizione. Riprova tra poco o scrivi a info@vampiriitaliani.it.';
+        esito.style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Invia l\'iscrizione';
+      });
+  });
+})();
+</script>
 </body>
 </html>
