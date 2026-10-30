@@ -1,0 +1,35 @@
+name: Aggiorna mappa produttori
+on:
+  schedule:
+    # ogni ora
+    - cron: '7 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+jobs:
+  mappa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Esporta i produttori approvati
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+        run: node scripts/esporta-produttori.mjs
+      - name: Salva se è cambiato
+        id: salva
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/produttori.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Aggiorna mappa produttori" && git push
+            echo "cambiato=1" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Chiedi a GitHub Pages di ripubblicare
+        if: steps.salva.outputs.cambiato == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
