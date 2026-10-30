@@ -6,6 +6,11 @@
 //   AIRTABLE_BASE    (facoltativa)           default: appVraSQpDVbq7AJu
 //   AIRTABLE_TABELLA (facoltativa)           default: tblvxUaSI1SCCoTRd
 //   TURNSTILE_SECRET (secret, facoltativa)   se presente, richiede il controllo anti-bot di Cloudflare
+//   GITHUB_TOKEN     (secret, per l'aggiornamento automatico) token GitHub con permesso Actions: Read and write
+//                                            sul repository del sito. Serve al Cron Trigger (vedi sotto).
+//
+// Cron Trigger (Settings -> Trigger Events -> Cron): ogni 15 minuti il Worker chiede a GitHub di rifare la mappa,
+// così un produttore approvato in Airtable compare da solo.
 
 const BASE_DEFAULT = 'appVraSQpDVbq7AJu';
 const TABELLA_DEFAULT = 'tblvxUaSI1SCCoTRd';
@@ -54,7 +59,31 @@ async function controlloTurnstile(token, secret, ip) {
   return !!j.success;
 }
 
+const REPO = 'lucascainelli/vampiriitaliani';
+
+// Chiede a GitHub di avviare l'Action "Aggiorna mappa produttori" (legge Airtable e ripubblica la mappa).
+export async function aggiornaMappa(env) {
+  if (!env.GITHUB_TOKEN) { console.log('GITHUB_TOKEN mancante: aggiornamento non avviato'); return 0; }
+  const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/mappa.yml/dispatches`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Content-Type': 'application/json',
+      'User-Agent': 'vampiri-iscrizione-worker',
+    },
+    body: JSON.stringify({ ref: 'main' }),
+  });
+  if (!r.ok) console.log('GitHub', r.status, (await r.text()).slice(0, 300));
+  return r.status;
+}
+
 export default {
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(aggiornaMappa(env));
+  },
+
   async fetch(request, env) {
     const origine = request.headers.get('Origin') || '';
     if (request.method === 'OPTIONS') {

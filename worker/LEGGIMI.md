@@ -24,3 +24,12 @@ Il token Airtable resta qui, nel Worker, e non arriva mai al browser.
 ## Se cambia qualcosa
 
 Dopo ogni modifica a `iscrizione.js`, incolla di nuovo il codice nel Worker (Edit code → Deploy).
+
+## Aggiornamento automatico della mappa (Cron Trigger)
+
+Le Action programmate di GitHub sono inaffidabili, quindi la mappa la fa ripartire questo Worker ogni 15 minuti.
+
+1. GitHub → token fine-grained, repository `vampiriitaliani`, permesso **Actions: Read and write**.
+2. Worker → Settings → Variables and Secrets → Secret `GITHUB_TOKEN` = il token.
+3. Worker → Settings → Trigger Events → **Add Cron Trigger** → `*/15 * * * *`.
+4. Incolla il nuovo `iscrizione.js` (Edit code → Deploy).
