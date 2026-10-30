@@ -304,6 +304,31 @@
     color: var(--gold-light);
   }
 
+  /* Pulsante mappa produttori: oro pieno, si distingue dagli altri due */
+  .btn-mappa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    color: var(--black);
+    border: 1px solid var(--gold-light);
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0 22px rgba(201,168,76,0.28);
+    transition: all 0.3s ease;
+  }
+  .btn-mappa svg { width: 1.05em; height: 1.05em; flex: none; }
+  .btn-mappa:hover {
+    background: var(--gold-light);
+    box-shadow: 0 0 30px rgba(232,201,106,0.5);
+    transform: translateY(-1px);
+  }
+
   /* SCROLL INDICATOR */
   .scroll-indicator {
     position: absolute;
@@ -977,7 +1002,6 @@
     <li><a href="aderisci.html">Diventa Vampiro</a></li>
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#varieta">Varietà</a></li>
-    <li><a href="#produttori">Mappa</a></li>
     <li><a href="parole-aglio.html">Le Parole</a></li>
     <li><a href="articoli/">Articoli</a></li>
     <li><a href="custode.html">Covi</a></li>
@@ -1032,7 +1056,7 @@
     <div class="hero-cta">
       <a href="aderisci.html" class="btn-primary"><span>Diventa Vampiro</span></a>
       <a href="#manifesto" class="btn-secondary">Scopri il progetto</a>
-      <a href="iscriviti-mappa.html" class="btn-secondary">Iscriviti alla mappa</a>
+      <a href="iscriviti-mappa.html" class="btn-mappa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Iscriviti alla mappa</a>
     </div>
   </div>
 
@@ -1206,7 +1230,7 @@
       <div id="mappa-produttori" style="width: 100%; height: 480px; background: var(--dark);"></div>
     </div>
     <p id="mappa-vuota" style="text-align: center; color: var(--gold); font-style: italic; margin-top: 1rem;"></p>
-    <div style="text-align: center; margin-top: 1.6rem;"><p style="color: var(--parchment); margin-bottom: 1rem;">Coltivi aglio? Entra nella mappa: è gratis.</p><a href="iscriviti-mappa.html" class="btn-primary" style="display: inline-block;"><span>Iscriviti alla mappa</span></a></div>
+    <div style="text-align: center; margin-top: 1.6rem;"><p style="color: var(--parchment); margin-bottom: 1rem;">Coltivi aglio? Entra nella mappa: è gratis.</p><a href="iscriviti-mappa.html" class="btn-mappa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Iscriviti alla mappa</a></div>
   </div>
 </section>
 
