@@ -1,21 +1,34 @@
 [
  {
-  "nome": "Consorzio Aglio di Voghiera DOP",
-  "ecotipo": "Aglio di Voghiera DOP",
-  "comune": "Voghiera",
-  "provincia": "FE",
-  "lat": 44.77,
-  "lng": 11.97,
+  "privato": false,
+  "nome": "Osvaldo Maffone",
+  "ecotipo": "Aglio di Vessalico e Aglio Nero di Vessalico",
+  "comune": "Pieve di Teco",
+  "provincia": "IM",
+  "lat": 44.05,
+  "lng": 7.91,
   "assaggiato": false,
   "livello": "Gratuito"
  },
  {
+  "privato": false,
   "nome": "Consorzio Aglio Polesano DOP",
   "ecotipo": "Aglio Bianco Polesano DOP",
   "comune": "Rovigo",
   "provincia": "RO",
   "lat": 45.07,
   "lng": 11.79,
+  "assaggiato": false,
+  "livello": "Gratuito"
+ },
+ {
+  "privato": false,
+  "nome": "Consorzio Aglio di Voghiera DOP",
+  "ecotipo": "Aglio di Voghiera DOP",
+  "comune": "Voghiera",
+  "provincia": "FE",
+  "lat": 44.77,
+  "lng": 11.97,
   "assaggiato": false,
   "livello": "Gratuito"
  }
