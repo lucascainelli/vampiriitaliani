@@ -7,7 +7,7 @@
   "provincia": "IM",
   "lat": 44.05,
   "lng": 7.91,
-  "assaggiato": false,
+  "assaggiato": true,
   "livello": "Gratuito"
  },
  {
@@ -18,7 +18,7 @@
   "provincia": "RO",
   "lat": 45.07,
   "lng": 11.79,
-  "assaggiato": false,
+  "assaggiato": true,
   "livello": "Gratuito"
  },
  {
@@ -40,7 +40,7 @@
   "provincia": "FE",
   "lat": 44.77,
   "lng": 11.97,
-  "assaggiato": false,
+  "assaggiato": true,
   "livello": "Gratuito"
  }
 ]
