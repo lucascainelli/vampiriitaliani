@@ -23,6 +23,17 @@
  },
  {
   "privato": false,
+  "nome": "Azienda agricola Cacciatore Deborah",
+  "ecotipo": "Aglione della valdichiana",
+  "comune": "Torrita di siena",
+  "provincia": "SI",
+  "lat": 43.17,
+  "lng": 11.77,
+  "assaggiato": false,
+  "livello": "Gratuito"
+ },
+ {
+  "privato": false,
   "nome": "Consorzio Aglio di Voghiera DOP",
   "ecotipo": "Aglio di Voghiera DOP",
   "comune": "Voghiera",
