@@ -7,7 +7,7 @@
   "provincia": "AQ",
   "lat": 42.04,
   "lng": 13.45,
-  "assaggiato": false,
+  "assaggiato": true,
   "livello": "Gratuito"
  },
  {
@@ -40,7 +40,7 @@
   "provincia": "SI",
   "lat": 43.17,
   "lng": 11.77,
-  "assaggiato": false,
+  "assaggiato": true,
   "livello": "Gratuito"
  },
  {
