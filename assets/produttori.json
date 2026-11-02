@@ -1,6 +1,17 @@
 [
  {
   "privato": false,
+  "nome": "Agricoltori Custodi Abruzzesi",
+  "ecotipo": "Aglio nero di Sulmona",
+  "comune": "Avezzano",
+  "provincia": "AQ",
+  "lat": 42.04,
+  "lng": 13.45,
+  "assaggiato": false,
+  "livello": "Gratuito"
+ },
+ {
+  "privato": false,
   "nome": "Osvaldo Maffone",
   "ecotipo": "Aglio di Vessalico e Aglio Nero di Vessalico",
   "comune": "Pieve di Teco",
