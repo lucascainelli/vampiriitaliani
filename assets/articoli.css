@@ -126,3 +126,13 @@
 .condividi { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: 2.2rem auto 0; max-width: 34rem; padding-top: 1.8rem; border-top: 1px solid rgba(201,168,76,.25); }
 .condividi span { grid-column: 1 / -1; text-align: center; margin: 0 0 .3rem; }
 .condividi .chip { text-align: center; letter-spacing: .12em; padding: .6rem .3rem; font-family: 'Cinzel', serif; }
+
+/* lettura da telefono: testo grande, come nella newsletter */
+@media (max-width: 780px) {
+  .testo { font-size: 1.55rem; line-height: 1.7; font-weight: 500; }
+  .sommario { font-size: 1.5rem; }
+  .testo blockquote { font-size: 1.5rem; }
+  .testo h2 { font-size: 1.6rem; }
+  .testo h3 { font-size: 1.3rem; }
+  .testo figcaption, .copertina figcaption { font-size: 1.05rem; }
+}
