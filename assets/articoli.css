@@ -31,21 +31,21 @@
 
 /* singolo articolo */
 .articolo { max-width: 700px; margin: 0 auto; position: relative; }
-.briciole { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(245,240,232,.45); margin-bottom: 2rem; text-align: center; }
+.briciole { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(245,240,232,.45); margin-bottom: 2rem; text-align: center; }
 .briciole a { color: var(--gold); text-decoration: none; }
 .briciole a:hover { color: var(--gold-light); }
 .articolo h1 {
   font-family: 'Cinzel Decorative', serif; font-weight: 700; color: var(--parchment);
   font-size: clamp(1.7rem, 4vw, 2.7rem); line-height: 1.2; text-align: center; margin-bottom: 1.2rem;
 }
-.articolo-meta { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; align-items: center; margin-bottom: 2.4rem; font-family: 'Cinzel', serif; font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,240,232,.55); }
+.articolo-meta { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; align-items: center; margin-bottom: 2.4rem; font-family: 'Cinzel', serif; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,240,232,.55); }
 .articolo-meta .sep { color: var(--gold); opacity: .6; }
 .copertina { margin: 0 -2rem 2.6rem; }
 .copertina img { width: 100%; height: auto; display: block; border: 1px solid rgba(201,168,76,.25); }
-.copertina figcaption, .testo figcaption { font-style: italic; font-size: .88rem; color: rgba(245,240,232,.5); text-align: center; margin-top: .7rem; }
-.sommario { font-size: 1.3rem; line-height: 1.6; font-style: italic; color: rgba(245,240,232,.8); text-align: center; margin-bottom: 2.4rem; padding-bottom: 2.4rem; border-bottom: 1px solid rgba(201,168,76,.25); }
+.copertina figcaption, .testo figcaption { font-style: italic; font-size: 1rem; color: rgba(245,240,232,.5); text-align: center; margin-top: .7rem; }
+.sommario { font-size: 1.38rem; line-height: 1.6; font-style: italic; color: rgba(245,240,232,.8); text-align: center; margin-bottom: 2.4rem; padding-bottom: 2.4rem; border-bottom: 1px solid rgba(201,168,76,.25); }
 
-.testo { font-size: 1.22rem; line-height: 1.85; color: rgba(245,240,232,.92); }
+.testo { font-size: 1.32rem; line-height: 1.8; color: rgba(245,240,232,.92); }
 .testo > * + * { margin-top: 1.4rem; }
 .testo h2 { font-family: 'Cinzel', serif; font-size: 1.35rem; color: var(--gold-light); margin-top: 3rem; letter-spacing: .03em; line-height: 1.3; }
 .testo h3 { font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--parchment); margin-top: 2.2rem; letter-spacing: .05em; }
@@ -66,7 +66,7 @@
 .testo th { font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
 
 .articolo-tag { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin: 3rem 0 0; }
-.articolo-tag .chip { font-size: .58rem; padding: .35rem .8rem; opacity: .85; }
+.articolo-tag .chip { font-size: .72rem; padding: .35rem .8rem; opacity: .85; }
 
 .invito { margin: 4rem 0 0; padding: 2.4rem 2rem; text-align: center; border: 1px solid var(--gold); background: rgba(139,0,0,.12); box-shadow: 0 0 40px rgba(201,168,76,.1); }
 .invito p { font-style: italic; font-size: 1.15rem; margin-bottom: 1.4rem; color: var(--parchment); }
@@ -78,7 +78,7 @@
 @media (max-width: 780px) {
   .pagina { padding: 6.5rem 1.2rem 4rem; }
   .copertina, .testo figure { margin-left: -1.2rem; margin-right: -1.2rem; }
-  .testo { font-size: 1.15rem; }
+  .testo { font-size: 1.32rem; }
 }
 
 .nav-links a { white-space: nowrap; }
@@ -115,7 +115,7 @@
 
 /* condivisione */
 .condividi { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; align-items: center; margin: 2rem 0 0; }
-.condividi span { font-family: 'Cinzel', serif; font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,240,232,.55); margin-right: .4rem; }
-.condividi .chip { font-size: .58rem; padding: .35rem .8rem; cursor: pointer; }
+.condividi span { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,240,232,.55); margin-right: .4rem; }
+.condividi .chip { font-size: .72rem; padding: .35rem .8rem; cursor: pointer; }
 .condividi button.chip { background: transparent; }
 .condividi button.chip:hover { background: var(--gold); color: var(--black); }
