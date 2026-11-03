@@ -178,7 +178,10 @@ function pagina({ titolo, descrizione, url, corpo, og = `${SITO}/og-vampiri.jpg`
 <meta property="og:description" content="${esc(descrizione)}">
 <meta property="og:url" content="${SITO}${url}">
 <meta property="og:image" content="${og}">
-<meta name="twitter:card" content="summary_large_image">
+${String(og).endsWith('-og.jpg') ? `<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+` : ''}<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="${og}">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/base.css">
