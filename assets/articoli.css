@@ -119,3 +119,10 @@
 .condividi .chip { font-size: .72rem; padding: .35rem .8rem; cursor: pointer; }
 .condividi button.chip { background: transparent; }
 .condividi button.chip:hover { background: var(--gold); color: var(--black); }
+
+/* tag e condivisione in ordine */
+.articolo-tag { gap: .5rem; margin: 2.6rem 0 0; }
+.articolo-tag .chip { letter-spacing: .14em; padding: .45rem .8rem; }
+.condividi { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: 2.2rem auto 0; max-width: 34rem; padding-top: 1.8rem; border-top: 1px solid rgba(201,168,76,.25); }
+.condividi span { grid-column: 1 / -1; text-align: center; margin: 0 0 .3rem; }
+.condividi .chip { text-align: center; letter-spacing: .12em; padding: .6rem .3rem; font-family: 'Cinzel', serif; }
