@@ -11,6 +11,17 @@
   "livello": "Gratuito"
  },
  {
+  "privato": true,
+  "nome": "",
+  "ecotipo": "Aglio di Vessalico",
+  "comune": "Ortovero",
+  "provincia": "SV",
+  "lat": 44.05,
+  "lng": 8.1,
+  "assaggiato": false,
+  "livello": "Gratuito"
+ },
+ {
   "privato": false,
   "nome": "Osvaldo Maffone",
   "ecotipo": "Aglio di Vessalico e Aglio Nero di Vessalico",
