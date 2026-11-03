@@ -5,6 +5,13 @@
   <description>Articoli dei Vampiri Italiani, prima associazione italiana di assaggiatori di aglio.</description>
   <language>it</language>
   <item>
+    <title>Dalla prateria al muro</title>
+    <link>https://vampiriitaliani.it/articoli/dalla-prateria-al-muro/</link>
+    <guid isPermaLink="true">https://vampiriitaliani.it/articoli/dalla-prateria-al-muro/</guid>
+    <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Una cosa che non esiste non si vede, perché mancano le parole per riconoscerla. Si parte da una prateria. Poi arriva il primo mattone.</description>
+  </item>
+  <item>
     <title>L’aglio non si racconta in una giornata</title>
     <link>https://vampiriitaliani.it/articoli/raccontare-aglio-non-basta-una-giornata/</link>
     <guid isPermaLink="true">https://vampiriitaliani.it/articoli/raccontare-aglio-non-basta-una-giornata/</guid>
@@ -136,12 +143,5 @@
     <guid isPermaLink="true">https://vampiriitaliani.it/articoli/aglio-di-vessalico-fiera-2-luglio/</guid>
     <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
     <description>Ho preso l’abitudine, di recente, di guardare l’aglio come un fenomeno da misurare e non da temere. Ne ho cronometrato la persistenza con la stessa serietà che riservo ai grandi vini, ho…</description>
-  </item>
-  <item>
-    <title>A San Giovanni, l’aglio cambia mestiere</title>
-    <link>https://vampiriitaliani.it/articoli/aglio-san-giovanni-fira-di-ai-streghe/</link>
-    <guid isPermaLink="true">https://vampiriitaliani.it/articoli/aglio-san-giovanni-fira-di-ai-streghe/</guid>
-    <pubDate>Sun, 21 Jun 2026 00:00:00 GMT</pubDate>
-    <description>C’è una notte, ogni anno, in cui l’aglio smette di essere l’imputato e diventa il testimone della difesa. Cade intorno al solstizio, e a San Giovanni in Persiceto le hanno persino dato un…</description>
   </item>
 </channel></rss>
