@@ -223,6 +223,15 @@ function elenco({ titolo, sottotitolo, eyebrow, articoli, categorie, attiva, url
   return pagina({ titolo: `${titolo} — ${NOME}`, descrizione, url, corpo });
 }
 
+function boxShare(a) {
+  const url = encodeURIComponent(SITO + a.url), t = encodeURIComponent(a.titolo);
+  return `<div class="condividi"><span>Condividi</span>
+<a class="chip" href="https://www.facebook.com/sharer/sharer.php?u=${url}" target="_blank" rel="noopener">Facebook</a>
+<a class="chip" href="https://wa.me/?text=${t}%20${url}" target="_blank" rel="noopener">WhatsApp</a>
+<button type="button" class="chip" onclick="navigator.clipboard.writeText(location.href).then(()=>{this.textContent='Copiato!'})">Copia link</button>
+</div>`;
+}
+
 function paginaArticolo(a, tutti) {
   const altri = tutti.filter((x) => x.slug !== a.slug).slice(0, 3);
   const og = a.copertina && immagini.get(path.basename(a.copertina))
@@ -246,6 +255,7 @@ function paginaArticolo(a, tutti) {
   <div class="testo">${a.html}</div>
   </div>
   ${a.categorie.length + a.tag.length ? `<div class="articolo-tag">${a.categorie.map(chipCat).join('')}${a.tag.map((t) => `<a class="chip" href="/articoli/tag/${t.slug}/">#${esc(t.nome)}</a>`).join('')}</div>` : ''}
+  ${boxShare(a)}
   <div class="invito"><p>L'aglio si capisce assaggiandolo, e meglio in compagnia.</p><a class="btn-primary" href="/aderisci.html"><span>Diventa Vampiro</span></a></div>
 </article>
 ${altri.length ? `<section class="altri"><h2>Altri articoli</h2><div class="griglia">${altri.map(cardHTML).join('')}</div></section>` : ''}

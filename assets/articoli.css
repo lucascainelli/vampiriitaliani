@@ -112,3 +112,10 @@
 
 /* foto verticali: non più alte dello schermo */
 .testo img.ver, .copertina img.ver { width: auto; max-width: 100%; max-height: 75vh; margin: 0 auto; }
+
+/* condivisione */
+.condividi { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; align-items: center; margin: 2rem 0 0; }
+.condividi span { font-family: 'Cinzel', serif; font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,240,232,.55); margin-right: .4rem; }
+.condividi .chip { font-size: .58rem; padding: .35rem .8rem; cursor: pointer; }
+.condividi button.chip { background: transparent; }
+.condividi button.chip:hover { background: var(--gold); color: var(--black); }
