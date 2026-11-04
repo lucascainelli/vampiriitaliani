@@ -37,13 +37,23 @@
         return;
       }
       var gruppo = [];
+      var perPosto = {};
       punti.forEach(function (p) {
-        var html = '<strong>' + (p.privato ? t.privato : esc(p.nome)) + '</strong><br>' +
-          (p.ecotipo ? esc(p.ecotipo) + '<br>' : '') +
-          esc(p.comune) + (p.provincia ? ' (' + esc(p.provincia) + ')' : '') +
-          (p.assaggiato ? '<br><em>' + t.assaggiato + '</em>' : '');
-        L.marker([p.lat, p.lng], { icon: icona(p.assaggiato) }).bindPopup(html).addTo(mappa);
-        gruppo.push([p.lat, p.lng]);
+        var k = p.lat + ',' + p.lng;
+        (perPosto[k] = perPosto[k] || []).push(p);
+      });
+      Object.keys(perPosto).forEach(function (k) {
+        var lista = perPosto[k];
+        var html = lista.map(function (p) {
+          return '<div style="margin-bottom:6px"><strong>' + (p.privato ? t.privato : esc(p.nome)) + '</strong><br>' +
+            (p.ecotipo ? esc(p.ecotipo) + '<br>' : '') +
+            esc(p.comune) + (p.provincia ? ' (' + esc(p.provincia) + ')' : '') +
+            (p.assaggiato ? '<br><em>' + t.assaggiato + '</em>' : '') + '</div>';
+        }).join('');
+        var assaggiato = lista.some(function (p) { return p.assaggiato; });
+        var lat = lista[0].lat, lng = lista[0].lng;
+        L.marker([lat, lng], { icon: icona(assaggiato) }).bindPopup(html).addTo(mappa);
+        gruppo.push([lat, lng]);
       });
       if (gruppo.length > 1) mappa.fitBounds(gruppo, { padding: [30, 30], maxZoom: 9 });
       else mappa.setView(gruppo[0], 9);
