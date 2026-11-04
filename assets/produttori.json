@@ -45,6 +45,17 @@
  },
  {
   "privato": false,
+  "nome": "Massimo Tovo",
+  "ecotipo": "Avorio, Aglio Bianco Polesano DOP",
+  "comune": "Rovigo",
+  "provincia": "RO",
+  "lat": 45.07,
+  "lng": 11.79,
+  "assaggiato": true,
+  "livello": "Gratuito"
+ },
+ {
+  "privato": false,
   "nome": "Azienda agricola Cacciatore Deborah",
   "ecotipo": "Aglione della valdichiana",
   "comune": "Torrita di siena",
