@@ -46,10 +46,9 @@
         var lista = perPosto[k];
         var html = lista.map(function (p) {
           return '<div style="margin-bottom:6px"><strong>' + (p.privato ? t.privato : esc(p.nome)) + '</strong><br>' +
-            (p.ecotipo ? esc(p.ecotipo) + '<br>' : '') +
-            esc(p.comune) + (p.provincia ? ' (' + esc(p.provincia) + ')' : '') +
+            (p.ecotipo ? esc(p.ecotipo) : '') +
             (p.assaggiato ? '<br><em>' + t.assaggiato + '</em>' : '') + '</div>';
-        }).join('');
+        }).join('') + '<div>' + esc(lista[0].comune) + (lista[0].provincia ? ' (' + esc(lista[0].provincia) + ')' : '') + '</div>';
         var assaggiato = lista.some(function (p) { return p.assaggiato; });
         var lat = lista[0].lat, lng = lista[0].lng;
         L.marker([lat, lng], { icon: icona(assaggiato) }).bindPopup(html).addTo(mappa);
