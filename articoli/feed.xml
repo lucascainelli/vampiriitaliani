@@ -5,6 +5,13 @@
   <description>Articoli dei Vampiri Italiani, prima associazione italiana di assaggiatori di aglio.</description>
   <language>it</language>
   <item>
+    <title>La Prima Notte di Vampiri Italiani</title>
+    <link>https://vampiriitaliani.it/articoli/la-prima-notte-di-vampiri-italiani/</link>
+    <guid isPermaLink="true">https://vampiriitaliani.it/articoli/la-prima-notte-di-vampiri-italiani/</guid>
+    <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Sabato 31 ottobre, notte di Halloween, Vampiri Italiani ha aperto al pubblico il Covo di Songavazzo. Tre assaggi, una chiusura e una pasta che nessuno aveva annunciato.</description>
+  </item>
+  <item>
     <title>Dalla prateria al muro</title>
     <link>https://vampiriitaliani.it/articoli/dalla-prateria-al-muro/</link>
     <guid isPermaLink="true">https://vampiriitaliani.it/articoli/dalla-prateria-al-muro/</guid>
@@ -136,12 +143,5 @@
     <guid isPermaLink="true">https://vampiriitaliani.it/articoli/scheda-di-assaggio-aglio/</guid>
     <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
     <description>Lo strumento vero di un assaggiatore non è il palato. È la scheda. Il palato lo hanno in tanti, e quasi tutti se lo raccontano meglio di quanto sia. La scheda no: la scheda è spietata. È…</description>
-  </item>
-  <item>
-    <title>Perché una valle intera festeggia l’aglio il 2 luglio</title>
-    <link>https://vampiriitaliani.it/articoli/aglio-di-vessalico-fiera-2-luglio/</link>
-    <guid isPermaLink="true">https://vampiriitaliani.it/articoli/aglio-di-vessalico-fiera-2-luglio/</guid>
-    <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
-    <description>Ho preso l’abitudine, di recente, di guardare l’aglio come un fenomeno da misurare e non da temere. Ne ho cronometrato la persistenza con la stessa serietà che riservo ai grandi vini, ho…</description>
   </item>
 </channel></rss>

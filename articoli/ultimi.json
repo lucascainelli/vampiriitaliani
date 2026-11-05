@@ -1,5 +1,13 @@
 [
  {
+  "titolo": "La Prima Notte di Vampiri Italiani",
+  "url": "/articoli/la-prima-notte-di-vampiri-italiani/",
+  "data": "2026-11-05",
+  "dataIT": "5 novembre 2026",
+  "estratto": "Sabato 31 ottobre, notte di Halloween, Vampiri Italiani ha aperto al pubblico il Covo di Songavazzo. Tre assaggi, una chiusura e una pasta che nessuno aveva annunciato.",
+  "immagine": "/articoli/img/la-prima-notte-libro-ospiti-800.webp"
+ },
+ {
   "titolo": "Dalla prateria al muro",
   "url": "/articoli/dalla-prateria-al-muro/",
   "data": "2026-11-03",
@@ -14,13 +22,5 @@
   "dataIT": "27 ottobre 2026",
   "estratto": "C’è un modo sicuro per far restare l’aglio dov’è sempre stato: nel sottosuolo della gastronomia italiana. Organizzare un evento, chiamare uno chef, allestire un cooking show davanti a una…",
   "immagine": "/articoli/img/aglio-non-si-racconta-in-una-giornata-800.webp"
- },
- {
-  "titolo": "La prima Marinara Vampiri Italiani nasce a Napoli",
-  "url": "/articoli/marinara-vampiri-italiani-napoli/",
-  "data": "2026-10-20",
-  "dataIT": "20 ottobre 2026",
-  "estratto": "La prima Marinara Vampiri Italiani è uscita dal forno a legna di Sergio, in una pizzeria nel centro di Napoli. Via dei Tribunali, Donna Sofia. Pomodoro, pomodorini San Marzano e gialli del…",
-  "immagine": "/articoli/img/2026-10-20-cronache-marinara-vampiri-italiani-02-pizza-dall-alto-lav-800.webp"
  }
 ]
