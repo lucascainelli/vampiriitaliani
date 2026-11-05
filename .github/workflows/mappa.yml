@@ -1,8 +1,9 @@
 name: Aggiorna mappa produttori
 on:
   schedule:
-    # ogni ora
-    - cron: '7 * * * *'
+    # una volta al giorno (il piano Airtable ha un limite mensile di chiamate API);
+    # dopo ogni approvazione: Actions > Aggiorna mappa produttori > Run workflow
+    - cron: '7 5 * * *'
   workflow_dispatch:
 permissions:
   contents: write
