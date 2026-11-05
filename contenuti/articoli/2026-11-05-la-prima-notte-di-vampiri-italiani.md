@@ -7,7 +7,6 @@ sommario: "Sabato 31 ottobre, notte di Halloween, Vampiri Italiani ha aperto al 
 copertina: la-prima-notte-libro-ospiti.jpg
 alt_copertina: "Pagina del libro degli ospiti, 31 ottobre: «I Vampiri italiani non temono l'argento, ma tremano davanti ad una buona treccia d'aglio fresco»"
 didascalia_copertina: "Dal libro degli ospiti, 31 ottobre"
-bozza: true
 ---
 Sabato 31 ottobre, notte di Halloween, Vampiri Italiani ha aperto al pubblico il Covo di Songavazzo. La serata è andata oltre ogni previsione. Dalle ragazze di vent'anni a chi, come me, ha qualche autunno in più, tutti hanno scoperto un ingrediente fin qui relegato a comprimario. E se lo sono goduto come i bambini con le caramelle.
 
