@@ -195,6 +195,9 @@ form.iscrizione{border:1px solid rgba(201,162,75,.35);border-top:3px solid var(-
 <script>
 (function () {
   var URL_INVIO = 'https://vampiri-iscrizione.luca-scainelli.workers.dev';
+  // MODULO TEMPORANEO: finché Airtable è bloccato (limite API del piano Free, fino al 1° dicembre 2026)
+  // il modulo prepara una mail a info@. Dal 1° dicembre mettere false per tornare all'invio automatico.
+  var MODULO_TEMPORANEO = true;
   var TURNSTILE_SITEKEY = ''; // se attivi Turnstile in Cloudflare, incolla qui la "site key" (pubblica)
   var form = document.getElementById('form-iscrizione');
   if (!form) return;
@@ -257,6 +260,20 @@ form.iscrizione{border:1px solid rgba(201,162,75,.35);border-top:3px solid var(-
       provincia: valore('provincia').toUpperCase(), email: valore('email'), telefono: valore('telefono'),
       consenso: true, sito: valore('sito'), secondi: Math.round((Date.now() - avvio) / 1000), turnstile: turnstileToken
     };
+    if (MODULO_TEMPORANEO) {
+      var righe = [
+        'Iscrizione alla mappa dei produttori di Vampiri Italiani', '',
+        'Tipo: ' + corpo.tipo, 'Nome: ' + corpo.nome, 'Varietà / ecotipo: ' + corpo.ecotipo,
+        'Comune: ' + corpo.comune, 'Provincia: ' + corpo.provincia,
+        'Email: ' + corpo.email, 'Telefono: ' + corpo.telefono, '',
+        'Acconsento alla pubblicazione sulla mappa della varietà e del comune e, se sono un\'azienda, del nome. Mail e telefono restano riservati.'
+      ];
+      window.location.href = 'mailto:info@vampiriitaliani.it?subject=' + encodeURIComponent('Iscrizione mappa produttori: ' + corpo.comune) +
+        '&body=' + encodeURIComponent(righe.join('\n'));
+      esito.textContent = 'Si è aperta la tua posta con l\'iscrizione già scritta: premi Invia. Se non si è aperta, scrivi a info@vampiriitaliani.it con questi dati.';
+      esito.style.display = 'block';
+      return;
+    }
     btn.disabled = true; btn.textContent = 'Invio in corso…';
 
     fetch(URL_INVIO, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) })
