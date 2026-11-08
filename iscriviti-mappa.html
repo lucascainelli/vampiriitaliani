@@ -197,7 +197,7 @@ form.iscrizione{border:1px solid rgba(201,162,75,.35);border-top:3px solid var(-
   var URL_INVIO = 'https://vampiri-iscrizione.luca-scainelli.workers.dev';
   // MODULO TEMPORANEO: finché Airtable è bloccato (limite API del piano Free, fino al 1° dicembre 2026)
   // il modulo prepara una mail a info@. Dal 1° dicembre mettere false per tornare all'invio automatico.
-  var MODULO_TEMPORANEO = true;
+  var MODULO_TEMPORANEO = false;
   var TURNSTILE_SITEKEY = ''; // se attivi Turnstile in Cloudflare, incolla qui la "site key" (pubblica)
   var form = document.getElementById('form-iscrizione');
   if (!form) return;
