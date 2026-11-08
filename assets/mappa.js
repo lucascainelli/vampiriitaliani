@@ -28,7 +28,7 @@
     });
   }
 
-  fetch('/assets/produttori.json', { cache: 'no-cache' })
+  fetch('https://vampiri-iscrizione.luca-scainelli.workers.dev/produttori.json', { cache: 'no-cache' })
     .then(function (r) { return r.json(); })
     .then(function (punti) {
       if (!punti.length) {
