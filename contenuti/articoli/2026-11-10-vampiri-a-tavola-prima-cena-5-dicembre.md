@@ -28,7 +28,7 @@ In cucina Alessandro Lochi, che interpreta il menu. Ci sarò anch'io, nei panni 
 
 - **Quando:** sabato 5 dicembre 2026, ore 20:00.
 - **Dove:** Ristorante La Mondina, Via Moschinone 18, Marudo (LO).
-- **Quanto:** 45 euro a persona, più 15 euro all'Associazione Vampiri Italiani. Compresi coperto, mezza acqua, una bottiglia di vino ogni quattro persone e caffè.
+- **Quanto:** 45 euro a persona, più 15 euro all'Associazione Vampiri Italiani, che non pagano i soci. Compresi coperto, mezza acqua, una bottiglia di vino ogni quattro persone e caffè.
 - **Prenotazioni:** WhatsApp al 375 635 3304.
 
 Il bonifico dei 15 euro, il QR e tutti i dettagli sono [sul sito](https://vampiriitaliani.it/#vampiri-a-tavola).
