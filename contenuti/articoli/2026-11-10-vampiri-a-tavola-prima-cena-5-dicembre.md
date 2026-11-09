@@ -4,6 +4,8 @@ data: 2026-11-10
 categorie: ["In tavola"]
 tag: ["vampiri a tavola", "cena", "la mondina", "marudo", "vampiri italiani"]
 sommario: "Sabato 5 dicembre, a Marudo, la prima serata di Vampiri a Tavola: quattro portate, quattro agli, il cuoco Alessandro Lochi e il Gran Vampiro."
+copertina: vampiri-a-tavola-copertina.jpg
+alt_copertina: "Testa d'aglio su fondo bordeaux e oro con il titolo Vampiri a Tavola, 5 dicembre 2026, Marudo"
 ---
 Sabato 5 dicembre, alle 20, Vampiri Italiani si siede a tavola. Il Ristorante La Mondina di Marudo, in provincia di Lodi, ospita la prima serata di Vampiri a Tavola: una cena in quattro atti.
 
