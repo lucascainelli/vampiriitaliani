@@ -1322,6 +1322,19 @@
 <!-- VAMPIRI A TAVOLA -->
 <style>
   .tavola-section { background: var(--near-black); padding: 6rem 2rem; position: relative; }
+  .tavola-aglio { display:block; height:74px; width:auto; margin:0 auto 1.4rem; filter: drop-shadow(0 0 18px rgba(201,168,76,0.25)); }
+  .tavola-intro { max-width: 640px; margin: 2rem auto 0; text-align: center; font-family: 'EB Garamond', serif; font-size: 1.25rem; line-height: 1.75; color: var(--parchment); }
+  .tavola-intro em { color: var(--gold-light); }
+  .tavola-atti { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 3rem auto 3.2rem; max-width: 1000px; }
+  .tavola-atto { position: relative; border: 1px solid rgba(201,168,76,0.35); background: linear-gradient(180deg, rgba(139,0,0,0.22), rgba(0,0,0,0.35)); padding: 1.8rem 1.2rem 1.5rem; text-align: center; }
+  .tavola-atto::before { content: ''; position: absolute; top: 0; left: 18%; right: 18%; height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+  .tavola-atto .num { display:block; font-family: 'Cinzel Decorative', 'Cinzel', serif; font-size: 2.6rem; line-height: 1; color: var(--gold); }
+  .tavola-atto .corso { display:block; margin-top: 0.7rem; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-light); }
+  .tavola-atto .frase { margin: 1rem 0 0.9rem; font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.3rem; line-height: 1.25; color: var(--parchment); }
+  .tavola-atto .origine { display:inline-block; padding: 0.25rem 0.7rem; border: 1px solid rgba(201,168,76,0.45); font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+  .tavola-atto .piatto { margin-top: 1rem; font-family: 'EB Garamond', serif; font-size: 1rem; line-height: 1.5; color: rgba(245,240,232,0.72); }
+  @media (max-width: 900px) { .tavola-atti { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .tavola-atti { grid-template-columns: 1fr; } }
   .masterclass-card.tavola-card::before { content: 'Il Primo Appuntamento'; }
   .tavola-section::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
@@ -1329,12 +1342,41 @@
   }
 </style>
 <section class="masterclass-section tavola-section" id="vampiri-a-tavola">
-  <div class="masterclass-inner">
+  <div class="masterclass-inner" style="max-width:1000px;">
+    <img class="tavola-aglio reveal" src="assets/aglio-logo.png" alt="" loading="lazy">
     <p class="section-eyebrow reveal">5 Dicembre 2026</p>
     <h2 class="section-title reveal">Vampiri a Tavola</h2>
     <p class="section-subtitle reveal">Una cena in quattro atti, con chi l'aglio lo coltiva</p>
+    <p class="tavola-intro reveal">Sabato 5 dicembre il sipario si alza a Marudo. Quattro portate, quattro agli, dall'Emilia all'Abruzzo, dal Veneto fino al nero: <em>un solo ingrediente che si presenta, si scioglie, prende carattere e alla fine smette di pungere.</em></p>
 
-    <div class="masterclass-card tavola-card reveal">
+    <div class="tavola-atti">
+      <div class="tavola-atto reveal">
+        <span class="num">I</span><span class="corso">Antipasto</span>
+        <p class="frase">L'aglio si presenta</p>
+        <span class="origine">Voghiera DOP · Emilia-Romagna</span>
+        <p class="piatto">Tagliere di salumi del territorio con giardiniera di aglio</p>
+      </div>
+      <div class="tavola-atto reveal">
+        <span class="num">II</span><span class="corso">Primo</span>
+        <p class="frase">L'aglio si scioglie</p>
+        <span class="origine">Sulmona · Abruzzo</span>
+        <p class="piatto">Risotto all'aglio, olio e peperoncino</p>
+      </div>
+      <div class="tavola-atto reveal">
+        <span class="num">III</span><span class="corso">Secondo</span>
+        <p class="frase">L'aglio prende carattere</p>
+        <span class="origine">Polesano DOP · Veneto</span>
+        <p class="piatto">Crostone di pane di Altamura, tartare di manzo, concassé di pomodoro e uovo cotto a bassa temperatura</p>
+      </div>
+      <div class="tavola-atto reveal">
+        <span class="num">IV</span><span class="corso">Dolce</span>
+        <p class="frase">L'aglio non punge più</p>
+        <span class="origine">Aglio nero</span>
+        <p class="piatto">Bavarese all'aglio nero con agrigelato alla vaniglia</p>
+      </div>
+    </div>
+
+    <div class="masterclass-card tavola-card reveal" style="max-width:760px;margin-left:auto;margin-right:auto;">
       <div class="masterclass-top">
         <div class="masterclass-date"><span class="d">5</span><span class="m">Dic</span></div>
         <div class="masterclass-headline">
@@ -1351,18 +1393,6 @@
         <div class="masterclass-row">
           <span class="masterclass-label">Dove</span>
           <span class="masterclass-value">Ristorante La Mondina, Via Moschinone 18, Marudo (LO)</span>
-        </div>
-        <div class="masterclass-row">
-          <span class="masterclass-label">Cosa</span>
-          <span class="masterclass-value">
-            Una cena in quattro atti:
-            <ul class="notte-menu">
-              <li><strong>Antipasto</strong> — tagliere di salumi del territorio con giardiniera di aglio di Voghiera DOP</li>
-              <li><strong>Primo</strong> — risotto all'aglio di Sulmona, olio e peperoncino</li>
-              <li><strong>Secondo</strong> — crostone di pane di Altamura con aglio Polesano DOP, tartare di manzo, concassé di pomodoro e uovo cotto a bassa temperatura</li>
-              <li><strong>Dolce</strong> — bavarese all'aglio nero con agrigelato alla vaniglia</li>
-            </ul>
-          </span>
         </div>
       </div>
 
