@@ -4,8 +4,9 @@ on:
     branches: [main]
     paths: ['contenuti/**', 'build-articoli.mjs', 'assets/**']
   schedule:
-    # ogni giorno alle 05:00 UTC (06:00 in Italia d'inverno, 07:00 d'estate): pubblica gli articoli programmati con data di oggi
-    - cron: '0 5 * * *'
+    # ogni 15 minuti dalle 04:07 alle 09:52 UTC: pubblica gli articoli programmati con data di oggi.
+    # GitHub ritarda i cron: più passaggi ravvicinati evitano di perdere la mattina (stessa logica di Errante del Gusto).
+    - cron: '7,22,37,52 4-9 * * *'
   workflow_dispatch:
 permissions:
   contents: write
