@@ -1,5 +1,13 @@
 [
  {
+  "titolo": "Vampiri a Tavola: la prima cena è il 5 dicembre",
+  "url": "/articoli/vampiri-a-tavola-prima-cena-5-dicembre/",
+  "data": "2026-11-10",
+  "dataIT": "10 novembre 2026",
+  "estratto": "Sabato 5 dicembre, a Marudo, la prima serata di Vampiri a Tavola: quattro portate, quattro agli, il cuoco Alessandro Lochi e il Gran Vampiro.",
+  "immagine": "/articoli/img/vampiri-a-tavola-copertina-800.webp"
+ },
+ {
   "titolo": "La Prima Notte di Vampiri Italiani",
   "url": "/articoli/la-prima-notte-di-vampiri-italiani/",
   "data": "2026-11-05",
@@ -14,13 +22,5 @@
   "dataIT": "3 novembre 2026",
   "estratto": "Una cosa che non esiste non si vede, perché mancano le parole per riconoscerla. Si parte da una prateria. Poi arriva il primo mattone.",
   "immagine": "/articoli/img/dalla-prateria-al-muro-800.webp"
- },
- {
-  "titolo": "L’aglio non si racconta in una giornata",
-  "url": "/articoli/raccontare-aglio-non-basta-una-giornata/",
-  "data": "2026-10-27",
-  "dataIT": "27 ottobre 2026",
-  "estratto": "C’è un modo sicuro per far restare l’aglio dov’è sempre stato: nel sottosuolo della gastronomia italiana. Organizzare un evento, chiamare uno chef, allestire un cooking show davanti a una…",
-  "immagine": "/articoli/img/aglio-non-si-racconta-in-una-giornata-800.webp"
  }
 ]
