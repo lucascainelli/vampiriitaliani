@@ -97,6 +97,13 @@ const marked = new Marked({
 });
 
 // ---------- lettura articoli ----------
+// Pubblicazione: sempre alle 06:00 ora italiana del giorno scritto nell'articolo (l'ora eventuale nel file si ignora).
+function uscitaAlle6(d) {
+  const t = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), 6);
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Rome', hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }).formatToParts(new Date(t)).map((x) => [x.type, +x.value]));
+  return new Date(t - (Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute) - t));
+}
+
 function leggiArticoli() {
   const file = fs.readdirSync(SRC).filter((f) => f.endsWith('.md'));
   const articoli = [];
@@ -107,7 +114,7 @@ function leggiArticoli() {
     if (!data.titolo || !data.data) { console.warn(`! ${f}: mancano titolo o data, saltato`); continue; }
     const d = new Date(data.data);
     // programmato: con data futura l'articolo esce solo quando arriva il giorno (la rigenerazione giornaliera lo pubblica)
-    if (!conEsempi && d > new Date()) { console.log(`· ${f}: programmato per ${data.data}, non ancora pubblicato`); continue; }
+    if (!conEsempi && uscitaAlle6(d) > new Date()) { console.log(`· ${f}: programmato per ${data.data}, non ancora pubblicato`); continue; }
     const slug = data.slug ? slugify(data.slug) : slugify(path.parse(f).name.replace(/^\d{4}-\d{2}-\d{2}-?/, ''));
     const conVideo = content.replace(/^\{\{\s*video:\s*(\S+?)\s*\}\}\s*$/gm, (_, u) => `\n${videoHTML(u, data.titolo)}\n`);
     const html = marked.parse(conVideo).replace(/<p>(<figure>[\s\S]*?<\/figure>)<\/p>/g, '$1');
