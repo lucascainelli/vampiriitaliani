@@ -7,9 +7,7 @@ sommario: "Il professore di Scienza dell'Alimentazione della Scuola Alberghiera 
 copertina: fabio-de-piazza-copertina.jpg
 alt_copertina: "Cartello bordeaux e oro: Benvenuto al Covo, Fabio De Piazza, Comitato Scientifico di Vampiri Italiani"
 ---
-Il Comitato Scientifico di Vampiri Italiani ha un nuovo membro: Fabio De Piazza, professore di Scienza dell'Alimentazione alla Scuola Alberghiera APF Valtellina, sede di Sondalo.
-
-Ha firmato la lettera di adesione il 10 novembre. Da oggi il suo nome è anche sul sito, nella pagina del Comitato.
+Fabio De Piazza ha firmato la lettera di adesione il 10 novembre ed entra nel Comitato Scientifico di Vampiri Italiani. Insegna Scienza dell'Alimentazione alla Scuola Alberghiera APF Valtellina, sede di Sondalo. Da oggi il suo nome è anche sul sito, nella pagina del Comitato.
 
 ## Perché lui
 
