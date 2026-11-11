@@ -13,9 +13,9 @@ Fabio De Piazza ha firmato la lettera di adesione il 10 novembre ed entra nel Co
 
 Chi insegna ogni giorno come si mangia, come si cucina e come si serve ha un punto di vista che a un'associazione di assaggiatori serve. Fabio porta quello della scuola e della formazione: il luogo dove il gusto si impara.
 
-## Cosa fa il Comitato
+## Il suo contributo
 
-Il Comitato è consultivo. È fatto di persone competenti che mettono a disposizione, da volontari, il loro parere su metodo, schede e panel. Non ha compensi né responsabilità, e chi ne fa parte può lasciarlo quando vuole. Non è un'iscrizione all'associazione: è un contributo di competenza.
+Fabio ci aiuterà a sviluppare Vampiri a Scuola, il programma di educazione sensoriale che vogliamo portare nelle scuole: «Il gusto si impara». Il resto lo scopriremo strada facendo.
 
 Benvenuto al Covo, Fabio.
 
