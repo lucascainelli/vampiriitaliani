@@ -1,6 +1,6 @@
 ---
 titolo: "Aglio KFC: cosa c'è davvero dietro le undici spezie"
-data: 2026-12-01
+data: 2026-12-08
 categorie: ["Etichette e mercato"]
 tag: ["aglio", "kfc", "etichette", "fast food", "ingredienti"]
 sommario: "L'aglio KFC è dichiarato quasi ovunque tranne che nella Ricetta Originale, dove undici erbe e spezie si riducono in etichetta a una parola sola."
