@@ -72,22 +72,22 @@ body{width:1200px;height:630px;overflow:hidden;background:#0a0a0a;color:#F5F0E8;
 .marchio-p .glow{background:radial-gradient(ellipse 55% 75% at 50% 45%,rgba(139,0,0,.5) 0%,transparent 70%)}
 .cornice{position:absolute;inset:22px;border:1px solid rgba(201,168,76,.55)}
 .cornice::after{content:'';position:absolute;inset:8px;border:1px solid rgba(201,168,76,.2)}
-.occhiello{font-family:'Cinzel',serif;font-size:28px;letter-spacing:.22em;text-transform:uppercase;color:#E8C96A}
-.firma{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:32px;letter-spacing:.04em}
+.occhiello{font-family:'Cinzel',serif;font-weight:600;font-size:40px;letter-spacing:.1em;line-height:1.15;text-transform:uppercase;color:#F2D77E}
+.firma{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:44px;letter-spacing:.04em}
 .firma span,.marchio h1 span{color:#C0392B}
 .vis{position:absolute;left:90px;top:80px;width:380px;height:470px;display:flex;align-items:center;justify-content:center}
 .vis svg{width:100%;height:100%}
 .vis img.logo{max-width:300px;filter:drop-shadow(0 0 40px rgba(192,57,43,.45))}
 .vis img.foto{width:100%;height:100%;object-fit:cover;border:2px solid #C9A84C;box-shadow:0 0 50px rgba(201,168,76,.15)}
-.testo{position:absolute;left:530px;right:80px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
-.testo h1{font-family:'Cinzel Decorative',serif;font-weight:900;line-height:1.05;margin:20px 0 24px;text-shadow:0 0 40px rgba(192,57,43,.35)}
+.testo{position:absolute;left:520px;right:60px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+.testo h1{font-family:'Cinzel Decorative',serif;font-weight:900;line-height:1.05;margin:14px 0 18px;text-shadow:0 0 40px rgba(192,57,43,.35)}
 .sotto{font-size:46px;line-height:1.2;color:#fff}.sotto em{color:#E8C96A}
-.filo{width:120px;height:2px;background:#C9A84C;margin:26px 0 22px}
+.filo{width:120px;height:2px;background:#C9A84C;margin:22px 0 18px}
 .marchio{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .marchio img{height:120px;margin-bottom:12px;filter:drop-shadow(0 0 30px rgba(192,57,43,.4))}
 .marchio h1{font-family:'Cinzel Decorative',serif;font-weight:900;font-size:84px;line-height:1.02;text-shadow:0 0 40px rgba(192,57,43,.35)}
 .marchio h1 span{display:block}
-.marchio .occhiello{font-size:38px;letter-spacing:.08em;line-height:1.2;max-width:1040px;text-transform:none;font-family:'EB Garamond',serif;color:#E8C96A}
+.marchio .occhiello{font-size:48px;font-weight:400;letter-spacing:.06em;line-height:1.2;max-width:1040px;text-transform:none;font-family:'EB Garamond',serif;color:#F2D77E}
 .marchio .filo{width:140px;margin:20px 0 18px}`;
 
 function html(p) {
@@ -96,7 +96,7 @@ function html(p) {
       <img src="${fileUrl('assets/aglio-logo.png')}"><h1>Vampiri<span>Italiani</span></h1><div class="filo"></div><div class="occhiello">${p.sotto}</div></div></body>`;
   }
   const n = p.titolo.length;
-  const size = n <= 10 ? 96 : n <= 18 ? 74 : n <= 26 ? 60 : n <= 36 ? 50 : 42;
+  const size = n <= 10 ? 92 : n <= 18 ? 70 : n <= 26 ? 58 : n <= 36 ? 48 : 40;
   const vis = p.foto ? `<img class="foto" src="${fileUrl(p.foto)}">` : p.logo ? `<img class="logo" src="${fileUrl('assets/aglio-logo.png')}">` : DISEGNI[p.disegno];
   return `<body><div class="glow"></div><div class="cornice"></div><div class="vis">${vis}</div>
     <div class="testo"><div class="occhiello">${p.occhiello}</div><h1 style="font-size:${size}px">${p.titolo}</h1>
