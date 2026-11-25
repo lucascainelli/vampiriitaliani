@@ -6,6 +6,7 @@
 // Sorgenti:  contenuti/articoli/*.md  e  contenuti/articoli/img/*
 // Risultato: articoli/ (elenco, articoli, categorie, tag, immagini), sitemap-articoli.xml,
 //            articoli/feed.xml, articoli/ultimi.json, redirect-edg.txt
+//            radio/index.html (dalle puntate in contenuti/radio.yml)
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -136,21 +137,22 @@ function leggiArticoli() {
 }
 
 // ---------- template ----------
-const NAV = `<nav>
+const NAV = (attivo = 'articoli') => `<nav>
   <a href="/" class="nav-brand">Vampiri <span>Italiani</span></a>
   <ul class="nav-links">
     <li><a href="/aderisci.html">Diventa Vampiro</a></li>
     <li><a href="/#manifesto">Manifesto</a></li>
     <li><a href="/#varieta">Varietà</a></li>
     <li><a href="/parole-aglio.html">Le Parole</a></li>
-    <li><a href="/articoli/" style="color:var(--gold)">Articoli</a></li>
+    <li><a href="/articoli/"${attivo === 'articoli' ? ' style="color:var(--gold)"' : ''}>Articoli</a></li>
+    <li><a href="/radio/"${attivo === 'radio' ? ' style="color:var(--gold)"' : ''}>In radio</a></li>
     <li><a href="/custode.html">Covi</a></li>
     <li><a href="/#masterclass">Masterclass</a></li>
     <li><a href="/#fiere">Fiere</a></li>
     <li><a href="/cofanetto.html">Cofanetto</a></li>
     <li><a href="/#fondatore">Chi siamo</a></li>
   </ul>
-  <div class="lang-switcher"><a href="/articoli/" class="active">IT</a><a href="/index_en.html">EN</a></div>
+  <div class="lang-switcher"><a href="/${attivo}/" class="active">IT</a><a href="/index_en.html">EN</a></div>
 </nav>`;
 
 const FOOTER = `<footer>
@@ -159,6 +161,7 @@ const FOOTER = `<footer>
   <div class="footer-links">
     <a href="/">vampiriitaliani.it</a>
     <a href="/articoli/">Articoli</a>
+    <a href="/radio/">In radio</a>
     <a href="https://www.errantedelgusto.it" target="_blank" rel="noopener">errantedelgusto.it</a>
     <a href="https://aglioteca.it" target="_blank" rel="noopener">Aglioteca, il negozio dell'aglio</a>
     <a href="/parole-aglio.html">Le Parole dell'Aglio</a>
@@ -166,7 +169,7 @@ const FOOTER = `<footer>
   <div class="footer-copy">L'aglio non morde. Noi sì.</div>
 </footer>`;
 
-function pagina({ titolo, descrizione, url, corpo, og = `${SITO}/og-vampiri.jpg`, tipo = 'website', extraHead = '' }) {
+function pagina({ titolo, descrizione, url, corpo, og = `${SITO}/og-vampiri.jpg`, tipo = 'website', extraHead = '', sezione = 'articoli' }) {
   return `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -196,7 +199,7 @@ ${String(og).endsWith('-og.jpg') ? `<meta property="og:image:type" content="imag
 ${extraHead}
 </head>
 <body>
-${NAV}
+${NAV(sezione)}
 ${corpo}
 ${FOOTER}
 </body>
@@ -276,6 +279,62 @@ ${altri.length ? `<section class="altri"><h2>Altri articoli</h2><div class="grig
   });
 }
 
+// ---------- radio ----------
+// Le puntate stanno in contenuti/radio.yml (vedi LEGGIMI-radio.md). Più recenti in alto;
+// quelle con data futura compaiono come «prossima puntata».
+const RADIO_SRC = 'contenuti/radio.yml';
+
+function leggiPuntate() {
+  if (!fs.existsSync(RADIO_SRC)) return [];
+  // il file è YAML puro: lo leggiamo con lo stesso motore di gray-matter
+  const { data } = matter(`---\n${fs.readFileSync(RADIO_SRC, 'utf8')}\n---\n`);
+  const puntate = [];
+  for (const [i, p] of (data.puntate || []).entries()) {
+    if (!p || p.bozza) continue;
+    if (!p.titolo || !p.data) { console.warn(`! radio.yml, puntata ${i + 1}: mancano titolo o data, saltata`); continue; }
+    const d = new Date(p.data);
+    if (isNaN(d)) { console.warn(`! radio.yml, puntata ${i + 1}: data non valida (${p.data}), saltata`); continue; }
+    puntate.push({
+      titolo: String(p.titolo), data: d, descrizione: p.descrizione ? String(p.descrizione).trim() : '',
+      link: p.link ? String(p.link).trim() : '',
+    });
+  }
+  return puntate.sort((a, b) => b.data - a.data);
+}
+
+function puntataHTML(p, futura) {
+  const ascolta = p.link
+    ? `<a class="btn-primary" href="${esc(p.link)}" target="_blank" rel="noopener"><span>${futura ? 'Vai alla pagina' : 'Ascolta la puntata'}</span></a>`
+    : '';
+  return `<article class="puntata${futura ? ' futura' : ''}">
+    <div class="puntata-data"><time datetime="${dataISO(p.data)}">${futura ? 'In onda il ' : ''}${dataIT(p.data)}</time></div>
+    <div class="puntata-corpo">
+      <h2 class="puntata-titolo">${esc(p.titolo)}</h2>
+      ${p.descrizione ? `<p class="puntata-testo">${esc(p.descrizione)}</p>` : ''}
+      ${ascolta}
+    </div>
+  </article>`;
+}
+
+function paginaRadio(puntate) {
+  const oggi = new Date(); oggi.setUTCHours(0, 0, 0, 0);
+  const future = puntate.filter((p) => p.data > oggi).reverse(); // la più vicina per prima
+  const passate = puntate.filter((p) => p.data <= oggi);
+  const corpo = `<main class="pagina"><div class="pagina-inner radio">
+  <div class="section-eyebrow">Segreti in Tavola</div>
+  <h1 class="section-title">In radio</h1>
+  <p class="section-subtitle">Luca Scainelli racconta l'aglio a <em>Segreti in Tavola</em>, con Francesca Romana Barberini, su <a href="https://www.dimensionesuonosoft.it/" target="_blank" rel="noopener">Radio Dimensione Suono Soft</a>. Qui tutte le puntate da riascoltare.</p>
+  ${future.length ? `<section class="puntate-gruppo"><h2 class="puntate-etichetta">Prossima puntata</h2>${future.map((p) => puntataHTML(p, true)).join('')}</section>` : ''}
+  ${passate.length
+    ? `<section class="puntate-gruppo">${future.length ? '<h2 class="puntate-etichetta">Da riascoltare</h2>' : ''}${passate.map((p) => puntataHTML(p, false)).join('')}</section>`
+    : '<p class="vuoto">Presto la prima puntata.</p>'}
+</div></main>`;
+  return pagina({
+    titolo: `In radio — ${NOME}`, url: '/radio/', corpo, sezione: 'radio',
+    descrizione: "Le puntate di Luca Scainelli e dei Vampiri Italiani a Segreti in Tavola su Radio Dimensione Suono Soft: l'aglio raccontato in radio.",
+  });
+}
+
 // ---------- feed, sitemap, json, redirect ----------
 function feedXML(articoli) {
   const voci = articoli.slice(0, 20).map((a) => `  <item>
@@ -296,12 +355,13 @@ ${voci}
 `;
 }
 
-function sitemapXML(articoli, categorie, tag) {
+function sitemapXML(articoli, categorie, tag, puntate = []) {
   const u = (loc, lastmod) => `  <url><loc>${SITO}${loc}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`;
   const righe = [u('/articoli/', articoli[0] && dataISO(articoli[0].data))]
     .concat(articoli.map((a) => u(a.url, dataISO(a.data))))
     .concat(categorie.map((c) => u(`/articoli/categoria/${c.slug}/`)))
-    .concat(tag.map((t) => u(`/articoli/tag/${t.slug}/`)));
+    .concat(tag.map((t) => u(`/articoli/tag/${t.slug}/`)))
+    .concat(puntate.length ? [u('/radio/', dataISO(puntate.find((p) => p.data <= new Date())?.data || puntate[puntate.length - 1].data))] : []);
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${righe.join('\n')}
@@ -349,7 +409,9 @@ async function main() {
   for (const a of articoli) scrivi(path.join(OUT_ART, a.slug, 'index.html'), paginaArticolo(a, articoli));
 
   scrivi(path.join(OUT_ART, 'feed.xml'), feedXML(articoli));
-  scrivi(path.join(out, 'sitemap-articoli.xml'), sitemapXML(articoli, categorie, tag));
+  const puntate = leggiPuntate();
+  scrivi(path.join(out, 'radio', 'index.html'), paginaRadio(puntate));
+  scrivi(path.join(out, 'sitemap-articoli.xml'), sitemapXML(articoli, categorie, tag, puntate));
   scrivi(path.join(OUT_ART, 'ultimi.json'), JSON.stringify(articoli.slice(0, 3).map((a) => ({
     titolo: a.titolo, url: a.url, data: dataISO(a.data), dataIT: dataIT(a.data), estratto: a.estratto,
     immagine: a.copertina && immagini.get(path.basename(a.copertina)) ? `/articoli/img/${immagini.get(path.basename(a.copertina)).base}-800.webp` : '',
@@ -359,6 +421,7 @@ async function main() {
   const htaccess = articoli.filter((a) => a.edgUrl).map((a) => `Redirect 301 ${new URL(a.edgUrl).pathname} ${SITO}${a.url}`);
   scrivi(path.join(out, 'redirect-edg.htaccess'), htaccess.join('\n') + (htaccess.length ? '\n' : ''));
 
+  console.log(`✓ ${puntate.length} puntate radio → radio/index.html`);
   console.log(`✓ ${articoli.length} articoli, ${categorie.length} categorie, ${tag.length} tag → ${path.resolve(out)}`);
   if (redirect.length) console.log(`✓ ${redirect.length} redirect per EDG in redirect-edg.txt`);
 }

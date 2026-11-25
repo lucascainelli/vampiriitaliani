@@ -26,3 +26,18 @@ content:
       - { name: edg_url, label: Vecchio indirizzo su Errante del Gusto, type: string }
       - { name: bozza, label: Bozza (non pubblicare), type: boolean }
       - { name: body, label: Testo, type: rich-text }
+  - name: radio
+    label: In radio
+    type: file
+    path: contenuti/radio.yml
+    fields:
+      - name: puntate
+        label: Puntate (la più recente in alto)
+        type: object
+        list: true
+        fields:
+          - { name: data, label: Data della messa in onda, type: date, required: true }
+          - { name: titolo, label: Titolo della puntata, type: string, required: true }
+          - { name: descrizione, label: Descrizione (due o tre righe), type: text }
+          - { name: link, label: Link alla pagina della puntata sul sito della radio, type: string }
+          - { name: bozza, label: Bozza (non pubblicare), type: boolean }

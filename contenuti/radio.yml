@@ -1,0 +1,8 @@
+# Puntate di "Segreti in Tavola" (Radio Dimensione Suono Soft) per la pagina /radio/.
+# Per aggiungerne una: copia un blocco "- data: ..." e incollalo SOTTO "puntate:", in cima alla lista.
+# Istruzioni complete in LEGGIMI-radio.md.
+puntate:
+  - data: 2026-11-22
+    titolo: "Vampiri Italiani: una passione per l'aglio!"
+    descrizione: "Luca Scainelli, giornalista enogastronomico e fondatore dei Vampiri Italiani, racconta la biodiversità dell'aglio italiano: varietà, territori e tradizioni. In chiusura l'invito a «Vampiri a tavola», il 5 dicembre alla Mondina di Marudo (Lodi) con lo chef Alessandro Locchi."
+    link: https://www.dimensionesuonosoft.it/news/vampiri-italiani-una-passione-per-laglio/

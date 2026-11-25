@@ -136,3 +136,21 @@
   .testo h3 { font-size: 1.3rem; }
   .testo figcaption, .copertina figcaption { font-size: 1.05rem; }
 }
+
+/* pagina In radio: elenco puntate */
+.radio { max-width: 820px; }
+.radio .section-subtitle a { color: var(--gold-light); text-underline-offset: 3px; }
+.puntate-gruppo + .puntate-gruppo { margin-top: 3.2rem; }
+.puntate-etichetta { font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .4em; text-transform: uppercase; color: var(--blood-bright); text-align: center; margin-bottom: 1.4rem; font-weight: 400; }
+.puntata { display: grid; grid-template-columns: 11rem 1fr; gap: 1.8rem; padding: 2rem 2.2rem; background: var(--near-black); border: 1px solid rgba(201,168,76,.2); }
+.puntata + .puntata { margin-top: 1.2rem; }
+.puntata.futura { border-color: var(--gold); background: rgba(139,0,0,.12); box-shadow: 0 0 40px rgba(201,168,76,.1); }
+.puntata-data { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); line-height: 1.7; padding-top: .3rem; }
+.puntata-titolo { font-family: 'Cinzel', serif; font-size: 1.3rem; line-height: 1.35; color: var(--parchment); font-weight: 600; margin-bottom: .8rem; }
+.puntata-testo { font-size: 1.12rem; line-height: 1.65; color: rgba(245,240,232,.75); margin-bottom: 1.4rem; }
+.puntata .btn-primary { display: inline-block; }
+.puntata-corpo > :last-child { margin-bottom: 0; }
+@media (max-width: 780px) {
+  .puntata { grid-template-columns: 1fr; gap: .6rem; padding: 1.6rem 1.3rem; }
+  .puntata-testo { font-size: 1.2rem; }
+}
