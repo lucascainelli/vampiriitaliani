@@ -37,3 +37,8 @@ Attenzione: `articoli/` nella radice viene riscritta a ogni build, niente file a
 ## Video
 In testata: `video: https://www.youtube.com/watch?v=...` nel blocco in alto. Nel testo: una riga `{{video: https://youtube.com/shorts/...}}`.
 Accetta YouTube (anche Shorts, in formato verticale) e Vimeo. Usa la categoria `Video` per raccoglierli.
+
+## Anteprime quando si condivide un link
+Ogni articolo usa come anteprima la sua foto di copertina (`copertina:`). Senza copertina usa l'immagine generale `og-vampiri.jpg`.
+Le altre pagine hanno un'immagine propria in `assets/og/`, generata da `node scripts/anteprime/genera.cjs` (serve Playwright):
+per cambiarne una modifica l'elenco `PAGINE` in quel file e rilancialo.
