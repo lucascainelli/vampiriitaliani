@@ -19,14 +19,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://vampiriitaliani.it/og-vampiri.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css?v=8883d717">
+<link rel="stylesheet" href="/assets/base.css?v=6e154b40">
 <link rel="stylesheet" href="/assets/articoli.css?v=96e1821d">
 
 </head>
 <body>
 <nav>
   <a href="/" class="nav-brand">Vampiri <span>Italiani</span></a>
-  <ul class="nav-links">
+  <ul class="nav-links" onclick="if(event.target.closest('a'))this.closest('nav').classList.remove('aperto')">
     <li><a href="/aderisci.html">Diventa Vampiro</a></li>
     <li><a href="/#manifesto">Manifesto</a></li>
     <li><a href="/#varieta">Varietà</a></li>
@@ -40,6 +40,7 @@
     <li><a href="/#fondatore">Chi siamo</a></li>
   </ul>
   <div class="lang-switcher"><a href="/articoli/" class="active">IT</a><a href="/index_en.html">EN</a></div>
+  <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" onclick="var n=this.closest('nav');this.setAttribute('aria-expanded',n.classList.toggle('aperto'))"><span></span><span></span><span></span></button>
 </nav>
 <main class="pagina"><div class="pagina-inner">
   <div class="section-eyebrow">Dal Covo</div>

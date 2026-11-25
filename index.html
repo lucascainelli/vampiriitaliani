@@ -989,6 +989,21 @@
   .wa-presidente{display:inline-flex;align-items:center;gap:.8rem;margin-top:2rem;padding:1rem 2rem;border:1px solid var(--gold,#c9a84c);background:linear-gradient(135deg,rgba(201,168,76,.18),rgba(201,168,76,.05));color:var(--gold,#c9a84c);font-family:inherit;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;box-shadow:0 0 24px rgba(201,168,76,.15);transition:all .3s}
   .wa-presidente svg{width:1.4rem;height:1.4rem;fill:currentColor;flex:none}
   .wa-presidente:hover{background:var(--gold,#c9a84c);color:#0a0a0a;box-shadow:0 0 36px rgba(201,168,76,.4);transform:translateY(-2px)}
+
+  /* MENU DA TELEFONO: pulsante con tre righe che apre la lista delle voci */
+  .nav-toggle { display: none; }
+  @media (max-width: 780px) {
+    nav .lang-switcher { margin-left: auto; }
+    .nav-toggle { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 42px; height: 36px; margin-left: .8rem; padding: 0 9px; background: transparent; border: 1px solid var(--gold); cursor: pointer; }
+    .nav-toggle span { display: block; height: 2px; background: var(--gold); transition: transform .25s, opacity .25s; }
+    nav.aperto { background: #0a0a0a; }
+    nav.aperto .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.aperto .nav-toggle span:nth-child(2) { opacity: 0; }
+    nav.aperto .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    nav.aperto .nav-links { display: flex; flex-direction: column; gap: 0; position: absolute; top: 100%; left: 0; right: 0; margin: 0; padding: .4rem 1.5rem 1.2rem; background: #0a0a0a; border-bottom: 1px solid rgba(201,168,76,.35); max-height: calc(100vh - 70px); overflow-y: auto; }
+    nav.aperto .nav-links li + li { border-top: 1px solid rgba(201,168,76,.15); }
+    nav.aperto .nav-links a { display: block; padding: 1rem 0; font-size: .9rem; letter-spacing: .2em; color: var(--parchment); }
+  }
 </style>
 <link rel="alternate" hreflang="it" href="https://vampiriitaliani.it/" />
 <link rel="alternate" hreflang="en" href="https://vampiriitaliani.it/index_en.html" />
@@ -998,7 +1013,7 @@
 
 <nav>
   <a href="#" class="nav-brand">Vampiri <span>Italiani</span></a>
-  <ul class="nav-links">
+  <ul class="nav-links" onclick="if(event.target.closest('a'))this.closest('nav').classList.remove('aperto')">
     <li><a href="aderisci.html">Diventa Vampiro</a></li>
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#varieta">Varietà</a></li>
@@ -1016,6 +1031,7 @@
     <a href="index.html" class="active">IT</a>
     <a href="index_en.html">EN</a>
   </div>
+  <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" onclick="var n=this.closest('nav');this.setAttribute('aria-expanded',n.classList.toggle('aperto'))"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->

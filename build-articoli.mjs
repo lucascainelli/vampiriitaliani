@@ -144,7 +144,7 @@ function leggiArticoli() {
 // ---------- template ----------
 const NAV = (attivo = 'articoli') => `<nav>
   <a href="/" class="nav-brand">Vampiri <span>Italiani</span></a>
-  <ul class="nav-links">
+  <ul class="nav-links" onclick="if(event.target.closest('a'))this.closest('nav').classList.remove('aperto')">
     <li><a href="/aderisci.html">Diventa Vampiro</a></li>
     <li><a href="/#manifesto">Manifesto</a></li>
     <li><a href="/#varieta">Varietà</a></li>
@@ -158,6 +158,7 @@ const NAV = (attivo = 'articoli') => `<nav>
     <li><a href="/#fondatore">Chi siamo</a></li>
   </ul>
   <div class="lang-switcher"><a href="/${attivo}/" class="active">IT</a><a href="/index_en.html">EN</a></div>
+  <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" onclick="var n=this.closest('nav');this.setAttribute('aria-expanded',n.classList.toggle('aperto'))"><span></span><span></span><span></span></button>
 </nav>`;
 
 const FOOTER = `<footer>
