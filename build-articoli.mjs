@@ -194,10 +194,10 @@ function pagina({ titolo, descrizione, url, corpo, og = `${SITO}/og-vampiri.jpg`
 <meta property="og:description" content="${esc(descrizione)}">
 <meta property="og:url" content="${SITO}${url}">
 <meta property="og:image" content="${og}">
-${String(og).endsWith('-og.jpg') ? `<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-` : ''}<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="${og}">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${CSS_BASE}">
@@ -239,7 +239,7 @@ function elenco({ titolo, sottotitolo, eyebrow, articoli, categorie, attiva, url
   ${filtri(categorie, attiva)}
   ${articoli.length ? `<div class="griglia">${articoli.map(cardHTML).join('')}</div>` : '<p class="vuoto">Ancora nessun articolo.</p>'}
 </div></main>`;
-  return pagina({ titolo: `${titolo} — ${NOME}`, descrizione, url, corpo });
+  return pagina({ titolo: `${titolo} — ${NOME}`, descrizione, url, corpo, og: `${SITO}/assets/og/articoli.jpg` });
 }
 
 function boxShare(a) {
@@ -343,7 +343,7 @@ function paginaRadio(puntate) {
     : '<p class="vuoto">Presto la prima puntata.</p>'}
 </div></main>`;
   return pagina({
-    titolo: `In radio — ${NOME}`, url: '/radio/', corpo, sezione: 'radio',
+    titolo: `In radio — ${NOME}`, url: '/radio/', corpo, sezione: 'radio', og: `${SITO}/assets/og/radio.jpg`,
     descrizione: "Le puntate di Luca Scainelli e dei Vampiri Italiani a Segreti in Tavola su Radio Dimensione Suono Soft: l'aglio raccontato in radio.",
   });
 }
