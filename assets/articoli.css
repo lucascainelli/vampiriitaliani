@@ -138,19 +138,34 @@
 }
 
 /* pagina In radio: elenco puntate */
-.radio { max-width: 820px; }
-.radio .section-subtitle a { color: var(--gold-light); text-underline-offset: 3px; }
+.radio { max-width: 860px; }
+.radio-testa { text-align: center; margin-bottom: 3.6rem; }
+.radio-testa .section-eyebrow { color: var(--gold-light); font-size: .85rem; letter-spacing: .38em; margin-bottom: 1.4rem; }
+.radio-testa .section-eyebrow::before, .radio-testa .section-eyebrow::after { font-size: .75rem; }
+.radio-testa .section-title { font-size: clamp(2.4rem, 6vw, 3.6rem); margin-bottom: 1.4rem; }
+.radio-intro { max-width: 34rem; margin: 0 auto 2.4rem; font-size: 1.4rem; line-height: 1.6; color: var(--parchment); }
+.radio-scheda { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(201,168,76,.45); background: rgba(139,0,0,.12); }
+.radio-scheda > div { padding: 1.2rem 1rem; }
+.radio-scheda > div + div { border-left: 1px solid rgba(201,168,76,.3); }
+.radio-scheda dt { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: .45rem; }
+.radio-scheda dd { margin: 0; font-size: 1.2rem; line-height: 1.35; color: var(--parchment); }
+.radio-scheda a { color: var(--parchment); text-decoration: underline; text-decoration-color: rgba(201,168,76,.6); text-underline-offset: 4px; }
+.radio-scheda a:hover { color: var(--gold-light); }
 .puntate-gruppo + .puntate-gruppo { margin-top: 3.2rem; }
-.puntate-etichetta { font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .4em; text-transform: uppercase; color: var(--blood-bright); text-align: center; margin-bottom: 1.4rem; font-weight: 400; }
-.puntata { display: grid; grid-template-columns: 11rem 1fr; gap: 1.8rem; padding: 2rem 2.2rem; background: var(--near-black); border: 1px solid rgba(201,168,76,.2); }
+.puntate-etichetta { font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .32em; text-transform: uppercase; color: var(--gold-light); text-align: center; margin-bottom: 1.4rem; font-weight: 400; display: flex; align-items: center; gap: 1.2rem; }
+.puntate-etichetta::before, .puntate-etichetta::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,.35); }
+.puntata { display: grid; grid-template-columns: 10rem 1fr; gap: 2rem; padding: 2.2rem 2.4rem; background: var(--near-black); border: 1px solid rgba(201,168,76,.28); }
 .puntata + .puntata { margin-top: 1.2rem; }
-.puntata.futura { border-color: var(--gold); background: rgba(139,0,0,.12); box-shadow: 0 0 40px rgba(201,168,76,.1); }
-.puntata-data { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); line-height: 1.7; padding-top: .3rem; }
-.puntata-titolo { font-family: 'Cinzel', serif; font-size: 1.3rem; line-height: 1.35; color: var(--parchment); font-weight: 600; margin-bottom: .8rem; }
-.puntata-testo { font-size: 1.12rem; line-height: 1.65; color: rgba(245,240,232,.75); margin-bottom: 1.4rem; }
+.puntata.futura { border-color: var(--gold); background: rgba(139,0,0,.14); box-shadow: 0 0 40px rgba(201,168,76,.1); }
+.puntata-data { font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-light); line-height: 1.6; padding-top: .35rem; }
+.puntata-titolo { font-family: 'Cinzel', serif; font-size: 1.45rem; line-height: 1.35; color: var(--parchment); font-weight: 600; margin-bottom: .9rem; }
+.puntata-testo { font-size: 1.25rem; line-height: 1.65; color: rgba(245,240,232,.88); margin-bottom: 1.6rem; }
 .puntata .btn-primary { display: inline-block; }
 .puntata-corpo > :last-child { margin-bottom: 0; }
 @media (max-width: 780px) {
-  .puntata { grid-template-columns: 1fr; gap: .6rem; padding: 1.6rem 1.3rem; }
-  .puntata-testo { font-size: 1.2rem; }
+  .radio-intro { font-size: 1.35rem; }
+  .radio-scheda { grid-template-columns: 1fr; }
+  .radio-scheda > div + div { border-left: 0; border-top: 1px solid rgba(201,168,76,.3); }
+  .puntata { grid-template-columns: 1fr; gap: .7rem; padding: 1.7rem 1.4rem; }
+  .puntata-testo { font-size: 1.3rem; }
 }

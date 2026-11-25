@@ -321,9 +321,16 @@ function paginaRadio(puntate) {
   const future = puntate.filter((p) => p.data > oggi).reverse(); // la più vicina per prima
   const passate = puntate.filter((p) => p.data <= oggi);
   const corpo = `<main class="pagina"><div class="pagina-inner radio">
-  <div class="section-eyebrow">Segreti in Tavola</div>
-  <h1 class="section-title">In radio</h1>
-  <p class="section-subtitle">Luca Scainelli racconta l'aglio a <em>Segreti in Tavola</em>, con Francesca Romana Barberini, su <a href="https://www.dimensionesuonosoft.it/" target="_blank" rel="noopener">Radio Dimensione Suono Soft</a>. Qui tutte le puntate da riascoltare.</p>
+  <header class="radio-testa">
+    <div class="section-eyebrow">L'aglio in onda</div>
+    <h1 class="section-title">In radio</h1>
+    <p class="radio-intro">Luca Scainelli racconta l'aglio italiano, una puntata alla volta. Qui trovi tutte le puntate da riascoltare.</p>
+    <dl class="radio-scheda">
+      <div><dt>Programma</dt><dd>Segreti in Tavola</dd></div>
+      <div><dt>Conduce</dt><dd>Francesca Romana Barberini</dd></div>
+      <div><dt>Radio</dt><dd><a href="https://www.dimensionesuonosoft.it/" target="_blank" rel="noopener">Dimensione Suono Soft</a></dd></div>
+    </dl>
+  </header>
   ${future.length ? `<section class="puntate-gruppo"><h2 class="puntate-etichetta">Prossima puntata</h2>${future.map((p) => puntataHTML(p, true)).join('')}</section>` : ''}
   ${passate.length
     ? `<section class="puntate-gruppo">${future.length ? '<h2 class="puntate-etichetta">Da riascoltare</h2>' : ''}${passate.map((p) => puntataHTML(p, false)).join('')}</section>`
