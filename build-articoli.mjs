@@ -175,7 +175,7 @@ const FOOTER = `<footer>
   <div class="footer-copy">L'aglio non morde. Noi sì.</div>
 </footer>`;
 
-function pagina({ titolo, descrizione, url, corpo, og = `${SITO}/og-vampiri.jpg`, tipo = 'website', extraHead = '', sezione = 'articoli' }) {
+function pagina({ titolo, descrizione, url, corpo, og = `${SITO}/og-vampiri.jpg?v=2`, tipo = 'website', extraHead = '', sezione = 'articoli' }) {
   return `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -239,7 +239,7 @@ function elenco({ titolo, sottotitolo, eyebrow, articoli, categorie, attiva, url
   ${filtri(categorie, attiva)}
   ${articoli.length ? `<div class="griglia">${articoli.map(cardHTML).join('')}</div>` : '<p class="vuoto">Ancora nessun articolo.</p>'}
 </div></main>`;
-  return pagina({ titolo: `${titolo} — ${NOME}`, descrizione, url, corpo, og: `${SITO}/assets/og/articoli.jpg` });
+  return pagina({ titolo: `${titolo} — ${NOME}`, descrizione, url, corpo, og: `${SITO}/assets/og/articoli.jpg?v=2` });
 }
 
 function boxShare(a) {
@@ -254,7 +254,7 @@ function boxShare(a) {
 function paginaArticolo(a, tutti) {
   const altri = tutti.filter((x) => x.slug !== a.slug).slice(0, 3);
   const og = a.copertina && immagini.get(path.basename(a.copertina))
-    ? `${SITO}/articoli/img/${immagini.get(path.basename(a.copertina)).base}-og.jpg` : `${SITO}/og-vampiri.jpg`;
+    ? `${SITO}/articoli/img/${immagini.get(path.basename(a.copertina)).base}-og.jpg` : `${SITO}/og-vampiri.jpg?v=2`;
   const ld = {
     '@context': 'https://schema.org', '@type': 'Article', headline: a.titolo, description: a.estratto,
     datePublished: dataISO(a.data), image: og, inLanguage: 'it',
@@ -343,7 +343,7 @@ function paginaRadio(puntate) {
     : '<p class="vuoto">Presto la prima puntata.</p>'}
 </div></main>`;
   return pagina({
-    titolo: `In radio — ${NOME}`, url: '/radio/', corpo, sezione: 'radio', og: `${SITO}/assets/og/radio.jpg`,
+    titolo: `In radio — ${NOME}`, url: '/radio/', corpo, sezione: 'radio', og: `${SITO}/assets/og/radio.jpg?v=2`,
     descrizione: "Le puntate di Luca Scainelli e dei Vampiri Italiani a Segreti in Tavola su Radio Dimensione Suono Soft: l'aglio raccontato in radio.",
   });
 }
