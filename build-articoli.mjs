@@ -31,6 +31,11 @@ const slugify = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]
 const lista = (v) => (Array.isArray(v) ? v : v ? [v] : []).map(String);
 const dataIT = (d) => d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const dataISO = (d) => d.toISOString().slice(0, 10);
+// impronta del contenuto: cambia l'indirizzo del CSS quando cambia il file, così i browser non tengono la versione vecchia
+import crypto from 'node:crypto';
+const versione = (file) => crypto.createHash('md5').update(fs.readFileSync(file)).digest('hex').slice(0, 8);
+const CSS_BASE = `/assets/base.css?v=${versione('assets/base.css')}`;
+const CSS_ART = `/assets/articoli.css?v=${versione('assets/articoli.css')}`;
 const scrivi = (file, testo) => { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, testo); };
 const noTag = (html) => html.replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/gi, ' ').replace(/\s+/g, ' ').trim();
 const taglia = (s, n) => (s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '').replace(/[\s.,;:!?\-–—]+$/, '') + '…' : s);
@@ -194,8 +199,8 @@ ${String(og).endsWith('-og.jpg') ? `<meta property="og:image:type" content="imag
 ` : ''}<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="${og}">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/base.css">
-<link rel="stylesheet" href="/assets/articoli.css">
+<link rel="stylesheet" href="${CSS_BASE}">
+<link rel="stylesheet" href="${CSS_ART}">
 ${extraHead}
 </head>
 <body>
